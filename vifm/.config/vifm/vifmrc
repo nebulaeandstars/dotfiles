@@ -1,4 +1,3 @@
-" vim:filetype=vim
 " -------------------------------- "
 "        _  __                     "
 " __   _(_)/ _|_ __ ___  _ __ ___  "
@@ -307,7 +306,7 @@ filextype */
 " fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
 "
 " 16-color terminal
-" fileviewer *.c,*.h highlight -O ansi -s dante %c
+fileviewer *.c,*.h highlight -O ansi -s dante %c
 "
 " Or leave it for automatic detection
 "
