@@ -1,0 +1,159 @@
+################################################################################
+
+# remote settings (where to get to the stuffs)
+IMAPStore laura-remote
+Host imap.porkbun.com
+Port 993
+User laura@laurapowles.com
+PassCmd "pass mydomains/email/laura"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# local settings (where to store the stuffs)
+MaildirStore laura-local
+Path /home/laura/.local/share/mail/laura/
+Inbox /home/laura/.local/share/mail/laura/INBOX/
+# create subfolders as they appear on the server
+Subfolders Verbatim
+
+
+# channel settings (how to transfer the stuffs)
+Channel laura
+Master :laura-remote:
+Slave :laura-local:
+# make sure that folders get synced properly
+Create Both
+Expunge Both
+# sync all of the mailboxes, but not "[Gmail]/Chats"
+Patterns *
+# can make user errors a bit less catastrophic.
+SyncState *
+
+################################################################################
+
+# remote settings (where to get to the stuffs)
+IMAPStore thomas-remote
+Host imap.porkbun.com
+Port 993
+User thomas@thomaspowles.com
+PassCmd "pass mydomains/email/thomas"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# local settings (where to store the stuffs)
+MaildirStore thomas-local
+Path /home/laura/.local/share/mail/thomas/
+Inbox /home/laura/.local/share/mail/thomas/INBOX/
+# create subfolders as they appear on the server
+Subfolders Verbatim
+
+
+# channel settings (how to transfer the stuffs)
+Channel thomas
+Master :thomas-remote:
+Slave :thomas-local:
+# make sure that folders get synced properly
+Create Both
+Expunge Both
+# sync all of the mailboxes, but not "[Gmail]/Chats"
+Patterns *
+# can make user errors a bit less catastrophic.
+SyncState *
+
+################################################################################
+
+# remote settings (where to get to the stuffs)
+IMAPStore nebulaeandstars-remote
+Host imap.gmail.com
+Port 993
+User nebulaeandstars@gmail.com
+PassCmd "pass google/nebulaeandstars"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# local settings (where to store the stuffs)
+MaildirStore nebulaeandstars-local
+Path /home/laura/.local/share/mail/nebulaeandstars/
+Inbox /home/laura/.local/share/mail/nebulaeandstars/INBOX/
+# create subfolders as they appear on the server
+Subfolders Verbatim
+
+
+# channel settings (how to transfer the stuffs)
+Channel nebulaeandstars
+Master :nebulaeandstars-remote:
+Slave :nebulaeandstars-local:
+# make sure that folders get synced properly
+Create Both
+Expunge Both
+# sync all of the mailboxes, but not "[Gmail]/Chats"
+Patterns * !"[Gmail]/Chats"
+# can make user errors a bit less catastrophic.
+SyncState *
+
+################################################################################
+
+# remote settings (where to get to the stuffs)
+IMAPStore thomaspowles-remote
+Host imap.gmail.com
+Port 993
+User thomas.powles@gmail.com
+PassCmd "pass google/thomaspowles"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# local settings (where to store the stuffs)
+MaildirStore thomaspowles-local
+Path /home/laura/.local/share/mail/thomaspowles/
+Inbox /home/laura/.local/share/mail/thomaspowles/INBOX/
+# create subfolders as they appear on the server
+Subfolders Verbatim
+
+# channel settings (how to transfer the stuffs)
+Channel thomaspowles
+Master :thomaspowles-remote:
+Slave :thomaspowles-local:
+# make sure that folders get synced properly
+Create Both
+Expunge Both
+# sync all of the mailboxes, but not "[Gmail]/Chats"
+Patterns * !"[Gmail]/Chats"
+# can make user errors a bit less catastrophic.
+SyncState *
+
+################################################################################
+
+# remote settings (where to get to the stuffs)
+IMAPStore mfc-remote
+Host imap.gmail.com
+Port 993
+User thomas@musicforcanberra.org.au
+PassCmd "pass google/app-passwords/mfc-mutt"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# local settings (where to store the stuffs)
+MaildirStore mfc-local
+Path /home/laura/.local/share/mail/mfc/
+Inbox /home/laura/.local/share/mail/mfc/INBOX/
+# create subfolders as they appear on the server
+Subfolders Verbatim
+
+# channel settings (how to transfer the stuffs)
+Channel mfc
+Master :mfc-remote:
+Slave :mfc-local:
+# make sure that folders get synced properly
+Create Both
+Expunge Both
+# sync all of the mailboxes, but not "[Gmail]/Chats"
+Patterns * !"[Gmail]/Chats"
+# can make user errors a bit less catastrophic.
+SyncState *
+
+################################################################################

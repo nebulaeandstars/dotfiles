@@ -1,0 +1,96 @@
+#!/bin/sh
+# based on Luke Smith's version
+# modified by nebulaeandstars
+
+# - sync mail for all accounts, or a single account given as an argument.
+# - display a notification showing the number of new mails.
+# - display a notification for each new mail with its subject displayed.
+# - run notmuch to index new mail.
+
+# Run only if user logged in (prevent cron errors)
+pgrep -u "${USER:=$LOGNAME}" >/dev/null || { echo "$USER not logged in; sync will not run."; exit ;}
+# Run only if not already running in other instance
+pgrep -x mbsync >/dev/null && { echo "mbsync is already running." ; exit ;}
+
+# Find out which monitor to use (for notify-send)
+case "$(readlink -f /sbin/init)" in
+    *systemd*) export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus ;;
+esac
+export GPG_TTY=$TTY
+
+# Source environment variables
+echo "Sourcing $HOME/.zshenv"
+source "$HOME/.zshenv"
+
+# If the MBSYNCRC environment variable is set, alias mbsync to use it
+[ -n "$MBSYNCRC" ] && alias mbsync="mbsync -c $MBSYNCRC" || MBSYNCRC="$HOME/.mbsyncrc"
+
+# If this was run without any arguments, sync all accounts.
+if [ "$#" -eq "0" ]; then
+    accounts="$(awk '/^Channel/ {print $2}' "$MBSYNCRC")"
+    # Otherwise, only sync the required channel
+else
+    for arg in "$@"; do
+        [ "${arg%${arg#?}}" = '-' ] && opts="${opts:+${opts} }${arg}" && shift 1
+    done
+    accounts=$*
+fi
+
+# Send a notification listing new mail
+displays="$(pgrep -a X\(org\|wayland\) | grep -wo "[0-9]*:[0-9]\+" | sort -u)"
+notify() { for x in $displays; do
+    export DISPLAY=$x
+    notify-send --app-name="mailsync" --urgency normal "mailsync" "📬 $2 new mail(s) in \`$1\` account."
+done ;}
+messageinfo() { for x in $displays; do
+    export DISPLAY=$x
+    notify-send --app-name="mailsync" --urgency low "📧$from:" "$subject"
+done ;}
+
+# Check an account for new mail. Notify if there is new content.
+syncandnotify() {
+    acc="$(echo "$account" | sed "s/.*\///")"
+    echo "Syncing $acc..."
+
+    # Sync the account using mbsync
+    if [ -z "$opts" ]; then mbsync "$acc" >/dev/null 2>&1; else mbsync "$opts" "$acc" >/dev/null 2>&1; fi
+
+    # Identify new mail
+    new=$(find "$HOME/.local/share/mail/$acc/INBOX/new/" "$HOME/.local/share/mail/$acc/Inbox/new/" "$HOME/.local/share/mail/$acc/inbox/new/" -type f -newer "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun" 2> /dev/null)
+
+    # Get a count of how many new messages there are
+    newcount=$(echo "$new" | sed '/^\s*$/d' | wc -l)
+    echo "$acc has $newcount new messages."
+
+    # If there is at least one new message:
+    if [ "$newcount" -gt "0" ]; then
+        # Send a notification telling the user
+        # how many new messages there are
+        notify "$acc" "$newcount" &
+
+        # Then, for each new message
+        for file in $new; do
+            # Extract the sender.
+            from=$(awk '/^From: / && ++n ==1,/^\<.*\>:/' "$file" | perl -CS -MEncode -ne 'print decode("MIME-Header", $_)' | awk '{ $1=""; if (NF>=3)$NF=""; print $0 }' | sed 's/^[[:blank:]]*[\"'\''\<]*//;s/[\"'\''\>]*[[:blank:]]*$//')
+            # Extract the subject.
+            subject=$(awk '/^Subject: / && ++n == 1,/^\<.*\>: / && ++i == 2' "$file" | head -n 1 | perl -CS -MEncode -ne 'print decode("MIME-Header", $_)' | sed 's/^Subject: //' | sed 's/^{[[:blank:]]*[\"'\''\<]*//;s/[\"'\''\>]*[[:blank:]]*$//' | tr -d '\n')
+
+            # And send both to the user as a notification.
+            messageinfo &
+        done
+            fi
+        }
+
+# Parallelize multiple accounts
+for account in $accounts; do
+    syncandnotify &
+done
+
+# Wait for all accounts to be synced
+wait
+
+# Update the email database
+notmuch new 2>/dev/null
+
+#Create a touch file that indicates the time of the last run of mailsync
+touch "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun"

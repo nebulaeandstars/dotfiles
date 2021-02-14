@@ -1,0 +1,6 @@
+#!/bin/bash
+# A dmenu binary prompt script
+# By Luke Smith (not me)
+
+[ "$(echo -e "No\nYes" | dmenu -i -p "$1")" \
+    == "Yes" ] && $2

@@ -1,0 +1,46 @@
+#!/bin/bash
+# Modify picom config files on the fly
+
+while getopts ":-:" opt ; do
+    case "$opt" in
+
+        -) case "$OPTARG" in
+            fade-step) FADE_STEP="${!OPTIND}" ; OPTIND=$(( $OPTIND + 1 ));;
+            corner-radius) CORNER_RADIUS="${!OPTIND}" ; OPTIND=$(( $OPTIND + 1 ));;
+            active-opacity) ACTIVE_OPACITY="${!OPTIND}" ; OPTIND=$(( $OPTIND + 1 ));;
+            inactive-opacity) INACTIVE_OPACITY="${!OPTIND}" ; OPTIND=$(( $OPTIND + 1 ));;
+            inactive-dim) INACTIVE_DIM="${!OPTIND}" ; OPTIND=$(( $OPTIND + 1 ));;
+            *) echo "Invalid option: --$OPTARG" >&2 && exit 5 ;;
+        esac ;;
+
+    :) echo "Option -$OPTARG requires an argument." >&2 && exit 5 ;;
+    *) echo "Invalid option: -$OPTARG" >&2 && exit 5 ;;
+esac
+done
+
+edit_file() {
+    [ $FADE_STEP ] && {
+        sed -i "s/^fade-in-step =.*/fade-in-step = $FADE_STEP;/" "$1"
+        sed -i "s/^fade-out-step =.*/fade-out-step = $FADE_STEP;/" "$1"
+    }
+    [ "$CORNER_RADIUS" ] && \
+        sed -i "s/^corner-radius =.*/corner-radius = $CORNER_RADIUS;/" "$1"
+    [ "$ACTIVE_OPACITY" ] && {
+        sed -i "s/^active-opacity =.*/active-opacity = $ACTIVE_OPACITY;/" "$1"
+        sed -i "s/^frame-opacity =.*/frame-opacity = $ACTIVE_OPACITY;/" "$1"
+    }
+    [ "$INACTIVE_OPACITY" ] && \
+        sed -i "s/^inactive-opacity =.*/inactive-opacity = $INACTIVE_OPACITY;/" "$1"
+    [ "$INACTIVE_DIM" ] && \
+        sed -i "s/^inactive-dim =.*/inactive-dim = $INACTIVE_DIM;/" "$1"
+
+    return 0
+}
+
+[ -f "$HOME/.config/picom/picom.conf" ] \
+    && FILE="$HOME/.config/picom/picom.conf" || FILE="$HOME/.config/picom.conf"
+
+[ -f "$FILE" ] && edit_file "$FILE" \
+    || ( echo "cannot find picom.conf" && exit 2 )
+
+exit 0

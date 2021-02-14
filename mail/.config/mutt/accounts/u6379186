@@ -1,0 +1,27 @@
+# vim: filetype=neomuttrc
+
+set imap_user = "u6379186@anu.edu.au"
+set imap_pass = `pass other/u6379186`
+set folder = "imaps://outlook.office365.com:993"
+
+set sendmail = "/usr/bin/msmtp -a u6379186@anu.edu.au"
+
+set imap_passive
+set imap_keepalive = 300
+set mail_check = 60
+
+set from = "u6379186@anu.edu.au"
+set realname = "Thomas Powles"
+
+set signature="~/.config/mutt/signatures/u6379186"
+
+color index_number green default
+color index_author green default '.*'
+
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+unset record #= "+Sent Items"
+set trash = "+Deleted Items"
+
+unmailboxes *
+mailboxes =INBOX =Drafts =Sent\ Items =Deleted\ Items =Archive

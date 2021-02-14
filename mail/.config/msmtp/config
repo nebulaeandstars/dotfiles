@@ -1,0 +1,47 @@
+defaults
+auth            on
+tls             on
+tls_trust_file  /etc/ssl/certs/ca-certificates.crt
+logfile         /home/laura/.config/msmtp/msmtp.log
+
+account laura@laurapowles.com
+host smtp.porkbun.com
+port 587
+from laura@laurapowles.com
+user laura@laurapowles.com
+passwordeval "pass mydomains/email/laura"
+
+account thomas@thomaspowles.com
+host smtp.porkbun.com
+port 587
+from thomas@thomaspowles.com
+user thomas@thomaspowles.com
+passwordeval "pass mydomains/email/thomas"
+
+account nebulaeandstars@gmail.com
+host smtp.gmail.com
+port 587
+from nebulaeandstars@gmail.com
+user nebulaeandstars@gmail.com
+passwordeval "pass google/nebulaeandstars"
+
+account thomas.powles@gmail.com
+host smtp.gmail.com
+port 587
+from thomas.powles@gmail.com
+user thomas.powles@gmail.com
+passwordeval "pass google/thomaspowles"
+
+account thomas@musicforcanberra.org.au
+host smtp.gmail.com
+port 587
+from thomas@musicforcanberra.org.au
+user thomas@musicforcanberra.org.au
+passwordeval "pass google/app-passwords/mfc-mutt"
+
+account u6379186@anu.edu.au
+host smtp.office365.com
+port 587
+from u6379186@anu.edu.au
+user u6379186@anu.edu.au
+passwordeval "pass other/u6379186"

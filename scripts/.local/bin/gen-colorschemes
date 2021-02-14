@@ -1,0 +1,41 @@
+#!/bin/sh
+
+vim_format() {
+    echo 'let s:color'"$1"' = "guifg='"$(~/.scripts/get-xcolor.sh "$1")"' ctermfg='"$1"'"'
+}
+
+zathura_format() {
+    echo 'let s:color'"$1"' = "'"$(~/.scripts/get-xcolor.sh "$1")"'"'
+}
+
+termite_format() {
+    echo 'color'"$1"' = '"$(~/.scripts/get-xcolor.sh "$1")"
+}
+
+qutebrowser_format() {
+    echo 'color'"$1"' = "'"$(~/.scripts/get-xcolor.sh "$1")"'"'
+}
+
+print_formatting() {
+    [ "$1" = vim ] && vim_format "$2"
+    [ "$1" = zathura ] && zathura_format "$2"
+    [ "$1" = termite ] && termite_format "$2"
+    [ "$1" = qutebrowser ] && qutebrowser_format "$2"
+}
+
+print_formatting "$1" 0
+print_formatting "$1" 1
+print_formatting "$1" 2
+print_formatting "$1" 3
+print_formatting "$1" 4
+print_formatting "$1" 5
+print_formatting "$1" 6
+print_formatting "$1" 7
+print_formatting "$1" 8
+print_formatting "$1" 9
+print_formatting "$1" 10
+print_formatting "$1" 11
+print_formatting "$1" 12
+print_formatting "$1" 13
+print_formatting "$1" 14
+print_formatting "$1" 15

@@ -1,0 +1,40 @@
+# Updates
+https://archlinux.org/feeds/news/ "updates" "~Arch Linux (Updates)"
+https://lukesmith.xyz/rss.xml "updates" "~Luke Smith (Updates)"
+
+-------------------
+# News
+https://www.abc.net.au/science/news/topic/latest/latest.xml "news" "~ABC Science (News)"
+https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml "news" "~NYT World News (News)"
+http://feeds.bbci.co.uk/news/world/rss.xml "news" "~BBC World News (News)"
+https://www.canberratimes.com.au/rss.xml "news" "~Canberra Times (News)"
+https://www.news.com.au/feed/ "news" "~news.com.au (News)"
+
+-------------------
+# Videos
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQHX6ViZmPsWiYSFAyS0a3Q "videos" "chess" "~Gotham Chess (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkJdvwRC-oGPhRHW_XPNokg "videos" "chess" "~Hanging Pawns (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSju5G2aFaWMqn-_0YBtq5A "videos" "stem" "~Stand-Up Maths (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCzV9N7eGedBchEQjQhPapyQ "videos" "stem" "~Matt_Parker_2 (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A "videos" "stem" "~Tom Scott (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2C_jShtL725hvbm1arSV9w "videos" "stem" "~CGP Grey (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCoxcjq-8xIDTYp3uz647V5A "videos" "stem" "~Numberphile (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCOGeU-1Fig3rrDjhm9Zs_wg "videos" "stem" "~Vihart (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCKzJFdi57J53Vr_BkTfN3uQ "videos" "essays" "~Primer (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeh-pJYRZTBJDXMNZeWSUVA "videos" "essays" "~Artifexian (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMjTcpv56G_W0FRIdPHBn4A "videos" "essays" "~Biblaridion (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCG1h-Wqjtwz7uUANw6gazRw "videos" "essays" "~Lindsay Ellis (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHsRtomD4twRf5WVHHk-cMw "videos" "essays" "~TierZoo (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9z7EZAbkphEMg0SP7rw44A "videos" "IT" "~carykh (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0e3QhIYukixgh5VVpKHH9Q "videos" "IT" "~Code Bullet (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmtyQOKKmrMVaKuRXz02jbQ "videos" "IT" "~Sebastian Lague (YouTube)"
+https://lukesmith.xyz/peertube "videos" "IT" "~Luke Smith (PeerTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "videos" "feel-good" "~Daily Dose of Internet (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCh9IfI45mmk59eDvSWtuuhQ "videos" "feel-good" "~Ryan George (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCy0Pr5u-MwGXXzp_GDd4m_g "videos" "feel-good" "~Julie Nolke (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UChhyfYkhuVrzmvDr-WqpDSw "videos" "feel-good" "~Not Even Emily (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCo8bcnLyZH8tBIH9V1mLgqQ "videos" "animation" "~TheOdd1sOut (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGwu0nbY2wSkW8N-cghnLpA "videos" "animation" "~Jaiden Animations (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCr3cBLTYmIK9kY0F_OdFWFQ "videos" "animation" "~Casually Explained (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCpXBGqwsBkpvcYjsJBQ7LEQ "videos" "games" "~Critical Role (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCaifrB5IrvGNPJmPeVOcqBA "videos" "games" "~Kruggsmash (YouTube)"

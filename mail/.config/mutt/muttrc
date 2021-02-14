@@ -1,0 +1,60 @@
+# vim: filetype=neomuttrc
+
+source colors
+source keys
+
+set editor=nvim
+
+set message_cachedir = "~/.cache/mutt"
+set header_cache = "~/.cache/mutt"
+set mbox_type=Maildir
+
+set mailcap_path = "~/.config/mailcap"
+set date_format="%d/%m/%Y %I:%M%p"
+set index_format="%2C %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
+set sort = 'reverse-date'
+set query_command = "abook --mutt-query '%s'"
+set sleep_time = 0      # Pause 0 seconds for informational messages
+set markers = no        # Disables the `+` displayed at line wraps
+set mark_old = no       # Unread mail stay unread until read
+set mime_forward = yes      # attachments are forwarded with mail
+set wait_key = no       # mutt won't ask "press key to continue"
+set fast_reply          # skip to compose when replying
+set fcc_attach          # save attachments with the body
+set forward_format = "Fwd: %s"  # format of subject when forwarding
+set forward_quote       # include message in forwards
+set reverse_name        # reply as whomever it was to
+set include         # include message in replies
+
+auto_view text/html
+auto_view application/pgp-encrypted
+alternative_order text/plain text/enriched text/html
+
+set sidebar_visible = yes
+set sidebar_width = 20
+set sidebar_short_path = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+
+folder-hook ~/.local/share/mail/laura/* 'source ~/.config/mutt/accounts/laura'
+folder-hook ~/.local/share/mail/thomas/* 'source ~/.config/mutt/accounts/thomas'
+folder-hook ~/.local/share/mail/nebulaeandstars/* 'source ~/.config/mutt/accounts/nebulaeandstars'
+folder-hook ~/.local/share/mail/thomaspowles/* 'source ~/.config/mutt/accounts/thomaspowles'
+folder-hook ~/.local/share/mail/mfc/* 'source ~/.config/mutt/accounts/mfc'
+folder-hook imaps://u6379186@anu.edu.au@outlook.office365.com:993 'source ~/.config/mutt/accounts/u6379186'
+
+macro index <F2> '<change-folder>~/.local/share/mail/laura/INBOX<enter>'
+macro index <F3> '<change-folder>~/.local/share/mail/thomas/INBOX<enter>'
+macro index <F4> '<change-folder>~/.local/share/mail/nebulaeandstars/INBOX<enter>'
+macro index <F5> '<change-folder>~/.local/share/mail/thomaspowles/INBOX<enter>'
+macro index <F6> '<change-folder>~/.local/share/mail/mfc/INBOX<enter>'
+macro index <F7> '<change-folder>imaps://u6379186@anu.edu.au@outlook.office365.com:993<enter>'
+
+source ~/.config/mutt/accounts/laura

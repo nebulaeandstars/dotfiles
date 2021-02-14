@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# use either an argument or dmenu to select a program
+selection="$1"
+man "$selection" > /dev/null || selection=$(man -k . | dmenu -l 30 | awk '{print $1}')
+
+# if the selection has a man page, open it in zathura
+man "$selection" > /dev/null || exit
+man -Tpdf "$selection" | zathura - > /dev/null

@@ -1,0 +1,20 @@
+# vim: filetype=neomuttrc
+
+set folder = "~/.local/share/mail/laura"
+set sendmail="/usr/bin/msmtp -a laura@laurapowles.com"
+
+set from = "laura@laurapowles.com"
+set realname = "Laura Powles"
+
+set signature="~/.config/mutt/signatures/laura"
+
+color index_number blue default
+color index_author blue default '.*'
+
+set spoolfile= "+INBOX"
+set postponed = "+INBOX/Drafts"
+set record = "+INBOX/Sent"
+set trash = "+INBOX/Trash"
+
+unmailboxes *
+mailboxes =INBOX =INBOX/Drafts =INBOX/Sent =INBOX/Archive =INBOX/Trash =INBOX/Junk

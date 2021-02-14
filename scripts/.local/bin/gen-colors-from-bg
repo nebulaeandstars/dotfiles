@@ -1,0 +1,1 @@
+wal -i "$(sed -n '2p' .fehbg | rev | cut -f 2 -d "'" | rev)"

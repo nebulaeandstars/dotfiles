@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# get the name of the current background file and its directory
+current=$(sed -n '2p' ~/.fehbg | cut -d "'" -f 2)
+dir=$(dirname "$current")
+current=$(basename "$current")
+
+# get the list of available backgrounds from that directory
+backgrounds=$(ls "$dir")
+
+# append the first background to the end of the list
+# (wraps upon reaching the end of the file)
+first=$(echo "$backgrounds" | cut -d " " -f 1)
+backgrounds=$(printf "$backgrounds $first")
+
+for FILE in $backgrounds
+do
+    # get the name of the background being considered
+    filename=$(basename "$FILE")
+
+    # if the *last* background was a match, choose this one and exit
+    if [ "$found" = "true" ]; then
+        echo "new background: $filename"
+        feh --bg-fill "$dir"/"$filename"
+        break
+    fi
+
+    # if the current background is a match, choose the next one
+    if [ "$filename" = "$current" ]; then
+        echo "old background: $current"
+        found=true
+    fi
+done

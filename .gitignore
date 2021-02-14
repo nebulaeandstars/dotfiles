@@ -1,0 +1,16 @@
+plugged
+account.gpg
+gmail
+autoconfig.yml
+qsettings
+autoload
+.netrwhist
+.zcompdump*
+.zshrc.zwc
+vifminfo
+vifminfo.json
+vifm-help.txt
+msmtp.log
+cache.db
+.mailsynclastrun
+vifmimg*

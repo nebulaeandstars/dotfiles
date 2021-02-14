@@ -1,0 +1,20 @@
+# vim: filetype=neomuttrc
+
+set folder = "~/.local/share/mail/thomaspowles"
+set sendmail="/usr/bin/msmtp -a thomas.powles@gmail.com"
+
+set from = "thomas.powles@gmail.com"
+set realname = "Thomas Powles"
+
+set signature="~/.config/mutt/signatures/thomaspowles"
+
+color index_number cyan default
+color index_author cyan default '.*'
+
+set spoolfile= "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+unset record # Gmail automatically does this
+set trash = "+[Gmail]/Trash"
+
+unmailboxes *
+mailboxes =INBOX =[Gmail]/Important =[Gmail]/Starred =[Gmail]/All\ Mail =[Gmail]/Drafts =[Gmail]/Sent\ Mail =[Gmail]/Trash =[Gmail]/Spam

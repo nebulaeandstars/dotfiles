@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# get information about the chosen file
+path=$(readlink -f "$1")
+filename=$(basename "$1" .tex)
+filename=$(basename "$filename" .latex)
+
+cd "$(dirname "$1")" || exit
+
+# make a temporary directory for compiling, and rename the file to .lytex
+mkdir LilyPondPrecompile
+cp "$path" "$filename.lytex"
+
+# compile the .lytex file back into a regular .tex file
+# for whatever reason, this needs to be run twice
+lilypond-book --pdf --format=latex --output=LilyPondPrecompile "$filename.lytex"
+lilypond-book --pdf --format=latex --output=LilyPondPrecompile "$filename.lytex"
+
+# copy images into the compile folder (if needed)
+cp images/* LilyPondPrecompile
+
+# compile the newly generated .tex file into a .pdf
+cd LilyPondPrecompile || exit
+pdflatex "$filename.tex" -halt-on-error
+
+# move that .pdf out into the parent directory
+mv "$filename.pdf" ..
+cd .. || exit
+
+# delete temporary files
+rm -rf "$filename.lytex" LilyPondPrecompile

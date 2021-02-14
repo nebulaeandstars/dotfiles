@@ -1,0 +1,15 @@
+#!/bin/sh
+# works on any init system
+# requirements: dmenu, xorg-setxkbmap
+kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" || exit 1
+
+case $BLOCK_BUTTON in
+	1) [ $kb = 'us' ] && kb='dvorak' || kb='us'
+	setxkbmap -layout "$kb"
+	pkill -RTMIN+30 "${STATUSBAR:-dwmblocks}";;
+	3) notify-send "⌨  Keyboard/language module" "$(printf "%s" "\- Current layout: $(setxkbmap -query | grep -oP 'layout:\s*\K\w+')")
+- Left click to toggle between the dvorak and us layouts.";;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+echo "$kb"

@@ -1,0 +1,64 @@
+# Basic binds
+super + Return
+    $TERMINAL
+super + d
+    dmenu_run
+super + w
+    $BROWSER
+super + shift + w
+	$TRUEBROWSER
+super + control + w
+	torbrowser-launcher
+super + f
+    $TERMINAL -e vifmrun
+super + m
+    $TERMINAL -e neomutt
+super + n
+    $TERMINAL -e newsboat
+super + a
+	$TERMINAL -e abook
+super + c
+	$TERMINAL -e calcurse
+super + shift + u
+    manpdf
+super + shift + p
+	passmenu2 || passmenu
+super + shift + b
+    cycle-backgrounds
+super + control + shift + b
+	feh --bg-fill --recursive --randomize ~/.local/share/backgrounds/ &
+
+# picom
+super + shift + i
+    dmenu_change_compositor_settings
+
+# switch between keyboard layouts
+super + control + shift + d
+	setxkbmap -layout dvorak &
+super + control + shift + q
+	setxkbmap -layout us &
+
+# screenshot
+Print
+	scrot -d 3 -e 'mv $f ~/Pictures/Screenshots/'
+control + shift + Print
+	deepin-screenshot &
+
+# volume
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +2%
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -2%
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+super + shift + t
+	pkill -RTMIN+13 "${STATUSBAR:-dwmblocks}"
+
+# brightness
+XF86MonBrightnessUp
+    brightnessctl s +10% &
+XF86MonBrightnessDown
+    brightnessctl s 10%- &

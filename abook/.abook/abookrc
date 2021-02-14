@@ -1,0 +1,65 @@
+# Declare a few custom fields
+field address_lines = Address, list
+field birthday = Birthday, date
+
+# Define how fields should be displayed in tabs
+view CONTACT = name, email
+view ADDRESS = address_lines, city, state, zip, country
+view PHONE = mobile, workphone, phone, fax
+view OTHER = url, birthday
+
+# Preserve any unknown field while loading an abook database
+set preserve_fields=all
+
+# Automatically save database on exit
+set autosave=true
+
+# Format of entries lines in list
+set index_format=" {name:22} {email:40} {phone:12|workphone|mobile}"
+
+# Show all email addresses in list
+set show_all_emails=true
+
+# Command used to start mutt
+set mutt_command=neomutt
+
+# Return all email addresses to a mutt query
+set mutt_return_all_emails=true
+
+# Command used to print
+set print_command=lpr
+
+# Command used to start the web browser
+set www_command=lynx
+
+# Address style [eu|us|uk]
+set address_style=uk
+
+# Colors
+set use_colors=true
+
+set color_header_fg=brightwhite
+set color_header_bg=black
+set color_footer_fg=brightwhite
+set color_footer_bg=black
+
+set color_list_even_fg=brightwhite
+set color_list_even_bg=black
+set color_list_odd_fg=brightwhite
+set color_list_odd_bg=black
+
+set color_list_header_fg=cyan
+set color_list_header_bg=black
+
+set color_list_highlight_fg=black
+set color_list_highlight_bg=cyan
+
+set color_tab_border_fg=brightwhite
+set color_tab_border_bg=black
+set color_tab_label_fg=brightwhite
+set color_tab_label_bg=black
+
+set color_field_name_fg=cyan
+set color_field_name_bg=black
+set color_field_value_fg=brightwhite
+set color_field_value_bg=brightwhite

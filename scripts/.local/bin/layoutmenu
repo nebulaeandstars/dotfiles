@@ -1,0 +1,18 @@
+#!/bin/sh
+
+cat <<EOF | xmenu
+[]= Tiled Layout	0
+[M] Monocle Layout	1
+[@] Spiral Layout	2
+[\\] Dwindle Layout	3
+H[] Deck Layout	    4
+TTT BStack Layout	5
+=== BStack Horiz	6
+HHH Grid Layout	    7
+### NrwGrid Layout	8
+--- HGrid Layout    9
+::: GplsGrid Layout	10
+|M| CMaster Layout	11
+>M> CFMaster Layout	12
+><> Floating Layout
+EOF

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+[ "$1" ] && USERNAME=$1 \
+    || USERNAME=$NC_USERNAME \
+    || (echo "Please set NC_USERNAME..." && exit)
+
+[ "$2" ] && DIRECTORY=$2 \
+    || DIRECTORY=$NC_DIRECTORY \
+    || (echo "Please set NC_DIRECTORY..." && exit)
+
+[ "$3" ] && URL=$3 \
+    || URL=$NC_URL \
+    || (echo "Please set NC_URL..." && exit)
+
+[ "$4" ] && PASS=$4 \
+    || PASS=$(pass nextcloud/client) \
+    || (echo "Couldn't find password..." && exit)
+
+[ "$USERNAME" ] && [ "$DIRECTORY" ] && [ "$URL" ] && [ "$PASS" ] || exit
+
+nextcloudcmd -u "$USERNAME" -p "$PASS" "$DIRECTORY" "$URL"

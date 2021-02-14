@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xrdb -query | sed -n '/color'"$1"':/p' | rev | cut -d '#' -f 1 | sed 's/$/#/' | rev
