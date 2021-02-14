@@ -270,7 +270,7 @@ nnoremap <leader>ss :set spell!<CR>
 nnoremap <leader>r :RainbowToggle<CR>
 nnoremap <leader>a :ALEToggleBuffer<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>o :NERDTreeToggle<CR>
+nnoremap <leader>o :Vifm<CR>
 nnoremap <leader>G :GitGutterToggle<CR>
 nnoremap <leader>zg :GitGutterFold<CR>
 
@@ -410,7 +410,8 @@ endif
 
 " ui tweaks
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
+Plug 'vifm/vifm.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-css-color'
@@ -451,7 +452,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 call plug#end()
 
-" syntastic config "
+" syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline+=%{SyntasticStatuslineFlag}
@@ -460,7 +461,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" gitgutter
+" gitgutter config
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '--'
@@ -468,6 +469,11 @@ let g:gitgutter_sign_removed_first_line = '^-'
 let g:gitgutter_sign_removed_above_and_below = '{-'
 let g:gitgutter_sign_modified_removed = '~-'
 
-let NERDTreeShowHidden=1
-
+" vim-rainbow config
 let g:rainbow_ctermfgs = ['cyan', 'blue', 'green', 'lightgreen', 'lightyellow', 'lightred', 'red', 'magenta', 'lightmagenta']
+
+" vifm.vim config
+let g:vifm_replace_netrw = 1
+let g:vifm_replace_netrw_cmd = "Vifm"
+let g:vifm_embed_term = 1
+let g:vifm_embed_split = 1
