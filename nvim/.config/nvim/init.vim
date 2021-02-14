@@ -223,6 +223,7 @@ endfunction
 " # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS ########## "
 " ############################################################################ "
 let mapleader = ","
+nnoremap <silent> <leader> :WhichKey '<leader>'<CR>
 
 " --- Multiple Modes --- "
 
@@ -416,6 +417,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
