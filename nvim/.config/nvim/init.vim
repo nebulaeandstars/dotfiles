@@ -325,6 +325,8 @@ inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
 
+inoremap ;; ();<Left><Left>
+
 
 " --- Command Mode --- "
 
@@ -421,7 +423,7 @@ Plug 'mbbill/undotree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " usability
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'vimwiki/vimwiki'
@@ -439,9 +441,11 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'dense-analysis/ale'
 
 " language support
+Plug 'lervag/vimtex'
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
+" Plug 'rust-lang/rust.vim'
 Plug 'sophacles/vim-processing'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
