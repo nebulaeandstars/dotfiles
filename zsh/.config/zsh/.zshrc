@@ -37,7 +37,8 @@ setopt hist_verify
 setopt share_history
 
 # fuzzy completion
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+# zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 
 ################################################################################
 # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES ##########
@@ -66,6 +67,9 @@ alias sf="sudo vifm"
 alias sv="sudo nvim"
 alias t="$TERMINAL &>/dev/null &; clear"
 alias v="nvim"
+alias o="nvim"
+alias e="nvim"
+alias ed="nvim"
 alias vim="nvim"
 alias m="neomutt"
 alias mutt="neomutt"
