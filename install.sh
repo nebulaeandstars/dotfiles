@@ -146,6 +146,7 @@ echo
 # install programming languages
 install_with_pacman python
 install_with_pacman texlive-most
+install_with_pacman biber
 install_with_pacman jdk-openjdk
 install_with_pacman java-openjfx
 
