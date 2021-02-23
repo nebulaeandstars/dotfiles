@@ -29,7 +29,7 @@ set shiftwidth=4
 set expandtab
 
 set autoindent
-set textwidth=80
+set textwidth=0
 
 " used for folding
 " override these as needed
