@@ -436,13 +436,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " syntax
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'frazrepo/vim-rainbow'
 Plug 'dense-analysis/ale'
 
 " language support
 Plug 'lervag/vimtex'
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'ARM9/arm-syntax-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
 " Plug 'rust-lang/rust.vim'
@@ -456,6 +457,11 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 call plug#end()
+
+
+" ############################################################################ "
+" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
+" ############################################################################ "
 
 " syntastic config
 set statusline+=%#warningmsg#
