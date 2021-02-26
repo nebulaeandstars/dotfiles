@@ -1,0 +1,1 @@
+openocd -f board/stm32l4discovery.cfg -c "program program.elf verify reset exit"
