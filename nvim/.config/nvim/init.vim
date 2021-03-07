@@ -342,6 +342,7 @@ cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 
 " custom file-typing
 autocmd BufRead,BufNewFile *vifm set filetype=vim
+autocmd BufRead,BufNewFile *.S set filetype=arm
 
 " automatically delete trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
@@ -374,6 +375,39 @@ autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
 "autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
 "autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo \| x!<CR>
 "autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo \| q!<CR>
+
+
+
+
+" ############################################################################ "
+" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
+" ############################################################################ "
+
+" syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%*
+set statusline+=%{SyntasticStatuslineFlag}
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" gitgutter config
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '--'
+let g:gitgutter_sign_removed_first_line = '^-'
+let g:gitgutter_sign_removed_above_and_below = '{-'
+let g:gitgutter_sign_modified_removed = '~-'
+
+" vim-rainbow config
+let g:rainbow_ctermfgs = ['cyan', 'blue', 'green', 'lightgreen', 'lightyellow', 'lightred', 'red', 'magenta', 'lightmagenta']
+
+" vifm.vim config
+let g:vifm_replace_netrw = 1
+let g:vifm_replace_netrw_cmd = "Vifm"
+let g:vifm_embed_term = 1
+let g:vifm_embed_split = 1
 
 
 
@@ -457,34 +491,3 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 call plug#end()
-
-
-" ############################################################################ "
-" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
-" ############################################################################ "
-
-" syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{SyntasticStatuslineFlag}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" gitgutter config
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_removed = '--'
-let g:gitgutter_sign_removed_first_line = '^-'
-let g:gitgutter_sign_removed_above_and_below = '{-'
-let g:gitgutter_sign_modified_removed = '~-'
-
-" vim-rainbow config
-let g:rainbow_ctermfgs = ['cyan', 'blue', 'green', 'lightgreen', 'lightyellow', 'lightred', 'red', 'magenta', 'lightmagenta']
-
-" vifm.vim config
-let g:vifm_replace_netrw = 1
-let g:vifm_replace_netrw_cmd = "Vifm"
-let g:vifm_embed_term = 1
-let g:vifm_embed_split = 1
