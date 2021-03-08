@@ -1,7 +1,10 @@
 # set environment variables
+export PATH="$PATH:$HOME/.local/scripts:$HOME/.local/bin"
+
 export TERMINAL="alacritty"
 export EDITOR="nvim"
-export BROWSER="qutebrowser"
+# export BROWSER="qutebrowser"
+export BROWSER="firefox"
 export TRUEBROWSER="firefox"
 export READER="zathura"
 export PAGER="vimpager"
