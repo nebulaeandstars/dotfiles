@@ -380,39 +380,6 @@ autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
 
 
 " ############################################################################ "
-" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
-" ############################################################################ "
-
-" syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{SyntasticStatuslineFlag}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" gitgutter config
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_removed = '--'
-let g:gitgutter_sign_removed_first_line = '^-'
-let g:gitgutter_sign_removed_above_and_below = '{-'
-let g:gitgutter_sign_modified_removed = '~-'
-
-" vim-rainbow config
-let g:rainbow_ctermfgs = ['cyan', 'blue', 'green', 'lightgreen', 'lightyellow', 'lightred', 'red', 'magenta', 'lightmagenta']
-
-" vifm.vim config
-let g:vifm_replace_netrw = 1
-let g:vifm_replace_netrw_cmd = "Vifm"
-let g:vifm_embed_term = 1
-let g:vifm_embed_split = 1
-
-
-
-
-" ############################################################################ "
 " # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ###### "
 " ############################################################################ "
 
@@ -444,7 +411,7 @@ else
 endif
 
 
-" ui tweaks
+" --- ui tweaks --- "
 Plug 'airblade/vim-gitgutter'
 " Plug 'scrooloose/nerdtree'
 Plug 'vifm/vifm.vim'
@@ -456,38 +423,84 @@ Plug 'mbbill/undotree'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" usability
+" --- usability --- "
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'vimwiki/vimwiki'
 
-" operators
+" --- operators --- "
 Plug 'christoomey/vim-sort-motion'
 Plug 'tpope/vim-commentary'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
-" syntax
+" --- syntax --- "
 " Plug 'vim-syntastic/syntastic'
 Plug 'frazrepo/vim-rainbow'
 Plug 'dense-analysis/ale'
 
-" language support
+" --- language support --- "
 Plug 'lervag/vimtex'
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'ARM9/arm-syntax-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
 " Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
 Plug 'sophacles/vim-processing'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
-" markup previewers
+" --- markup previewers --- "
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 call plug#end()
+
+
+
+
+" ############################################################################ "
+" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
+" ############################################################################ "
+
+" syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%*
+set statusline+=%{SyntasticStatuslineFlag}
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" gitgutter config
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '--'
+let g:gitgutter_sign_removed_first_line = '^-'
+let g:gitgutter_sign_removed_above_and_below = '{-'
+let g:gitgutter_sign_modified_removed = '~-'
+
+" vim-rainbow config
+let g:rainbow_ctermfgs = ['cyan', 'blue', 'green', 'lightgreen', 'lightyellow', 'lightred', 'red', 'magenta', 'lightmagenta']
+
+" vifm.vim config
+let g:vifm_replace_netrw = 1
+let g:vifm_replace_netrw_cmd = "Vifm"
+let g:vifm_embed_term = 1
+let g:vifm_embed_split = 1
+
+" deoplete config
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option({
+            " \ })
