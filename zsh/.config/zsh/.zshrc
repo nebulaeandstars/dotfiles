@@ -12,6 +12,7 @@
 ################################################################################
 # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ##########
 ################################################################################
+
 export ZSH="$HOME/.config/zsh"
 ZSH_THEME=""
 
@@ -36,13 +37,17 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt share_history
 
-# fuzzy completion
-# zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+# use the completion configuration from oh-my-zsh
+source "$ZDOTDIR/completion.zsh"
+
+# use custom colors for ls
+eval $(dircolors "$ZDOTDIR/dircolors")
+
 
 ################################################################################
 # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES ##########
 ################################################################################
+
 # shell
 alias c="clear"
 alias ccat="highlight --out-format=ansi"
@@ -86,6 +91,8 @@ alias bw-sync="echo generating session key... &&
 
 alias battery="cat /sys/class/power_supply/BAT0/capacity"
 
+alias anaconda="source /opt/anaconda/bin/activate root"
+
 # config
 alias i3c="nvim ~/.config/i3/config"
 alias vrc="nvim ~/.config/nvim/init.vim"
@@ -113,6 +120,7 @@ alias p="sudo pacman"
 ################################################################################
 # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ##########
 ################################################################################
+
 source /usr/share/zsh/share/antigen.zsh
 
 antigen bundle woefe/vi-mode.zsh
@@ -131,6 +139,7 @@ antigen apply
 ################################################################################
 # PROMPT # PROMPT # PROMPT # PROMPT # PROMPT # PROMPT # PROMPT # PROMPT ########
 ################################################################################
+
 # set up and configure the "pure" prompt (installed separately)
 fpath+=("$HOME/.local/share/zsh/pure")
 autoload -U promptinit; promptinit
@@ -155,6 +164,7 @@ prompt pure
 ################################################################################
 # HIGHLIGHTING # HIGHLIGHTING # HIGHLIGHTING # HIGHLIGHTING # HIGHLIGHTING #####
 ################################################################################
+
 # Syntax highlighting (requires zsh-syntax-highlighting)
 typeset -A ZSH_HIGHLIGHT_STYLES
 
@@ -195,6 +205,7 @@ ZSH_HIGHLIGHT_STYLES[arg0]='fg=10,bold'
 ################################################################################
 # MESSAGE # MESSAGE # MESSAGE # MESSAGE # MESSAGE # MESSAGE # MESSAGE ##########
 ################################################################################
+
 # fortune | cowsay | lolcat -as 1000
 fortune | cowsay | lolcat
 date +"%A %d/%B/%Y"

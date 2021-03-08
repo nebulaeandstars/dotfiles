@@ -14,6 +14,9 @@ export GNUPGHOME="$HOME/.config/gnupg"
 export GOBIN="$HOME/.local/share/go/bin"
 export ZDOTDIR="$HOME/.config/zsh"
 
+export RUSTUP_HOME="$HOME/.local/share/rustup"
+export CARGO_HOME="$HOME/.local/share/cargo"
+
 # add nextcloud info
 export NC_USERNAME="laura"
 export NC_DIRECTORY="$HOME/Nextcloud/"
