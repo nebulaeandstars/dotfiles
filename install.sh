@@ -184,7 +184,7 @@ install_with_pacman bash-language-server
 # install_with_pacman dmenu
 install_with_pacman feh
 install_with_pacman rxvt-unicode
-install_with_yay polybar-git
+install_with_yay polybar
 install_with_yay rxvt-unicode-pixbuf
 echo
 
