@@ -211,13 +211,22 @@ date_message() {
     date +"%I:%M %p"
 }
 
+screensaver() {
+    cbonsai -L $(tput lines) --screensaver --time=0.003
+}
+
 message_cowsay() {
     fortune | cowsay | lolcat
     date_message
 }
 
 message_bonsai() {
-    cbonsai --print --message="$(date_message)" -L $(tput lines) --time 0.001 --live
+    BONSAI_LINES=$(tput lines)
+    BONSAI_MESSAGE=$(date_message)
+    (( BONSAI_LINES < 8 )) && BONSAI_BASE=3 \
+        || { (( BONSAI_LINES < 15 )) && BONSAI_BASE=2 \
+        || BONSAI_BASE=1 }
+    cbonsai -p -m="$BONSAI_MESSAGE" -L $BONSAI_LINES -b $BONSAI_BASE
 }
 
 message() {
