@@ -51,7 +51,7 @@ eval $(dircolors "$ZDOTDIR/dircolors")
 # shell
 alias c="clear"
 alias ccat="highlight --out-format=ansi"
-alias clear="clear; fortune | cowsay | lolcat -as 500; date +'%A %d/%B/%Y'; date +'%I:%M %p'"
+alias clear="message"
 alias grep="grep --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
@@ -70,7 +70,7 @@ alias YT="youtube-viewer"
 alias f="vifm"
 alias sf="sudo vifm"
 alias sv="sudo nvim"
-alias t="$TERMINAL &>/dev/null &; clear"
+alias t="setsid $TERMINAL >/dev/null & ; sleep 0.5 ; clear"
 alias v="nvim"
 alias o="nvim"
 alias e="nvim"
@@ -206,7 +206,22 @@ ZSH_HIGHLIGHT_STYLES[arg0]='fg=10,bold'
 # MESSAGE # MESSAGE # MESSAGE # MESSAGE # MESSAGE # MESSAGE # MESSAGE ##########
 ################################################################################
 
-# fortune | cowsay | lolcat -as 1000
-fortune | cowsay | lolcat
-date +"%A %d/%B/%Y"
-date +"%I:%M %p"
+date_message() {
+    date +"%A %d/%B/%Y"
+    date +"%I:%M %p"
+}
+
+message_cowsay() {
+    fortune | cowsay | lolcat
+    date_message
+}
+
+message_bonsai() {
+    cbonsai --print --message="$(date_message)" -L $(tput lines) --time 0.001 --live
+}
+
+message() {
+    message_bonsai
+}
+
+message

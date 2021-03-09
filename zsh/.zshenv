@@ -17,6 +17,8 @@ export GNUPGHOME="$HOME/.config/gnupg"
 export GOBIN="$HOME/.local/share/go/bin"
 export ZDOTDIR="$HOME/.config/zsh"
 
+export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
+
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
