@@ -13,7 +13,7 @@
 # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ##########
 ################################################################################
 
-export ZSH="$HOME/.config/zsh"
+export ZSH="$ZDOTDIR"
 ZSH_THEME=""
 
 # make _ and - interchangeable
@@ -41,80 +41,10 @@ setopt share_history
 source "$ZDOTDIR/completion.zsh"
 
 # use custom colors for ls
-eval $(dircolors "$ZDOTDIR/dircolors")
+eval $(dircolors "$XDG_CONFIG_HOME/shell/dircolors")
 
-
-################################################################################
-# ALIASES # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES # ALIASES ##########
-################################################################################
-
-# shell
-alias c="clear"
-alias ccat="highlight --out-format=ansi"
-alias clear="message"
-alias grep="grep --color=auto"
-alias la="ls -a"
-alias ll="ls -l"
-alias ln="ln -v"
-alias ls="ls -hN --color=auto --group-directories-first"
-alias mkd="mkdir"
-alias mkdir="mkdir -pv"
-alias mv="mv -v"
-alias rm="rm -v"
-alias sx="startx"
-alias stow="stow -v"
-
-# general
-alias SS="sudo systemctl"
-alias YT="youtube-viewer"
-alias f="vifm"
-alias sf="sudo vifm"
-alias sv="sudo nvim"
-alias t="setsid $TERMINAL >/dev/null & ; sleep 0.5 ; clear"
-alias v="nvim"
-alias o="nvim"
-alias e="nvim"
-alias ed="nvim"
-alias vim="nvim"
-alias m="neomutt"
-alias mutt="neomutt"
-alias n="newsboat"
-alias yt="youtube-dl -ic"
-alias yta="youtube-dl -xic"
-alias vifm="vifmrun"
-
-alias smk="sudo cp config.def.h config.h && sudo make clean install"
-
-alias bw-sync="echo generating session key... &&
-    export BW_SESSION=\$(bw unlock --raw \"\$(pass bitwarden)\") \
-    && echo syncing... && bw sync"
-
-alias battery="cat /sys/class/power_supply/BAT0/capacity"
-
-alias anaconda="source /opt/anaconda/bin/activate root"
-
-# config
-alias i3c="nvim ~/.config/i3/config"
-alias vrc="nvim ~/.config/nvim/init.vim"
-alias zrc="nvim ~/.config/zsh/.zshrc"
-alias vx="nvim ~/.xinitrc"
-
-# git
-alias ga="git add"
-alias gr="git restore --staged"
-alias gc="git commit -m"
-alias gf="git fetch"
-alias gm="git merge"
-alias gp="git push"
-alias gs="git status"
-alias gv="git status -v"
-
-# pacman
-alias R="sudo pacman -Rns"
-alias Rorphs="pacman -Qtdq | sudo pacman -Rns -"
-alias S="sudo pacman -S"
-alias syu="sudo pacman -Syu"
-alias p="sudo pacman"
+# source aliases
+source "$XDG_CONFIG_HOME/shell/aliasrc"
 
 
 ################################################################################

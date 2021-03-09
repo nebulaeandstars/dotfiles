@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# set PATH
+export PATH="$PATH:$HOME/.local/scripts"
+export PATH="$PATH:$HOME/.local/bin"
+
+# default programs
+export TERMINAL="alacritty"
+export EDITOR="nvim"
+export BROWSER="firefox"
+export TRUEBROWSER="firefox"
+export READER="zathura"
+export PAGER="vimpager"
+
+# meta
+export LOCATION="Canberra"
+
+# nextcloud
+export NC_USERNAME="laura"
+export NC_DIRECTORY="$HOME/Nextcloud/"
+export NC_URL="https://cloud.laurapowles.com/"
+
+# XDG dirs
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# cleanup
+export LESSHISTFILE="-"
+
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk2.0/gtkrc-2.0"
+export ADOTDIR="$XDG_CONFIG_HOME/antigen"
+export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
+
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
+export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim"
+
+export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/passwords/"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOBIN="$XDG_DATA_HOME/go/bin"
