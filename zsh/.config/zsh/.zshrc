@@ -170,7 +170,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=9,bold'
 ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=11,bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=10,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=5,bold'
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=10,bold'
 ZSH_HIGHLIGHT_STYLES[function]='fg=5,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=10,bold'
