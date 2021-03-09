@@ -85,8 +85,8 @@ call s:hi('Comment', s:fg14, s:none, s:none)
 " linting
 call s:hi('Error', s:fg15, s:bg1, s:none)
 call s:hi('Todo', s:fg11, s:bg8, s:bold)
-call s:hi('SpellBad', s:none, s:bg9, s:none)
-call s:hi('SpellCap', s:none, s:bg12, s:none)
+call s:hi('SpellBad', s:fg0, s:bg9, s:none)
+call s:hi('SpellCap', s:fg0, s:bg12, s:none)
 
 " delimiters
 call s:hi('Delimiter', s:fg14, s:none, s:bold)
@@ -109,7 +109,7 @@ endif
 call s:hi('ErrorMsg', s:fg9, s:none, s:none)
 
 " pmenu (for autocomplete, etc)
-call s:hi('Pmenu', s:none, s:bg6, s:none)
+call s:hi('Pmenu', s:fg0, s:bg6, s:none)
 
 " color column
 call s:hi('ColorColumn', s:fg15, s:bg8, s:none)
