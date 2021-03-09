@@ -10,6 +10,38 @@
 
 
 " ############################################################################ "
+" # PATH # PATH # PATH # PATH # PATH # PATH # PATH # PATH # PATH # PATH # #### "
+" ############################################################################ "
+
+if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
+
+if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
+if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
+if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+
+set runtimepath^=$XDG_CONFIG_HOME/nvim
+set runtimepath+=$XDG_DATA_HOME/nvim
+set runtimepath+=$XDG_CONFIG_HOME/nvim/after
+
+set packpath^=$XDG_DATA_HOME/nvim,$XDG_CONFIG_HOME/nvim
+set packpath+=$XDG_CONFIG_HOME/nvim/after,$XDG_DATA_HOME/nvim/after
+
+let g:netrw_home = $XDG_DATA_HOME."/nvim"
+call mkdir($XDG_DATA_HOME."/nvim/spell", 'p', 0700)
+set viewdir=$XDG_DATA_HOME/nvim/view | call mkdir(&viewdir, 'p', 0700)
+
+set backupdir=$XDG_CACHE_HOME/nvim/backup | call mkdir(&backupdir, 'p', 0700)
+set directory=$XDG_CACHE_HOME/nvim/swap   | call mkdir(&directory, 'p', 0700)
+set undodir=$XDG_CACHE_HOME/nvim/undo     | call mkdir(&undodir,   'p', 0700)
+
+if !has('nnvim') " Neonvim has its own special location
+  set viminfofile=$XDG_CACHE_HOME/nvim/nviminfo
+endif
+
+
+
+
+" ############################################################################ "
 " # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ###### "
 " ############################################################################ "
 
@@ -86,12 +118,8 @@ set backspace=indent,eol,start
 " make ~ behave like g~
 set tildeop
 
-" set directories for persistent undo, backup, and swap files
-set undodir=~/.local/share/nvim/undo//
-" set backupdir=~/.local/share/nvim/backup//
-set directory=~/.local/share/nvim/swap//
 set undofile
-" set backup
+set nobackup
 
 " follow imports for autocomplete
 " use the dictionary for autocomplete when spellchecking is enabled
@@ -474,7 +502,7 @@ Plug 'mxw/vim-jsx'
 
 " --- markup previewers --- "
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 
 
 call plug#end()
