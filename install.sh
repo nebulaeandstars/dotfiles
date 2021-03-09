@@ -149,6 +149,7 @@ install_with_pacman lolcat
 install_with_pacman neofetch
 install_with_pacman youtube-dl
 install_with_pacman youtube-viewer
+install_with_yay cbonsai
 echo
 
 
