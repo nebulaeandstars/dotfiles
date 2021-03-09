@@ -34,10 +34,11 @@ set backupdir=$XDG_CACHE_HOME/nvim/backup | call mkdir(&backupdir, 'p', 0700)
 set directory=$XDG_CACHE_HOME/nvim/swap   | call mkdir(&directory, 'p', 0700)
 set undodir=$XDG_CACHE_HOME/nvim/undo     | call mkdir(&undodir,   'p', 0700)
 
-if !has('nnvim') " Neonvim has its own special location
-  set viminfofile=$XDG_CACHE_HOME/nvim/nviminfo
+if !has('nvim') " Neonvim has its own special location
+    set viminfofile=$XDG_CACHE_HOME/nvim/nviminfo
 endif
 
+set viewdir=$XDG_DATA_HOME/nvim/view | call mkdir(&viewdir, 'p', 0700)
 
 
 
@@ -431,13 +432,22 @@ if has('nvim')
 
 else
     " Install vim-plug if it isn't installed already "
-    if empty(glob("~/.vim/autoload/plug.vim"))
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    " if empty(glob("~/.vim/autoload/plug.vim"))
+    "     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    "                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    "     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    " endif
+
+    " call plug#begin('~/.vim/plugged')
+
+    if empty(glob("~/.config/nvim/autoload/plug.vim"))
+        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
                     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        q
     endif
 
-    call plug#begin('~/.vim/plugged')
+    call plug#begin('~/.config/nvim/plugged')
 
 endif
 
@@ -453,13 +463,9 @@ Plug 'mbbill/undotree'
 
 " --- usability --- "
 " completion engine
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 
 " LSP Client
@@ -575,7 +581,7 @@ let g:LanguageClient_serverCommands = {
             \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
             \ }
 
-            " \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
+" \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
 
 " note that if you are using Plug mapping you should not use `noremap` mappings.
 nmap <F5> <Plug>(lcn-menu)
