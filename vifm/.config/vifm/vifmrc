@@ -318,6 +318,15 @@ fileviewer *.c,*.h highlight -O ansi -s dante %c
 "
 " fileviewer *.jpg,*.png shellpic %c
 
+
+" try to edit these files
+filextype *.S
+    \ {Edit with nvim}
+    \ nvim %f,
+    \ {Edit with vim}
+    \ vim %f,
+
+
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
 " settings).  By default all unknown files are opened with 'vi[x]cmd'
