@@ -142,15 +142,6 @@ install_with_pacman abook
 install_with_pacman vifm
 echo
 
-
-# install programming languages
-install_with_pacman python
-install_with_pacman texlive-most
-install_with_pacman biber
-install_with_pacman jdk-openjdk
-install_with_pacman java-openjfx
-
-
 # install other CLI apps
 install_with_pacman cowsay
 install_with_pacman fortune-mod
@@ -166,6 +157,24 @@ install_with_pacman zsh
 install_with_yay antigen
 [ ! -d ~/.local/share/zsh/ ] && mkdir -p ~/.local/share/zsh/
 [ ! -d ~/.local/share/zsh/pure/ ] && git clone https://github.com/sindresorhus/pure.git "$HOME/.local/share/zsh/pure/"
+
+
+# --- Programming Stuff --- #
+
+# install programming languages and compilers
+install_with_pacman python
+install_with_pacman texlive-most
+install_with_pacman biber
+install_with_pacman jdk-openjdk
+install_with_pacman java-openjfx
+install_with_pacman rustup
+install_with_pacman gcc
+
+# install language servers
+install_with_pacman texlab
+install_with_pacman ccls
+install_with_pacman python-language-server
+install_with_pacman bash-language-server
 
 
 # --- GUI stuff --- #
