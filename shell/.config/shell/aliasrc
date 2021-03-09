@@ -13,43 +13,37 @@ alias mkd="mkdir"
 alias mkdir="mkdir -pv"
 alias mv="mv -v"
 alias rm="rm -v"
-alias sx="startx"
 alias stow="stow -v"
+alias sx="startx"
 
 # general
 alias SS="sudo systemctl"
 alias YT="youtube-viewer"
+alias e="$EDITOR"
 alias f="vifm"
+alias m="neomutt"
+alias mutt="neomutt"
+alias n="newsboat"
 alias sf="sudo vifm"
 alias sv="sudo nvim"
 alias t="setsid $TERMINAL >/dev/null & ; sleep 0.5 ; clear"
 alias v="nvim"
-alias o="nvim"
-alias e="nvim"
-alias ed="nvim"
-alias vim="nvim"
-alias m="neomutt"
-alias mutt="neomutt"
-alias n="newsboat"
+alias vifm="vifmrun"
 alias yt="youtube-dl -ic"
 alias yta="youtube-dl -xic"
-alias vifm="vifmrun"
 
-alias smk="sudo cp config.def.h config.h && sudo make clean install"
-
+alias anaconda="source /opt/anaconda/bin/activate root"
 alias bw-sync="echo generating session key... &&
     export BW_SESSION=\$(bw unlock --raw \"\$(pass bitwarden)\") \
     && echo syncing... && bw sync"
-
-alias battery="cat /sys/class/power_supply/BAT0/capacity"
-
-alias anaconda="source /opt/anaconda/bin/activate root"
+alias smk="sudo cp config.def.h config.h && sudo make clean install"
 
 # config
 alias i3c="nvim ~/.config/i3/config"
 alias vrc="nvim ~/.config/nvim/init.vim"
+alias vifmrc="nvim ~/.config/vifm/vifmrc"
+alias xrc="nvim ~/.xinitrc"
 alias zrc="nvim $ZDOTDIR/.zshrc"
-alias vx="nvim ~/.xinitrc"
 
 # fixes
 alias abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook"
@@ -57,11 +51,11 @@ alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
 
 # git
 alias ga="git add"
-alias gr="git restore --staged"
 alias gc="git commit -m"
 alias gf="git fetch"
 alias gm="git merge"
 alias gp="git push"
+alias gr="git restore --staged"
 alias gs="git status"
 alias gv="git status -v"
 
@@ -69,5 +63,5 @@ alias gv="git status -v"
 alias R="sudo pacman -Rns"
 alias Rorphs="pacman -Qtdq | sudo pacman -Rns -"
 alias S="sudo pacman -S"
-alias syu="sudo pacman -Syu"
 alias p="sudo pacman"
+alias syu="sudo pacman -Syu"
