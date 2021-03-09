@@ -108,7 +108,6 @@ install_with_pacman cmake
 install_with_pacman ueberzug
 
 install_with_pacman npm
-install_with_pacman yarn
 
 
 # --- CLI stuff --- #
