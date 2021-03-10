@@ -28,10 +28,7 @@ unset CASE_SENSITIVE HYPHEN_INSENSITIVE
 
 
 # Complete . and .. special directories
-zstyle ':completion:*' special-dirs true
-
-# zstyle ':completion:*' list-colors ''
-# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+# zstyle ':completion:*' special-dirs true
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -41,15 +38,9 @@ zstyle ':completion:*:builtins' list-colors '=*=1;38;5;142'
 zstyle ':completion:*:aliases' list-colors '=*=2;38;5;128'
 
 zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
-zstyle ':completion:*:options' list-colors '=^(-- *)=34'
+zstyle ':completion:*:options' list-colors '=(-- *)=;1;34'
 
 
-
-if [[ "$OSTYPE" = solaris* ]]; then
-  zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm"
-else
-  zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-fi
 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
