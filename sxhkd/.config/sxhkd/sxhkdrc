@@ -40,9 +40,11 @@ super + control + shift + q
 
 # screenshot
 Print
-	scrot -d 3 -e 'mv $f ~/Pictures/Screenshots/'
+	scrot -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots"
 control + shift + Print
-	deepin-screenshot &
+	scrot -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots" -s
+alt + shift + Print
+	scrot -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots" -u
 
 # volume
 XF86AudioRaiseVolume
