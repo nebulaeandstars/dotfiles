@@ -504,6 +504,7 @@ Plug 'sophacles/vim-processing'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'cespare/vim-toml'
 
 
 " --- markup previewers --- "
@@ -557,13 +558,13 @@ call deoplete#custom#option({
             \ 'auto_complete_delay': 0,
             \ })
 
-call deoplete#custom#option('sources', {
-            \ '_': [
-            \'LanguageClient',
-            \'buffer',
-            \'file',
-            \'omni'],
-            \})
+" call deoplete#custom#option('sources', {
+"             \ '_': [
+"             \'LanguageClient',
+"             \'buffer',
+"             \'file',
+"             \'omni'],
+"             \})
 
 
 " LanguageClient config
@@ -578,7 +579,6 @@ let g:LanguageClient_serverCommands = {
             \ 'sh': ['/usr/bin/bash-language-server', 'start'],
             \ 'tex': ["/usr/bin/texlab"],
             \ 'latex': ["/usr/bin/texlab"],
-            \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
             \ }
 
 " \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
@@ -594,6 +594,3 @@ nnoremap <silent> <F5> :call LanguageClient#textDocument_menu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
