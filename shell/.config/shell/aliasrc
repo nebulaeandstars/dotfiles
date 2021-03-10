@@ -48,6 +48,7 @@ alias zrc="nvim $ZDOTDIR/.zshrc"
 # fixes
 alias abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook"
 alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
+alias gbd="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
 
 # git
 alias ga="git add"
