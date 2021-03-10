@@ -30,7 +30,7 @@ c.content.blocking.method = 'both'
 c.content.default_encoding = 'utf-8'
 
 # downloads location
-c.downloads.location.directory = '~/Downloads'
+c.downloads.location.directory = "~/dl"
 c.downloads.location.suggestion = 'both'
 
 # keybindings
