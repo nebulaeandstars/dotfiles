@@ -1,8 +1,11 @@
 #!/bin/sh
 
+# run gdb in a way that is compatible with xdg-user-dirs
+[ -f "$XDG_CONFIG_HOME/gdb/init" ] && GDBFLAGS="-nh -x $XDG_CONFIG_HOME/gdb/init"
+
 # compile and upload the program.
-make
-make upload
+make || exit
+make upload || exit
 
 # start openocd and fork it to the background.
 "$HOME/.comp2300/openocd/bin/openocd" -f interface/stlink.cfg -f target/stm32l4x.cfg -c "program program.elf verify reset" &
@@ -11,7 +14,7 @@ make upload
 sleep 1s
 
 # start the gdb instance.
-"$HOME/.comp2300/arm-none-eabi/bin/arm-none-eabi-gdb" ./program.elf -ex 'target extended-remote :3333' -ex 'monitor reset halt' -ex 'b main' -ex 'c'
+"$HOME/.comp2300/arm-none-eabi/bin/arm-none-eabi-gdb" ./program.elf -ex 'target extended-remote :3333' -ex 'monitor reset halt' -ex 'b main' -ex 'c' $GDBFLAGS
 
 # when gdb exits, kill openocd.
 pkill openocd
