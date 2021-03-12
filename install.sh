@@ -182,7 +182,8 @@ install_with_pacman bash-language-server
 
 # install basic GUI apps
 # install_with_pacman dmenu
-install_with_pacman feh
+install_with_pacman sxiv
+install_with_pacman xwallpaper
 install_with_pacman rxvt-unicode
 install_with_yay polybar
 echo
