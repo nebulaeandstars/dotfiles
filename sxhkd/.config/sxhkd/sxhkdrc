@@ -26,7 +26,7 @@ super + shift + p
 super + shift + b
     cycle-backgrounds
 super + control + shift + b
-	feh --bg-fill --recursive --randomize ~/.local/share/backgrounds/ &
+	bgset $(xdg-user-dir PICTURES)/backgrounds/
 
 # picom
 super + shift + i

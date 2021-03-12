@@ -17,7 +17,7 @@ dunst &
 
 # other
 dwmblocks &
-feh --bg-fill --recursive --randomize ~/.local/share/backgrounds/ &
+bgset "$(xdg-user-dir PICTURES)/backgrounds/"
 
 dwm
 

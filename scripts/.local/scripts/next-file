@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Given a file, this program will print the "next" file in its directory -- or the first file in the directory if given the last file -- to stdout.
+
+GIVEN_FILE=$(realpath $1)
+DIR=$(dirname "$GIVEN_FILE")
+FILES=$(ls "$DIR")
+
+# append the first file to the end of the list
+# (wraps upon reaching the end of the file)
+FIRST=$(echo $FILES | cut -d " " -f 1)
+FILES=$(printf "$FILES $FIRST")
+
+for FILE in $FILES
+do
+    # if the *last* file was a match, return this one and exit
+    if [ "$found" = "true" ]
+    then
+        echo $FILE
+        break
+    fi
+
+    # if the current file is a match, choose the next one
+    if [ $FILE = $(basename $GIVEN_FILE) ]
+    then
+        found=true
+    fi
+done
