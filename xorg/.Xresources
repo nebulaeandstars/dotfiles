@@ -68,8 +68,8 @@
 *.color12:      #99ccff
 
 ! magenta
-*.color5:       #af79d8
-*.color13:      #ffb4ff
+*.color5:       #bb88ee
+*.color13:      #ffbbff
 
 ! cyan
 *.color6:       #66eedd
