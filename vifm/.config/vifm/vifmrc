@@ -8,6 +8,11 @@
 " -------------------------------- "
 " by nebulaeandstars@gmail.com
 
+
+" ############################################################################ "
+" # SETTINGS # SETTINGS # SETTINGS # SETTINGS # SETTINGS # SETTINGS ########## "
+" ############################################################################ "
+
 " text editor
 set vicmd=nvim
 
@@ -65,17 +70,36 @@ if !has('win')
     set slowfs=curlftpfs
 endif
 
+
+" What should be saved automatically between vifm sessions.
+set vifminfo=dhistory,chistory,state,tui,shistory,
+    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
 " Set custom status line look
 set statusline="%= %20d "
 
-" ------------------------------------------------------------------------------
 
-" :mark mark /full/directory/path [filename]
 
-mark b ~/bin/
+
+" ############################################################################ "
+" # MARKS # MARKS # MARKS # MARKS # MARKS # MARKS # MARKS # MARKS # MARKS ####"
+" ############################################################################ "
+
+map ` '
+
 mark h ~/
+mark c ~/.config
+mark d ~/.dotfiles
+mark l ~/.local
+mark s ~/.local/src
+mark b ~/.local/bin
 
-" ------------------------------------------------------------------------------
+
+
+
+" ############################################################################ "
+" # COMMANDS # COMMANDS # COMMANDS # COMMANDS # COMMANDS # COMMANDS ########## "
+" ############################################################################ "
 
 " :com[mand][!] command_name action
 " The following macros can be used in a command
@@ -98,7 +122,12 @@ command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
 
-" ------------------------------------------------------------------------------
+
+
+
+" ############################################################################ "
+" # FILEXOPEN # FILEXOPEN # FILEXOPEN # FILEXOPEN # FILEXOPEN # FILEXOPEN #### "
+" ############################################################################ "
 
 " The file type is for the default programs to be used with
 " a file extension.
@@ -127,7 +156,7 @@ command! reload :write | restart
 " program.
 
 " Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+filextype *.pdf zathura %c %i &>/dev/null & disown, apvlv %c, xpdf %c
 fileviewer *.pdf pdftotext -nopgbrk %c -
 
 " PostScript
@@ -158,7 +187,7 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
          \*.as[fx]
         \ {View using mpv}
-        \ mpv %f &,
+        \ mpv %f &>/dev/null &,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
         \ {View using Dragon}
@@ -190,9 +219,9 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
-        \ sxiv %f &,
+        \ sxiv %f & disown,
         \ {View in feh}
-        \ feh %f &,
+        \ feh %f & disown,
         \ {View in gpicview}
         \ gpicview %c,
         \ {View in shotwell}
@@ -344,7 +373,9 @@ filetype * xdg-open
 
 
 
-" ##############################################################################
+" ############################################################################ "
+" # FILEVIEW # FILEVIEW # FILEVIEW # FILEVIEW # FILEVIEW # FILEVIEW ########## "
+" ############################################################################ "
 
 fileviewer *.pdf
     \ vifmimg pdfpreview %px %py %pw %ph %c
@@ -387,29 +418,12 @@ fileviewer <font/*>
     \ %pc
     \ vifmimg clear
 
-" ##############################################################################
 
-" ------------------------------------------------------------------------------
 
-" What should be saved automatically between vifm sessions.
-set vifminfo=dhistory,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
-" ------------------------------------------------------------------------------
-
-" Examples of configuring both panels
-
-" Customize view columns a bit (enable ellipsis for truncated file names)
-"
-" set viewcolumns=-{name}..,6{}.
-
-" Filter-out build and temporary files
-"
-" filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
-
-" ------------------------------------------------------------------------------
-
-" Sample mappings
+" ############################################################################ "
+" # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS ########## "
+" ############################################################################ "
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -421,10 +435,10 @@ nnoremap S :sort<cr>
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
-" Open file in existing instance of gvim
-nnoremap o :!gvim --remote-tab-silent %f<cr>
-" Open file in new instance of gvim
-nnoremap O :!gvim %f<cr>
+" Open file in a text editor
+nnoremap o :!$EDITOR %f<cr>
+" Open file in a text editor in a new terminal
+nnoremap O :!setsid $TERMINAL -e $EDITOR %f & disown<cr>
 
 " Open file in the background using its default program
 nnoremap gb :file &<cr>l
@@ -454,9 +468,6 @@ nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 
-" Open console in current directory
-nnoremap ,t :!xterm &<cr>
-
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
 " Open gvim to edit vifmrc
@@ -473,31 +484,7 @@ nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
 
-
 nnoremap > :!vifmimg inc<CR>
 nnoremap < :!vifmimg dec<CR>
 
-" ------------------------------------------------------------------------------
-
-" Various customization examples
-
-" Use ag (the silver searcher) instead of grep
-"
-" set grepprg='ag --line-numbers %i %a %s'
-
-" Add additional place to look for executables
-"
-" let $PATH = $HOME.'/bin/fuse:'.$PATH
-
-" Block particular shortcut
-"
-" nnoremap <left> <nop>
-
-" Export IPC name of current instance as environment variable and use it to
-" communicate with the instance later.
-"
-" It can be used in some shell script that gets run from inside vifm, for
-" example, like this:
-"     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
-"
-" let $VIFM_SERVER_NAME = v:servername
+nnoremap ,q :quit<CR>
