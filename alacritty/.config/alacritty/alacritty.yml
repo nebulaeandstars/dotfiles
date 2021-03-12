@@ -80,15 +80,15 @@ colors:
 
   vi_mode_cursor:
     text: '#2d2d2d'
-    cursor: '#60eca6'
+    cursor: '#aaffcc'
 
   search:
     matches:
       foreground: '#2d2d2d'
-      background: '#8ccbf3'
+      background: '#99ccff'
     focused_match:
       foreground: '#2d2d2d'
-      background: '#60eca6'
+      background: '#aaffcc'
     bar:
       background: '#ffffff'
       foreground: '#2d2d2d'
@@ -101,38 +101,31 @@ colors:
     text: CellForeground
     background: '#1c1c1c'
 
+  primary:
+    background: '#2d2d2d'
+    foreground: '#ffffff'
+
    # Normal colors
   normal:
     black:   '#2d2d2d'
-    red:     '#b63740'
-    green:   '#34b374'
-    yellow:  '#ad7c4d'
-    blue:    '#5299c1'
-    magenta: '#af79d8'
-    cyan:    '#5bc2ad'
+    red:     '#ee6666'
+    green:   '#66eeaa'
+    yellow:  '#eeee55'
+    blue:    '#66bbee'
+    magenta: '#aa99ee'
+    cyan:    '#66eedd'
     white:   '#999990'
 
-   # Bright colors
+    # Bright colors
   bright:
     black:   '#616161'
-    red:     '#e9616b'
-    green:   '#60eca6'
-    yellow:  '#ebe85f'
-    blue:    '#8ccbf3'
-    magenta: '#ffb4ff'
-    cyan:    '#b4eded'
+    red:     '#ff9999'
+    green:   '#aaffcc'
+    yellow:  '#eeeeaa'
+    blue:    '#99ccff'
+    magenta: '#ffbbff'
+    cyan:    '#aaeeee'
     white:   '#ffffff'
-
-   # Dim colors
-  dim:
-    black:   '#2d2d2d'
-    red:     '#b63740'
-    green:   '#34b374'
-    yellow:  '#ad7c4d'
-    blue:    '#5299c1'
-    magenta: '#af79d8'
-    cyan:    '#5bc2ad'
-    white:   '#999990'
 
 
 # Bell Settings
