@@ -103,7 +103,7 @@ install_with_pacman openbox
 # install_with_pacman xmonad
 
 # other
-install_with_yay libxft-bgra-git
+install_with_yay libxft-bgra
 install_with_pacman cmake
 install_with_pacman ueberzug
 
@@ -139,6 +139,7 @@ install_with_pacman newsboat
 install_with_pacman calcurse
 install_with_pacman abook
 install_with_pacman vifm
+install_with_pacman mediainfo
 echo
 
 # install other CLI apps
@@ -184,7 +185,6 @@ install_with_pacman bash-language-server
 install_with_pacman feh
 install_with_pacman rxvt-unicode
 install_with_yay polybar
-install_with_yay rxvt-unicode-pixbuf
 echo
 
 
