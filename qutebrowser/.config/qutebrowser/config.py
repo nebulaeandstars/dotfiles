@@ -22,11 +22,14 @@ c.messages.timeout = 5000
 c.keyhint.delay = 0
 
 # default text editor
-c.editor.command = ['urxvt', '-e', 'vim', '{file}']
+c.editor.command = ['$TERMINAL', '-e', '$EDITOR', '{file}']
 c.editor.encoding = 'utf-8'
 
 # use the new ad-blocker
 c.content.blocking.method = 'both'
+
+# allow desktop notifications
+c.content.notifications = true
 
 # default character encoding
 c.content.default_encoding = 'utf-8'
