@@ -135,6 +135,9 @@ install_with_pacman stow
 install_with_pacman neovim
 install_with_pacman vimpager
 install_with_pacman neomutt
+install_with_pacman isync
+install_with_pacman msmtp
+install_with_pacman notmuch
 install_with_pacman newsboat
 install_with_pacman calcurse
 install_with_pacman abook
