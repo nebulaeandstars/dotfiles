@@ -7,7 +7,7 @@ export PATH="$PATH:$HOME/.local/bin"
 # default programs
 export TERMINAL="alacritty"
 export EDITOR="nvim"
-export BROWSER="firefox"
+export BROWSER="qutebrowser"
 export TRUEBROWSER="firefox"
 export READER="zathura"
 export PAGER="vimpager"
