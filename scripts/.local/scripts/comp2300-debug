@@ -4,11 +4,11 @@
 [ -f "$XDG_CONFIG_HOME/gdb/init" ] && GDBFLAGS="-nh -x $XDG_CONFIG_HOME/gdb/init"
 
 # compile and upload the program.
-make || exit
-make upload || exit
+make || ( echo "ERROR: Failed to build file" ; exit )
+make upload || ( echo "ERROR: Failed to upload file" ; exit )
 
 # start openocd and fork it to the background.
-"$HOME/.comp2300/openocd/bin/openocd" -f interface/stlink.cfg -f target/stm32l4x.cfg -c "program program.elf verify reset" &
+"$HOME/.comp2300/openocd/bin/openocd" -f interface/stlink.cfg -f target/stm32l4x.cfg -c "program program.elf verify reset" &>/dev/null &
 
 # wait for openocd to actually connect before trying to talk to it.. :P
 sleep 1s

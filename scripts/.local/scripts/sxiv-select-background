@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# look for common directories for storing backgrounds, or take one from $1
+BACKGROUND_DIR="$(xdg-user-dir PICTURES)/backgrounds"
+echo "Looking for backgrounds in $BACKGROUND_DIR"
+
+IMAGES="$(find "$BACKGROUND_DIR" | grep ".jpg" | sxiv -tio)"
+
+echo $IMAGES

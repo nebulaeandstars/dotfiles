@@ -1,0 +1,7 @@
+#!/bin/sh
+
+chown -R $(whoami) ~/.config/gnupg/
+
+# Also correct the permissions and access rights on the directory
+find ~/.config/gnupg -type f -exec chmod 600 {} \;
+find ~/.config/gnupg -type d -exec chmod 700 {} \;

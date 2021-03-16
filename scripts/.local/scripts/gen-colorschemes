@@ -1,19 +1,20 @@
 #!/bin/sh
 
 vim_format() {
-    echo 'let s:color'"$1"' = "guifg='"$(~/.scripts/get-xcolor.sh "$1")"' ctermfg='"$1"'"'
+    echo 'let s:fg'"$1"' = "guifg='"$(get-xcolor "$1")"' ctermfg='"$1"'"'
+    echo 'let s:bg'"$1"' = "guibg='"$(get-xcolor "$1")"' ctermbg='"$1"'"'
 }
 
 zathura_format() {
-    echo 'let s:color'"$1"' = "'"$(~/.scripts/get-xcolor.sh "$1")"'"'
+    echo 'let s:color'"$1"' = "'"$(get-xcolor "$1")"'"'
 }
 
 termite_format() {
-    echo 'color'"$1"' = '"$(~/.scripts/get-xcolor.sh "$1")"
+    echo 'color'"$1"' = '"$(get-xcolor "$1")"
 }
 
 qutebrowser_format() {
-    echo 'color'"$1"' = "'"$(~/.scripts/get-xcolor.sh "$1")"'"'
+    echo 'color'"$1"' = "'"$(get-xcolor "$1")"'"'
 }
 
 print_formatting() {

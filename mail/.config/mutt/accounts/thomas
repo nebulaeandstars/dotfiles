@@ -12,9 +12,9 @@ color index_number red default
 color index_author red default '.*'
 
 set spoolfile= "+INBOX"
-set postponed = "+INBOX/Drafts"
-set record = "+INBOX/Sent"
-set trash = "+INBOX/Trash"
+set postponed = "+Drafts"
+set record = "+Sent"
+set trash = "+Trash"
 
 unmailboxes *
-mailboxes =INBOX =INBOX/Drafts =INBOX/Sent =INBOX/Archive =INBOX/Trash =INBOX/Junk
+mailboxes =INBOX =Drafts =Sent =Archive =Trash =Junk

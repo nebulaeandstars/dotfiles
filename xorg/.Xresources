@@ -2,6 +2,46 @@
 
 ! ------------------- !
 
+/* ! special */
+/* *.foreground:   #ffffff */
+/* *.background:   #2d2d2d */
+/* *.cursorColor:  #ffffff */
+
+/* ! black */
+/* *.color0:       #2d2d2d */
+/* *.color8:       #616161 */
+
+/* ! red */
+/* *.color1:       #b63740 */
+/* *.color9:       #e9616b */
+
+/* ! green */
+/* *.color2:       #34b374 */
+/* *.color10:      #60eca6 */
+
+/* ! yellow */
+/* *.color3:       #ad7c4d */
+/* *.color11:      #ebe85f */
+
+/* ! blue */
+/* *.color4:       #5299c1 */
+/* *.color12:      #8ccbf3 */
+
+/* ! magenta */
+/* *.color5:       #af79d8 */
+/* *.color13:      #ffb4ff */
+
+/* ! cyan */
+/* *.color6:       #5bc2ad */
+/* ! *.color14:      #b4eded */
+/* *.color14:      #b4eded */
+
+/* ! white */
+/* *.color7:       #999990 */
+/* *.color15:      #ffffff */
+
+! ------------------- !
+
 ! special
 *.foreground:   #ffffff
 *.background:   #2d2d2d
@@ -12,72 +52,32 @@
 *.color8:       #616161
 
 ! red
-*.color1:       #b63740
-*.color9:       #e9616b
+*.color1:       #ee6666
+*.color9:       #ff9999
 
 ! green
-*.color2:       #34b374
-*.color10:      #60eca6
+*.color2:       #66eeaa
+*.color10:      #aaffcc
 
 ! yellow
-*.color3:       #ad7c4d
-*.color11:      #ebe85f
+*.color3:       #eeee55
+*.color11:      #eeeeaa
 
 ! blue
-*.color4:       #5299c1
-*.color12:      #8ccbf3
+*.color4:       #66bbee
+*.color12:      #99ccff
 
 ! magenta
-*.color5:       #af79d8
-*.color13:      #ffb4ff
+*.color5:       #bb88ee
+*.color13:      #ffbbff
 
 ! cyan
-*.color6:       #5bc2ad
-! *.color14:      #b4eded
-*.color14:      #b4eded
+*.color6:       #66eedd
+*.color14:      #aaeeee
 
 ! white
 *.color7:       #999990
 *.color15:      #ffffff
-
-! ------------------- !
-
-!! special
-!*.foreground:   #ffffff
-!*.background:   #2d2d2d
-!*.cursorColor:  #ffffff
-
-!! black
-!*.color0:       #2d2d2d
-!*.color8:       #ffffd8
-
-!! red
-!*.color1:       #3e3e3e
-!*.color9:       #b4eded
-
-!! green
-!*.color2:       #616161
-!*.color10:      #edb4ed
-
-!! yellow
-!*.color3:       #999990
-!*.color11:      #d8ffd8
-
-!! blue
-!*.color4:       #ddddd0
-!*.color12:      #ededb4
-
-!! magenta
-!*.color5:       #ffffff
-!*.color13:      #b4b4ed
-
-!! cyan
-!*.color6:       #ffffff
-!*.color14:      #d8ffff
-
-!! white
-!*.color7:       #ffffd8
-!*.color15:      #edb4b4
 
 ! ------------------- !
 

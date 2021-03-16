@@ -538,9 +538,6 @@ let g:gitgutter_sign_removed_first_line = '^-'
 let g:gitgutter_sign_removed_above_and_below = '{-'
 let g:gitgutter_sign_modified_removed = '~-'
 
-" vim-rainbow config
-let g:rainbow_ctermfgs = ['cyan', 'blue', 'green', 'lightgreen', 'lightyellow', 'lightred', 'red', 'magenta', 'lightmagenta']
-
 " vifm.vim config
 let g:vifm_replace_netrw = 1
 let g:vifm_replace_netrw_cmd = "Vifm"

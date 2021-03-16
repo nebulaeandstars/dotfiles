@@ -1,0 +1,12 @@
+#!/bin/sh
+
+source $HOME/.zshenv
+
+[ -d $XDG_DATA_HOME ] && DATA_DIR=$XDG_DATA_HOME || DATA_DIR=$HOME/.local/share
+[ -d $XDG_CONFIG_HOME ] && CONFIG_DIR=$XDG_CONFIG_HOME || CONFIG_DIR=$HOME/.local/share
+
+tar -czvf "$DATA_DIR/data_backup.tar.gz" \
+    "$DATA_DIR/abook" \
+    "$DATA_DIR/calcurse" \
+    "$DATA_DIR/passwords" \
+    "$(xdg-user-dir PICTURES)/backgrounds"
