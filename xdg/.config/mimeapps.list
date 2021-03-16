@@ -5,6 +5,7 @@ inode/directory=vifm.desktop
 
 # plaintext
 text/plain=nvim.desktop
+text/x-asm=nvim.desktop
 
 # images
 image/jpeg=sxiv.desktop
