@@ -546,13 +546,13 @@ call deoplete#custom#option({
             \ 'auto_complete_delay': 0,
             \ })
 
-" call deoplete#custom#option('sources', {
-"             \ '_': [
-"             \'LanguageClient',
-"             \'buffer',
-"             \'file',
-"             \'omni'],
-"             \})
+call deoplete#custom#option('sources', {
+            \ '_': [
+            \'LanguageClient',
+            \'buffer',
+            \'file',
+            \'omni'],
+            \})
 
 
 " LanguageClient config
@@ -578,7 +578,6 @@ nmap <silent>K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> <F2> <Plug>(lcn-rename)
 
-nnoremap <silent> <F5> :call LanguageClient#textDocument_menu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
