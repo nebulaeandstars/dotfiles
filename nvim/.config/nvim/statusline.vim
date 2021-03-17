@@ -12,7 +12,6 @@ function! s:hi(color_group, foreground, background, fontStyle)
                 \ . " " . a:fontStyle
 endfunction
 
-
 " ############################################################################ "
 " # COLORS # COLORS # COLORS # COLORS # COLORS # COLORS # COLORS # COLORS #### "
 " ############################################################################ "
@@ -106,10 +105,10 @@ set statusline+=%#StatusCommand#%{(mode()=='c')?'\ \ COMMAND\ ':''}
 set statusline+=%#StatusTerminal#%{(mode()=='t')?'\ \ TERMINAL\ ':''}
 set statusline+=%#StatusShell#%{(mode()=='!')?'\ \ SHELL\ ':''}
 
-set statusline+=%#StatusFilename#\ %r%m%f\ %<
+set statusline+=%#StatusFilename#\ %r%m%f%<\ %<
 
 set statusline+=%#StatusEmpty#
 set statusline+=%=
 
 set statusline+=%#StatusFiletype#%y
-set statusline+=%<\ %#StatusInfo#%p%%\|%l/%L:%c\ %<
+set statusline+=%<\ %#StatusInfo#%p%%\:%l/%L:%c\ %<

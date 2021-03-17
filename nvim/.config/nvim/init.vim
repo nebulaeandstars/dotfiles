@@ -55,7 +55,7 @@ filetype indent plugin on
 syntax on
 
 colorscheme andromeda
-source $HOME/.config/nvim/statusbar.vim
+source $HOME/.config/nvim/statusline.vim
 
 set tabstop=4
 set softtabstop=4
