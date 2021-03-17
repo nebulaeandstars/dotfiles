@@ -120,21 +120,6 @@ call s:hi('DiffChange', s:fg6, s:none, s:none)
 call s:hi('DiffDelete', s:fg9, s:none, s:none)
 call s:hi('SignColumn', s:fg15, s:none, s:none)
 
-" lightline
-let g:lightline = { 'colorscheme': 'wombat' }
-
-" vim-rainbow (for nested brackets)
-let g:rainbow_ctermfgs = [
-            \'cyan',
-            \'blue',
-            \'green',
-            \'lightgreen',
-            \'lightyellow',
-            \'lightred',
-            \'red',
-            \'magenta',
-            \'lightmagenta']
-
 
 " ############################################################################ "
 " # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX #### "

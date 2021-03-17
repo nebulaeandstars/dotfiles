@@ -55,6 +55,7 @@ filetype indent plugin on
 syntax on
 
 colorscheme andromeda
+source $HOME/.config/nvim/statusbar.vim
 
 set tabstop=4
 set softtabstop=4
@@ -168,17 +169,13 @@ endfunc
 
 " --- Goyo --- "
 function! s:goyo_enter()
-    set nonumber norelativenumber
     set noshowmode
     set noshowcmd
-    set cmdheight=1
 endfunction
 
 function! s:goyo_leave()
-    set number relativenumber
     set showmode
     set showcmd
-    set cmdheight=2
 endfunction
 
 
@@ -315,13 +312,13 @@ nnoremap <leader>hc :set colorcolumn=<CR>
 
 " refresh
 nnoremap <leader>g :GitGutter<CR>
-nnoremap <leader>fm :set foldmethod=expr<CR>
 
 " save/load
 nnoremap <leader>vs :mkview!<CR>
 nnoremap <leader>vl :loadview<CR>
 nnoremap <leader>e :e<CR>gg
 nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 
 " window commands
@@ -383,27 +380,30 @@ autocmd BufWritePre * GitGutter
 
 " run xrdb whenever .Xresources is updated
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
-" recompile dwmblocks whenever it is changed
 
 " disable automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=cro
 
-" toggle relative numbers when switching in and out of insert mode
-augroup numbertoggle
-    autocmd!
-    autocmd InsertLeave * set relativenumber
-    autocmd InsertEnter * set norelativenumber
-augroup END
+" " toggle relative numbers when switching in and out of insert mode
+" augroup numbertoggle
+"     autocmd!
+"     autocmd InsertLeave * set relativenumber
+"     autocmd InsertEnter * set norelativenumber
+" augroup END
 
 " toggle some settings when entering and leaving Goyo
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " use Goyo by default in mutt
-autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-"autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
-"autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo \| x!<CR>
-"autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo \| q!<CR>
+augroup mutt
+    autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
+    autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
+    autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo \| x!<CR>
+    autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo \| q!<CR>
+    autocmd BufRead,BufNewFile /tmp/neomutt* map <leader>wq :Goyo \| x!<CR>
+    autocmd BufRead,BufNewFile /tmp/neomutt* map <leader>q :Goyo \| q!<CR>
+augroup END
 
 
 
@@ -456,7 +456,7 @@ endif
 Plug 'airblade/vim-gitgutter'
 Plug 'vifm/vifm.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 
@@ -520,15 +520,6 @@ call plug#end()
 " ############################################################################ "
 " # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
 " ############################################################################ "
-
-" syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{SyntasticStatuslineFlag}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " gitgutter config
 let g:gitgutter_sign_added = '+'
