@@ -96,7 +96,7 @@ call s:hi('MatchParen', s:fg14, s:bg8, s:bold)
 " ############################################################################ "
 
 " line numbers
-call s:hi('LineNr', s:fg8, s:none, s:none)
+call s:hi('LineNr', s:fg7, s:none, s:none)
 call s:hi('CursorLineNr', s:fg14, s:none, s:none)
 
 " error messages
