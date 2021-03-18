@@ -129,12 +129,8 @@ command! reload :write | restart
 " # FILEOPEN # FILEOPEN # FILEOPEN # FILEOPEN # FILEOPEN # FILEOPEN ########## "
 " ############################################################################ "
 
-" fix as zathura.desktop seems to be broken or missing
-filextype *.pdf,*.x-pdf,*pdx
-    \ zathura &>/dev/null &
-
 " open these filetypes in the background using xdg-open
-filextype *.mp4,*.jpg,*.png
+filextype *.mp4,*.jpg,*.png,*.pdf
     \ xdg-open &>/dev/null &
 
 " open everything else in the terminal using xdg-open

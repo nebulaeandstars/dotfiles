@@ -15,6 +15,6 @@ image/png=sxiv.desktop
 video/mp4=mpv.desktop
 
 # pdfs and documents
-application/pdf=zathura.desktop
-application/x-pdf=zathura.desktop
-application/pdx=zathura.desktop
+application/pdf=org.pwmt.zathura.desktop
+application/x-pdf=org.pwmt.zathura.desktop
+application/pdx=org.pwmt.zathura.desktop
