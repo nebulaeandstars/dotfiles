@@ -291,14 +291,15 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 " --- Normal Mode --- "
 
 " toggle
-nnoremap <leader>f :Goyo<CR>
-nnoremap <leader>ss :set spell!<CR>
-nnoremap <leader>r :RainbowToggle<CR>
+nnoremap <leader>tf :Goyo<CR>
+nnoremap <leader>ts :set spell!<CR>
+nnoremap <leader>tr :RainbowToggle<CR>
 nnoremap <leader>a :ALEToggleBuffer<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>o :Vifm<CR>
-nnoremap <leader>G :GitGutterToggle<CR>
+nnoremap <leader>tg :GitGutterToggle<CR>
 nnoremap <leader>zg :GitGutterFold<CR>
+nnoremap <leader>th :HardTimeToggle<CR>
 
 " show/hide
 nnoremap <leader>sf :set foldcolumn+=2<CR>
@@ -484,6 +485,7 @@ Plug 'junegunn/fzf'
 " other
 Plug 'terryma/vim-multiple-cursors'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'takac/vim-hardtime'
 
 
 " --- operators --- "

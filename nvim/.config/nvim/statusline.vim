@@ -31,10 +31,10 @@ let s:fg5 = "guifg=#af79d8 ctermfg=5"
 let s:bg5 = "guibg=#af79d8 ctermbg=5"
 let s:fg6 = "guifg=#66eedd ctermfg=6"
 let s:bg6 = "guibg=#66eedd ctermbg=6"
-let s:fg7 = "guifg=#999990 ctermfg=7"
-let s:bg7 = "guibg=#999990 ctermbg=7"
-let s:fg8 = "guifg=#616161 ctermfg=8"
-let s:bg8 = "guibg=#616161 ctermbg=8"
+let s:fg7 = "guifg=#a5a5a5 ctermfg=7"
+let s:bg7 = "guibg=#a5a5a5 ctermbg=7"
+let s:fg8 = "guifg=#4f4f4f ctermfg=8"
+let s:bg8 = "guibg=#4f4f4f ctermbg=8"
 let s:fg9 = "guifg=#ff9999 ctermfg=9"
 let s:bg9 = "guibg=#ff9999 ctermbg=9"
 let s:fg10 = "guifg=#aaffcc ctermfg=10"
@@ -111,4 +111,4 @@ set statusline+=%#StatusEmpty#
 set statusline+=%=
 
 set statusline+=%#StatusFiletype#%y
-set statusline+=%<\ %#StatusInfo#%p%%\:%l/%L:%c\ %<
+set statusline+=%<\ %#StatusInfo#%p%%\ %l/%L:%c\ %<

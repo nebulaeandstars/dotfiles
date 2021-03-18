@@ -44,10 +44,10 @@ let s:fg5 = "guifg=#af79d8 ctermfg=5"
 let s:bg5 = "guibg=#af79d8 ctermbg=5"
 let s:fg6 = "guifg=#66eedd ctermfg=6"
 let s:bg6 = "guibg=#66eedd ctermbg=6"
-let s:fg7 = "guifg=#999990 ctermfg=7"
-let s:bg7 = "guibg=#999990 ctermbg=7"
-let s:fg8 = "guifg=#616161 ctermfg=8"
-let s:bg8 = "guibg=#616161 ctermbg=8"
+let s:fg7 = "guifg=#a5a5a5 ctermfg=7"
+let s:bg7 = "guibg=#a5a5a5 ctermbg=7"
+let s:fg8 = "guifg=#4f4f4f ctermfg=8"
+let s:bg8 = "guibg=#4f4f4f ctermbg=8"
 let s:fg9 = "guifg=#ff9999 ctermfg=9"
 let s:bg9 = "guibg=#ff9999 ctermbg=9"
 let s:fg10 = "guifg=#aaffcc ctermfg=10"
@@ -97,9 +97,7 @@ call s:hi('MatchParen', s:fg14, s:bg8, s:bold)
 
 " line numbers
 call s:hi('LineNr', s:fg8, s:none, s:none)
-if has('nvim')
-    call s:hi('CursorLineNr', s:fg14, s:none, s:none)
-endif
+call s:hi('CursorLineNr', s:fg14, s:none, s:none)
 
 " error messages
 call s:hi('ErrorMsg', s:fg9, s:none, s:none)
@@ -111,14 +109,14 @@ call s:hi('Pmenu', s:fg0, s:bg6, s:none)
 call s:hi('ColorColumn', s:fg15, s:bg8, s:none)
 
 " folds
-call s:hi('Folded', s:fg6, s:none, s:none)
-call s:hi('FoldColumn', s:fg6, s:none, s:none)
+call s:hi('Folded', s:fg6, s:bg8, s:none)
+call s:hi('FoldColumn', s:fg6, s:bg8, s:none)
 
 " GitGutter and Diffs
 call s:hi('DiffAdd', s:fg15, s:none, s:none)
 call s:hi('DiffChange', s:fg6, s:none, s:none)
 call s:hi('DiffDelete', s:fg9, s:none, s:none)
-call s:hi('SignColumn', s:fg15, s:none, s:none)
+call s:hi('SignColumn', s:fg15, s:bg8, s:none)
 
 
 " ############################################################################ "

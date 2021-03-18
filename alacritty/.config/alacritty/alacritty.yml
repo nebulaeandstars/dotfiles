@@ -114,11 +114,11 @@ colors:
     blue:    '#66bbee'
     magenta: '#aa99ee'
     cyan:    '#66eedd'
-    white:   '#999990'
+    white:   '#a5a5a5'
 
     # Bright colors
   bright:
-    black:   '#616161'
+    black:   '#4f4f4f'
     red:     '#ff9999'
     green:   '#aaffcc'
     yellow:  '#eeeeaa'
