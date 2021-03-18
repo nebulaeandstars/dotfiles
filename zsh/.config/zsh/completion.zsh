@@ -50,7 +50,7 @@ zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
 
 
-zstyle ':completion:*' ignored-patterns "*.o"
+zstyle ':completion:*' ignored-patterns "*.o" "*.lock"
 
 # Don't complete uninteresting users
 zstyle ':completion:*:*:*:users' ignored-patterns \
