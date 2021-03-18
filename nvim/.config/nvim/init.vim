@@ -120,6 +120,7 @@ Plug 'junegunn/fzf'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'takac/vim-hardtime'
+Plug 'tpope/vim-fugitive'
 
 
 " --- operators --- "
@@ -342,6 +343,20 @@ function! s:SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+" Handle pressing enter inside {} or <><>
+inoremap <expr> <CR> InsertMapForEnter()
+function! InsertMapForEnter()
+    if pumvisible()
+        return "\<C-y>"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+        return "\<CR>\<Esc>O"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+        return "\<CR>\<Esc>O"
+    else
+        return "\<CR>"
+    endif
+endfunction
+
 
 " --- Goyo --- "
 function! s:goyo_enter()
@@ -525,6 +540,10 @@ inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap [] []<Left>
 inoremap <> <><Left>
+inoremap (( (
+inoremap [[ [
+inoremap {{ {
+inoremap << <
 inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
@@ -568,6 +587,11 @@ autocmd FileType * setlocal formatoptions-=cro
 "     autocmd InsertLeave * set relativenumber
 "     autocmd InsertEnter * set norelativenumber
 " augroup END
+
+augroup watchvimrc
+    au!
+    au BufWritePost $MYVIMRC so $MYVIMRC
+augroup END
 
 " toggle some settings when entering and leaving Goyo
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
