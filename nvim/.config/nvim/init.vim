@@ -44,47 +44,64 @@ set viewdir=$XDG_DATA_HOME/nvim/view | call mkdir(&viewdir, 'p', 0700)
 
 
 " ############################################################################ "
+" # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ###### "
+" ############################################################################ "
+
+" add language files here
+filetype off
+set runtimepath+=/usr/share/vim/vimfiles/ftplugin/lilypond.vim
+
+" re-enable filetype
+filetype indent plugin on
+syntax on
+
+colorscheme andromeda
+runtime statusline.vim
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+set autoindent
+set textwidth=0
+
+" used for folding
+" override these as needed
+let g:section_heading = '\%(!.*\)\@<!# .* # .* #'
+let g:section_heading_top_gap = 3
+let g:section_heading_bottom_gap = 2
+let g:subsection_heading = '\%(!.*\)\@<!--- .* ---'
+let g:subsection_heading_top_gap = 0
+let g:subsection_heading_bottom_gap = 0
+let g:empty_line = '^\s*$'
+
+
+
+
+" ############################################################################ "
 " # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ###### "
 " ############################################################################ "
 
 " --- Install Plug --- "
+
+" Install python support if it isn't installed already
 if has('nvim')
-    " Install python support if it isn't installed already
     if !has("python3")
         exec "!python -m pip install --user pynvim"
         q
     endif
-
-    " Install vim-plug if it isn't installed already "
-    if empty(glob("~/.config/nvim/autoload/plug.vim"))
-        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        q
-    endif
-
-    call plug#begin('~/.config/nvim/plugged')
-
-else
-    " Install vim-plug if it isn't installed already "
-    " if empty(glob("~/.vim/autoload/plug.vim"))
-    "     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    "                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    "     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    " endif
-
-    " call plug#begin('~/.vim/plugged')
-
-    if empty(glob("~/.config/nvim/autoload/plug.vim"))
-        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        q
-    endif
-
-    call plug#begin('~/.config/nvim/plugged')
-
 endif
+
+" Install vim-plug if it isn't installed already "
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    q
+endif
+
+call plug#begin('~/.config/nvim/plugged')
 
 
 " --- ui tweaks --- "
@@ -215,42 +232,6 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 let g:hardtime_default_on = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
-
-
-
-
-" ############################################################################ "
-" # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ###### "
-" ############################################################################ "
-
-" add language files here
-filetype off
-set runtimepath+=/usr/share/vim/vimfiles/ftplugin/lilypond.vim
-
-" re-enable filetype
-filetype indent plugin on
-syntax on
-
-colorscheme andromeda
-source $HOME/.config/nvim/statusline.vim
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-
-set autoindent
-set textwidth=0
-
-" used for folding
-" override these as needed
-let g:section_heading = '\%(!.*\)\@<!# .* # .* #'
-let g:section_heading_top_gap = 3
-let g:section_heading_bottom_gap = 2
-let g:subsection_heading = '\%(!.*\)\@<!--- .* ---'
-let g:subsection_heading_top_gap = 0
-let g:subsection_heading_bottom_gap = 0
-let g:empty_line = '^\s*$'
 
 
 

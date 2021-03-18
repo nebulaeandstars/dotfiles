@@ -111,4 +111,4 @@ set statusline+=%#StatusEmpty#
 set statusline+=%=
 
 set statusline+=%#StatusFiletype#%y
-set statusline+=%<\ %#StatusInfo#%p%%\ %l/%L:%c\ %<
+set statusline+=%<\ \|\ %#StatusInfo#%p%%\ \|\ %l/%L:%c\ %<
