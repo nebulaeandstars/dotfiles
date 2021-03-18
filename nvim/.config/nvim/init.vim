@@ -42,6 +42,182 @@ set viewdir=$XDG_DATA_HOME/nvim/view | call mkdir(&viewdir, 'p', 0700)
 
 
 
+
+" ############################################################################ "
+" # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ###### "
+" ############################################################################ "
+
+" --- Install Plug --- "
+if has('nvim')
+    " Install python support if it isn't installed already
+    if !has("python3")
+        exec "!python -m pip install --user pynvim"
+        q
+    endif
+
+    " Install vim-plug if it isn't installed already "
+    if empty(glob("~/.config/nvim/autoload/plug.vim"))
+        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        q
+    endif
+
+    call plug#begin('~/.config/nvim/plugged')
+
+else
+    " Install vim-plug if it isn't installed already "
+    " if empty(glob("~/.vim/autoload/plug.vim"))
+    "     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    "                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    "     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    " endif
+
+    " call plug#begin('~/.vim/plugged')
+
+    if empty(glob("~/.config/nvim/autoload/plug.vim"))
+        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        q
+    endif
+
+    call plug#begin('~/.config/nvim/plugged')
+
+endif
+
+
+" --- ui tweaks --- "
+Plug 'airblade/vim-gitgutter'
+Plug 'vifm/vifm.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
+Plug 'mbbill/undotree'
+
+
+" --- usability --- "
+" completion engine
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
+
+" LSP Client
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
+" Plug 'dense-analysis/ale'
+
+Plug 'Shougo/neco-vim'
+" Plug 'artur-shaik/vim-javacomplete2'
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
+" other
+Plug 'terryma/vim-multiple-cursors'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'takac/vim-hardtime'
+
+
+" --- operators --- "
+Plug 'christoomey/vim-sort-motion'
+Plug 'tpope/vim-commentary'
+Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+
+" --- language support --- "
+Plug 'lervag/vimtex'
+Plug 'ARM9/arm-syntax-vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'kovetskiy/sxhkd-vim'
+" Plug 'rust-lang/rust.vim'
+Plug 'sophacles/vim-processing'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'cespare/vim-toml'
+
+
+" --- markup previewers --- "
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
+
+
+call plug#end()
+
+
+
+
+" ############################################################################ "
+" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
+" ############################################################################ "
+
+" --- gitgutter config --- "
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '--'
+let g:gitgutter_sign_removed_first_line = '^-'
+let g:gitgutter_sign_removed_above_and_below = '{-'
+let g:gitgutter_sign_modified_removed = '~-'
+
+" --- vifm.vim config --- "
+let g:vifm_replace_netrw = 1
+let g:vifm_replace_netrw_cmd = "Vifm"
+let g:vifm_embed_term = 1
+let g:vifm_embed_split = 1
+
+" --- deoplete config --- "
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#rust#racer_binary = "$CARGO_HOME/bin/racer"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+call deoplete#custom#option({
+            \ 'auto_complete_delay': 0,
+            \ })
+call deoplete#custom#option('sources', {
+            \ '_': [
+            \'LanguageClient',
+            \'buffer',
+            \'file',
+            \'omni'],
+            \})
+
+
+" --- LanguageClient config --- "
+let g:LanguageClient_serverCommands = {
+            \ 'rust': ["/usr/bin/rls"],
+            \ 'c': ["/usr/bin/ccls"],
+            \ 'cpp': ["/usr/bin/ccls"],
+            \ 'go': ["$GOBIN/gopls"],
+            \ 'python': ['/usr/bin/pyls'],
+            \ 'bash': ['/usr/bin/bash-language', 'start'],
+            \ 'sh': ['/usr/bin/bash-language-server', 'start'],
+            \ 'tex': ["/usr/bin/texlab"],
+            \ 'latex': ["/usr/bin/texlab"],
+            \ }
+
+" \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
+
+" note that if you are using Plug mapping you should not use `noremap` mappings.
+nmap <F5> <Plug>(lcn-menu)
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+" --- misc config --- "
+let g:hardtime_default_on = 1
+let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 2
+
+
+
+
 " ############################################################################ "
 " # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ###### "
 " ############################################################################ "
@@ -248,7 +424,7 @@ endfunction
 " ############################################################################ "
 " # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS ########## "
 " ############################################################################ "
-let mapleader = ","
+let mapleader = " "
 
 " --- Multiple Modes --- "
 
@@ -293,6 +469,7 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 " toggle
 nnoremap <leader>tf :Goyo<CR>
 nnoremap <leader>ts :set spell!<CR>
+nnoremap <leader>ss :set spell!<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
 nnoremap <leader>a :ALEToggleBuffer<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -405,181 +582,3 @@ augroup mutt
     autocmd BufRead,BufNewFile /tmp/neomutt* map <leader>wq :Goyo \| x!<CR>
     autocmd BufRead,BufNewFile /tmp/neomutt* map <leader>q :Goyo \| q!<CR>
 augroup END
-
-
-
-
-" ############################################################################ "
-" # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ###### "
-" ############################################################################ "
-
-" --- Install Plug --- "
-if has('nvim')
-    " Install python support if it isn't installed already
-    if !has("python3")
-        exec "!python -m pip install --user pynvim"
-        q
-    endif
-
-    " Install vim-plug if it isn't installed already "
-    if empty(glob("~/.config/nvim/autoload/plug.vim"))
-        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        q
-    endif
-
-    call plug#begin('~/.config/nvim/plugged')
-
-else
-    " Install vim-plug if it isn't installed already "
-    " if empty(glob("~/.vim/autoload/plug.vim"))
-    "     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    "                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    "     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    " endif
-
-    " call plug#begin('~/.vim/plugged')
-
-    if empty(glob("~/.config/nvim/autoload/plug.vim"))
-        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        q
-    endif
-
-    call plug#begin('~/.config/nvim/plugged')
-
-endif
-
-
-" --- ui tweaks --- "
-Plug 'airblade/vim-gitgutter'
-Plug 'vifm/vifm.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ap/vim-css-color'
-Plug 'mbbill/undotree'
-
-
-" --- usability --- "
-" completion engine
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
-
-" LSP Client
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
-" Plug 'dense-analysis/ale'
-
-Plug 'Shougo/neco-vim'
-" Plug 'artur-shaik/vim-javacomplete2'
-
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-
-" other
-Plug 'terryma/vim-multiple-cursors'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'takac/vim-hardtime'
-
-
-" --- operators --- "
-Plug 'christoomey/vim-sort-motion'
-Plug 'tpope/vim-commentary'
-Plug 'inkarkat/vim-ReplaceWithRegister'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-
-
-" --- language support --- "
-Plug 'lervag/vimtex'
-Plug 'ARM9/arm-syntax-vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'kovetskiy/sxhkd-vim'
-" Plug 'rust-lang/rust.vim'
-Plug 'sophacles/vim-processing'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'cespare/vim-toml'
-
-
-" --- markup previewers --- "
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
-
-
-call plug#end()
-
-
-
-
-" ############################################################################ "
-" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
-" ############################################################################ "
-
-" gitgutter config
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_removed = '--'
-let g:gitgutter_sign_removed_first_line = '^-'
-let g:gitgutter_sign_removed_above_and_below = '{-'
-let g:gitgutter_sign_modified_removed = '~-'
-
-" vifm.vim config
-let g:vifm_replace_netrw = 1
-let g:vifm_replace_netrw_cmd = "Vifm"
-let g:vifm_embed_term = 1
-let g:vifm_embed_split = 1
-
-" deoplete config
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#rust#racer_binary = "$CARGO_HOME/bin/racer"
-
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-
-call deoplete#custom#option({
-            \ 'auto_complete_delay': 0,
-            \ })
-
-call deoplete#custom#option('sources', {
-            \ '_': [
-            \'LanguageClient',
-            \'buffer',
-            \'file',
-            \'omni'],
-            \})
-
-
-" LanguageClient config
-
-let g:LanguageClient_serverCommands = {
-            \ 'rust': ["/usr/bin/rls"],
-            \ 'c': ["/usr/bin/ccls"],
-            \ 'cpp': ["/usr/bin/ccls"],
-            \ 'go': ["$GOBIN/gopls"],
-            \ 'python': ['/usr/bin/pyls'],
-            \ 'bash': ['/usr/bin/bash-language', 'start'],
-            \ 'sh': ['/usr/bin/bash-language-server', 'start'],
-            \ 'tex': ["/usr/bin/texlab"],
-            \ 'latex': ["/usr/bin/texlab"],
-            \ }
-
-" \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
-
-" note that if you are using Plug mapping you should not use `noremap` mappings.
-nmap <F5> <Plug>(lcn-menu)
-" Or map each action separately
-nmap <silent>K <Plug>(lcn-hover)
-nmap <silent> gd <Plug>(lcn-definition)
-nmap <silent> <F2> <Plug>(lcn-rename)
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
