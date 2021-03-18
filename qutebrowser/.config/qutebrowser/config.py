@@ -266,7 +266,7 @@ c.colors.statusbar.progress.bg = brightwhite
 # TABS # TABS # TABS # TABS # TABS # TABS # TABS # TABS # TABS # TABS #
 
 # tab bar
-c.colors.tabs.bar.bg = brightblack
+c.colors.tabs.bar.bg = black
 
 # tab indicator
 c.colors.tabs.indicator.start = blue
@@ -276,10 +276,10 @@ c.colors.tabs.indicator.system = 'rgb'
 c.colors.tabs.indicator.error = red
 
 # unselected tabs
-c.colors.tabs.even.bg = "#3e3e3e"
-c.colors.tabs.even.fg = brightwhite
-c.colors.tabs.odd.bg = "#3e3e3e"
-c.colors.tabs.odd.fg = brightwhite
+c.colors.tabs.even.bg = black
+c.colors.tabs.even.fg = white
+c.colors.tabs.odd.bg = black
+c.colors.tabs.odd.fg = white
 
 # pinned unselected tabs
 c.colors.tabs.pinned.even.bg = brightblack
@@ -288,9 +288,9 @@ c.colors.tabs.pinned.odd.bg = brightblack
 c.colors.tabs.pinned.odd.fg = brightcyan
 
 # selected tabs
-c.colors.tabs.selected.even.bg = black
+c.colors.tabs.selected.even.bg = brightblack
 c.colors.tabs.selected.even.fg = brightwhite
-c.colors.tabs.selected.odd.bg = black
+c.colors.tabs.selected.odd.bg = brightblack
 c.colors.tabs.selected.odd.fg = brightwhite
 
 # pinned selected tabs
