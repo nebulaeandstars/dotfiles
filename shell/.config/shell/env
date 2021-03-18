@@ -3,6 +3,7 @@
 # set PATH
 export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/cargo/bin/"
 
 # default programs
 export TERMINAL="alacritty"
