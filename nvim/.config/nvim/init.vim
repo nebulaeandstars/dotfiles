@@ -135,9 +135,10 @@ Plug 'junegunn/fzf'
 
 " other
 Plug 'terryma/vim-multiple-cursors'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+" Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-fugitive'
+Plug 'bkad/CamelCaseMotion'
 
 
 " --- operators --- "
@@ -161,9 +162,6 @@ Plug 'mxw/vim-jsx'
 Plug 'cespare/vim-toml'
 
 
-" --- markup previewers --- "
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 
 
 call plug#end()
@@ -226,6 +224,24 @@ nmap <F5> <Plug>(lcn-menu)
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+" --- CamelCaseMotion config --- "
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 
 " --- misc config --- "
