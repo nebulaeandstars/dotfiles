@@ -182,7 +182,7 @@ hi link xmlTagName Tag
 hi link jsReturn Function
 
 " latex/lilypond
-call s:hi('lilyKeyword', s:fg3, s:none, s:none)
+call s:hi('lilyKeyword', s:fg10, s:none, s:bold)
 call s:hi('texSection', s:fg12, s:none, s:none)
 call s:hi('texInputFile', s:fg10, s:none, s:none)
 
