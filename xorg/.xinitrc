@@ -13,6 +13,7 @@ picom -b &
 # nm-applet &
 # blueman-applet &
 timidity -iA &
+unclutter --timeout 2 --jitter 50 --ignore-scrolling &
 dunst &
 
 # other

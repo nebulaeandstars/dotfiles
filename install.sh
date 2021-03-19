@@ -203,6 +203,8 @@ echo
 # install icons
 # install_with_yay paper-icon-theme-git
 
+# install unclutter
+install_with_pacman unclutter
 
 # install other GUI apps
 install_with_pacman blueman
