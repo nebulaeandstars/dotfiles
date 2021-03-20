@@ -3,7 +3,7 @@
 xrdb ~/.Xresources &
 
 # keyboard settings
-sxhkd &
+sxhkd -m -1 &
 sudo -n setxkbmap -option caps:escape &
 sudo -n setkeycodes e038 125 &
 xset r rate 300 50 &
