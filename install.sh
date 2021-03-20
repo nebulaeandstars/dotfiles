@@ -77,13 +77,11 @@ echo
 # install/enable key services
 install_with_pacman networkmanager
 install_with_pacman bluez
-# install_with_pacman dhcpcd
 install_with_pacman sxhkd
 echo
 
 enable_service NetworkManager.service
 enable_service bluetooth.service
-# enable_service dhcpcd.service
 echo
 
 
@@ -100,7 +98,6 @@ echo
 # install i3 and openbox
 install_with_pacman i3-gaps
 install_with_pacman openbox
-# install_with_pacman xmonad
 
 # other
 install_with_yay libxft-bgra
@@ -167,6 +164,7 @@ install_with_yay antigen
 
 # install programming languages and compilers
 install_with_pacman python
+install_with_pacman python-pip
 install_with_pacman texlive-most
 install_with_pacman biber
 install_with_pacman jdk-openjdk
@@ -188,12 +186,13 @@ install_with_pacman bash-language-server
 install_with_pacman sxiv
 install_with_pacman xwallpaper
 install_with_pacman rxvt-unicode
-install_with_yay polybar
+install_with_pacman dunst
+# install_with_yay polybar
 echo
 
 
 # install some basic fonts
-install_with_pacman ttf-dejavu
+install_with_yay ttf-dejavu-emojiless
 install_with_pacman ttf-liberation
 install_with_pacman noto-fonts-cjk
 install_with_pacman noto-fonts-emoji
@@ -207,7 +206,7 @@ echo
 install_with_pacman unclutter
 
 # install other GUI apps
-install_with_pacman blueman
+# install_with_pacman blueman
 install_with_pacman lxappearance
 install_with_pacman mpv
 install_with_pacman qutebrowser
