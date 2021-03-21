@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/cargo/bin/"
 
 # default programs
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export EDITOR="nvim"
 export BROWSER="qutebrowser"
 export TRUEBROWSER="firefox"
