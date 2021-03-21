@@ -5,8 +5,8 @@ source $HOME/.zshenv
 [ -d $XDG_DATA_HOME ] && DATA_DIR=$XDG_DATA_HOME || DATA_DIR=$HOME/.local/share
 [ -d $XDG_CONFIG_HOME ] && CONFIG_DIR=$XDG_CONFIG_HOME || CONFIG_DIR=$HOME/.local/share
 
-TARGET_DIRS="$DATA_DIR/abook $DATA_DIR/calcurse $DATA_DIR/passwords $DATA_DIR/games $DATA_DIR/chess $(xdg-user-dir PICTURES) $(xdg-user-dir DOCUMENTS)"
+TARGET_DIRS="$DATA_DIR/abook $DATA_DIR/calcurse $DATA_DIR/vimwiki $DATA_DIR/passwords $DATA_DIR/games $DATA_DIR/chess $(xdg-user-dir PICTURES) $(xdg-user-dir DOCUMENTS)"
 
-[ "$1" = "all" ] && TARGET_DIRS=$TARGET_DIRS" $(xdg-user-dir MUSIC) $(xdg-user-dir VIDEOS)"
+[ "$1" = "all" ] && TARGET_DIRS="$TARGET_DIRS $(xdg-user-dir MUSIC) $(xdg-user-dir VIDEOS)"
 
 tar -czv --exclude target --exclude build -f "$DATA_DIR/data_backup.tar.gz" $TARGET_DIRS
