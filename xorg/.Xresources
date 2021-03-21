@@ -1,46 +1,6 @@
 !! Colorscheme
 
-! ------------------- !
-
-/* ! special */
-/* *.foreground:   #ffffff */
-/* *.background:   #2d2d2d */
-/* *.cursorColor:  #ffffff */
-
-/* ! black */
-/* *.color0:       #2d2d2d */
-/* *.color8:       #616161 */
-
-/* ! red */
-/* *.color1:       #b63740 */
-/* *.color9:       #e9616b */
-
-/* ! green */
-/* *.color2:       #34b374 */
-/* *.color10:      #60eca6 */
-
-/* ! yellow */
-/* *.color3:       #ad7c4d */
-/* *.color11:      #ebe85f */
-
-/* ! blue */
-/* *.color4:       #5299c1 */
-/* *.color12:      #8ccbf3 */
-
-/* ! magenta */
-/* *.color5:       #af79d8 */
-/* *.color13:      #ffb4ff */
-
-/* ! cyan */
-/* *.color6:       #5bc2ad */
-/* ! *.color14:      #b4eded */
-/* *.color14:      #b4eded */
-
-/* ! white */
-/* *.color7:       #999990 */
-/* *.color15:      #ffffff */
-
-! ------------------- !
+*.font: monospace:size=10
 
 ! special
 *.foreground:   #ffffff
@@ -79,7 +39,6 @@
 *.color7:       #a5a5a5
 *.color15:      #ffffff
 
-! ------------------- !
 
 *.alpha: 1
 
