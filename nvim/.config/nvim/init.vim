@@ -64,7 +64,24 @@ set shiftwidth=4
 set expandtab
 
 set autoindent
-set textwidth=0
+set textwidth=80
+
+set wrap
+set linebreak
+set breakindent
+set showbreak=>\  " do not remove this comment
+
+" set autoformat options
+autocmd FileType * setlocal formatoptions+=crnv1jql
+autocmd FileType * setlocal formatoptions-=o
+autocmd FileType * setlocal formatoptions-=w
+
+" " automatically wrap lines
+" set columns=80
+" if (&columns > 80) | set columns=80 | endif
+" augroup resize
+"     autocmd VimResized * if (&columns > 80) | set columns=80 | endif
+" augroup END
 
 " used for folding
 " override these as needed
@@ -229,11 +246,12 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " --- vimwiki config --- "
 
 " use markdown syntax
-let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{
             \'path': '~/.local/share/vimwiki',
             \'path_html': '~/.local/share/vimwiki_html',
-            \'syntax': 'markdown', 'ext': '.md'}]
+            \'syntax': 'markdown', 'ext': '.md'
+            \}]
 
 " only do vimwiki stuff in a vimwiki
 let g:vimwiki_global_ext = 0
@@ -474,7 +492,6 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 " --- Normal Mode --- "
 
 " toggle
-nnoremap <leader>tf :Goyo<CR>
 nnoremap <leader>ts :set spell!<CR>
 nnoremap <leader>ss :set spell!<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
@@ -484,6 +501,7 @@ nnoremap <leader>o :Vifm<CR>
 nnoremap <leader>tg :GitGutterToggle<CR>
 nnoremap <leader>zg :GitGutterFold<CR>
 nnoremap <leader>th :HardTimeToggle<CR>
+nnoremap <leader>f :Goyo<CR>
 
 " show/hide
 nnoremap <leader>sf :set foldcolumn+=2<CR>
@@ -507,10 +525,10 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 
 " window commands
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+nnoremap <A-S-h> <C-w>h
+nnoremap <A-S-j> <C-w>j
+nnoremap <A-S-k> <C-w>k
+nnoremap <A-S-l> <C-w>l
 
 " other
 nnoremap S :%s//g<Left><Left>
@@ -577,9 +595,6 @@ autocmd BufWritePre * GitGutter
 
 " run xrdb whenever .Xresources is updated
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
-
-" disable automatic commenting on new line
-autocmd FileType * setlocal formatoptions-=cro
 
 " " toggle relative numbers when switching in and out of insert mode
 " augroup numbertoggle

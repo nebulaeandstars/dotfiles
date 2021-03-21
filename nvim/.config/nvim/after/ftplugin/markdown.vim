@@ -4,8 +4,7 @@ set textwidth=0
 set nolist
 set spell
 
-noremap j gj
-noremap k gk
+set formatoptions+=t
 
 inoremap ** **<Left>
 inoremap __ __<Left>

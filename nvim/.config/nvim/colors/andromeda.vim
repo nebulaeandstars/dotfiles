@@ -188,3 +188,9 @@ call s:hi('texInputFile', s:fg10, s:none, s:none)
 
 " vimscript
 call s:hi('vimCommand', s:fg3, s:none, s:bold)
+
+" markdown/vimwiki
+call s:hi('markdownRule', s:fg13, s:none, s:bold)
+hi link VimwikiListTodo markdownListMarker
+hi link VimwikiHeaderChar markdownHeadingDelimiter
+hi link VimwikiHR markdownRule

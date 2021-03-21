@@ -1,7 +1,8 @@
-
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
+set formatoptions+=t
 
 let g:pdf_viewer = 'zathura'
 
@@ -11,7 +12,7 @@ let g:out = expand('%:p:r')
 
 function! LilypondPreview()
     " compile the pdf from this file, then start the pdf viewer "
-    silent execute '!lilypond' '-o ' g:out g:file 
+    silent execute '!lilypond' '-o ' g:out g:file
     silent execute '!' g:pdf_viewer g:pdf '&>/dev/null &'
 endfunction
 

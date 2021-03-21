@@ -5,8 +5,7 @@ set nolist
 set spell
 set fo+=w
 
-map j gj
-map k gk
+set formatoptions+=t
 
 let g:section_heading = '^== '
 let g:section_heading_top_gap = 2
