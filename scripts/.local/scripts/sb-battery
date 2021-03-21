@@ -34,6 +34,10 @@ do
 	capacity=$(cat "$battery/capacity")
 	# Will make a warn variable if discharging and low
 	[ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗"
+
+    # Send a warning if below 10%
+    [ "$status" = "🔋" ] && [ "$capacity" -le 10 ] && notify-send --app-name="sb-battery" --urgency critical "❗WARNING:" "Battery at $capacity%"
+
 	# Prints the info
 	printf "%s%s%d%%\n" "$status" "$warn" "$capacity"; unset warn
 done
