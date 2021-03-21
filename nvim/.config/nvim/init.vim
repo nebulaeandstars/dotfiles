@@ -161,7 +161,8 @@ Plug 'mxw/vim-jsx'
 Plug 'cespare/vim-toml'
 
 
-
+" --- other --- "
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -223,6 +224,19 @@ nmap <F5> <Plug>(lcn-menu)
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+" --- vimwiki config --- "
+
+" use markdown syntax
+let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{
+            \'path': '~/.local/share/vimwiki',
+            \'path_html': '~/.local/share/vimwiki_html',
+            \'syntax': 'markdown', 'ext': '.md'}]
+
+" only do vimwiki stuff in a vimwiki
+let g:vimwiki_global_ext = 0
 
 
 " --- misc config --- "
@@ -542,8 +556,16 @@ cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 " ############################################################################ "
 
 " custom file-typing
-autocmd BufRead,BufNewFile *vifm set filetype=vim
-autocmd BufRead,BufNewFile *.S set filetype=arm
+augroup filetypedetect
+    autocmd BufRead,BufNewFile *vifm set filetype=vim
+    autocmd BufRead,BufNewFile *.S set filetype=arm
+
+    autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+    autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+    autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+    au! BufRead,BufNewFile */vimwiki/* set filetype=vimwiki
+augroup END
 
 " automatically delete trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e   " trailing spaces

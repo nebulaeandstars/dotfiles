@@ -1,11 +1,11 @@
-
 set wrap
 set linebreak
 set textwidth=0
 set nolist
 set spell
 
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 
-nmap <C-p> <Plug>MarkdownPreviewToggle
+inoremap ** **<Left>
+inoremap __ __<Left>
