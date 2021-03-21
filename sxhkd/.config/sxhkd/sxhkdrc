@@ -16,7 +16,7 @@ super + m
 super + n
     $TERMINAL -e newsboat
 super + a
-	$TERMINAL -e abook
+	$TERMINAL -e abook --config "$XDG_CONFIG_HOME/abook/abookrc" --datafile "$XDG_DATA_HOME/abook/addressbook"
 super + c
 	$TERMINAL -e calcurse
 super + shift + u
