@@ -4,6 +4,7 @@
 alias c="clear"
 alias ccat="highlight --out-format=ansi"
 alias clear="message"
+alias cp="cp -v"
 alias grep="grep --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
@@ -25,30 +26,27 @@ alias m="neomutt"
 alias mutt="neomutt"
 alias n="newsboat"
 alias sf="sudo vifm"
-alias sv="sudo nvim"
+alias sv="sudo $EDITOR"
 alias t="setsid $TERMINAL >/dev/null & ; sleep 0.5 ; clear"
-alias v="nvim"
 alias vifm="vifmrun"
+alias vimwiki="$EDITOR -c VimwikiIndex"
 alias yt="youtube-dl -ic"
 alias yta="youtube-dl -xic"
 
 alias anaconda="source /opt/anaconda/bin/activate root"
-alias bw-sync="echo generating session key... &&
-    export BW_SESSION=\$(bw unlock --raw \"\$(pass bitwarden)\") \
-    && echo syncing... && bw sync"
 alias smk="sudo cp config.def.h config.h && sudo make clean install"
 
 # config
 alias i3c="nvim ~/.config/i3/config"
-alias vrc="nvim ~/.config/nvim/init.vim"
 alias vifmrc="nvim ~/.config/vifm/vifmrc"
+alias vrc="nvim ~/.config/nvim/init.vim"
 alias xrc="nvim ~/.xinitrc"
 alias zrc="nvim $ZDOTDIR/.zshrc"
 
 # fixes
 alias abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook"
-alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
 alias gbd="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
+alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
 
 # git
 alias ga="git add"
