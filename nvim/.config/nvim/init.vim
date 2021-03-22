@@ -258,11 +258,9 @@ let g:vimwiki_global_ext = 0
 
 
 " --- misc config --- "
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
-
-
 
 
 " ############################################################################ "
@@ -536,11 +534,20 @@ nnoremap <silent> <Space> :noh<CR>
 nnoremap == gg=G``
 nnoremap Y y$
 
+" autocompile
+nnoremap <leader>p :!compile %:p<CR>
+
 " edit next \<++> tag (not including tags preceeded by a \
 nnoremap <silent> <leader><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
 
 " show the highlighting groups for the current word
 nnoremap <C-S-L> :call <SID>SynStack()<CR>
+
+
+" --- Visual Mode --- "
+
+vnoremap . :normal .<CR>
+vnoremap S :s//g<Left><Left>
 
 
 " --- Insert Mode --- "
