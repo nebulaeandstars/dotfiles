@@ -183,8 +183,10 @@ hi link jsReturn Function
 
 " latex/lilypond
 call s:hi('lilyKeyword', s:fg10, s:none, s:bold)
-call s:hi('texSection', s:fg12, s:none, s:none)
-call s:hi('texInputFile', s:fg10, s:none, s:none)
+call s:hi('texSection', s:fg12, s:none, s:bold)
+call s:hi('texDocType', s:fg13, s:none, s:bold)
+call s:hi('texStatement', s:fg10, s:none, s:bold)
+call s:hi('texInputFile', s:fg11, s:none, s:bold)
 
 " vimscript
 call s:hi('vimCommand', s:fg3, s:none, s:bold)

@@ -166,7 +166,7 @@ Plug 'tpope/vim-repeat'
 
 
 " --- language support --- "
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 Plug 'ARM9/arm-syntax-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
@@ -534,8 +534,9 @@ nnoremap <silent> <Space> :noh<CR>
 nnoremap == gg=G``
 nnoremap Y y$
 
-" autocompile
-nnoremap <leader>p :!compile %:p<CR>
+" compile and preview
+nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
+nnoremap <leader>p :!preview %<CR><CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
 nnoremap <silent> <leader><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
