@@ -150,6 +150,10 @@ install_with_pacman neofetch
 install_with_pacman youtube-dl
 install_with_pacman youtube-viewer
 install_with_yay cbonsai
+
+install_with_pacman imagemagick
+install_with_pacman i3lock
+install_with_pacman scrot
 echo
 
 
