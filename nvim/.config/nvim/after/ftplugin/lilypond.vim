@@ -2,8 +2,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-set formatoptions+=t
-
 let g:pdf_viewer = 'zathura'
 
 let g:file = expand('%:p')
