@@ -149,6 +149,7 @@ Plug 'Shougo/neco-vim'
 
 " (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
+Plug 'alvan/vim-closetag'
 
 " other
 Plug 'terryma/vim-multiple-cursors'
