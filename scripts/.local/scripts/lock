@@ -1,0 +1,5 @@
+#!/bin/sh
+
+scrot -e 'mv $f /tmp/lockscreen.png'
+
+i3lock -eb -i /tmp/lockscreen.png
