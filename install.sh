@@ -138,9 +138,15 @@ install_with_pacman notmuch
 install_with_pacman newsboat
 install_with_pacman calcurse
 install_with_pacman abook
-install_with_pacman vifm
 install_with_pacman mediainfo
 echo
+
+# install vifm
+install_with_pacman vifm
+install_with_pacman ffmpeg
+install_with_pacman ffmpegthumbnailer
+install_with_yay vifmimg
+install_with_yay fontpreview
 
 # install other CLI apps
 install_with_pacman cowsay
