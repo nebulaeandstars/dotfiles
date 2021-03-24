@@ -40,11 +40,11 @@ super + control + shift + q
 
 # screenshot
 Print
-	scrot -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'scrot_%y%m%d@%I%M%S_$wx$h.png')"
+	scrot -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%y-%m-%d_%I:%M:%S_$wx$h.png')"
 control + shift + Print
-	scrot -s -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'scrot_%y%m%d@%I%M%S_$wx$h.png')"
+	scrot -s -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%y-%m-%d_%I:%M:%S_$wx$h.png')"
 alt + shift + Print
-	scrot -u -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'scrot_%y%m%d@%I%M%S_$wx$h.png')"
+	scrot -u -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%y-%m-%d_%I:%M:%S_$wx$h.png')"
 
 # volume
 XF86AudioRaiseVolume
