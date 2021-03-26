@@ -204,12 +204,32 @@ EXEC 01;32 # files with execute permission
 .ra 00;33
 .wav 00;33
 
+# data files
+.json 00;37
+.xml 00;37
+.toml 00;37
+.lock 00;37
+
 # https://wiki.xiph.org/MIME_Types_and_File_Extensions
 .oga 00;36
 .opus 00;36
 .spx 00;36
 .xspf 00;36
 
-# other formats
+# programming source files
+.rs 00;36
+.java 00;36
+.go 00;36
+
+# markup source files
+.md 00;35
+.html 00;35
+.ly 00;35
+.tex 00;35
+.latex 00;35
+
+# custom colors for specific formats
 .pdf 00;31
-.md 00;31
+.css 00;32
+.js 00;33
+.iso 00;36

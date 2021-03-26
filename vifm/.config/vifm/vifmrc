@@ -161,7 +161,7 @@ fileviewer *.html w3m %c
 fileviewer *.exe,*.iso,*.o,*.elf,*.bin
     \ echo no preview available. %i
 
-fileviewer *.sh,*.rs,*.c,*.py,*.java,*.go,*.css,*.js,*.vim,*.md,*.ly,*.tex,*.latex,*.S,*.yml,Makefile,makefile,*.iml
+fileviewer *.sh,*.rs,*.c,*.py,*.java,*.go,*.css,*.js,*.vim,*.md,*.ly,*.tex,*.latex,*.S,*.yml,Makefile,makefile,*.iml,*.toml
     \ highlight --out-format=ansi %c
 
 fileviewer {*.torrent},<application/x-bittorrent>
