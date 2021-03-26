@@ -156,6 +156,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-rooter'
 
 
 " --- operators --- "
