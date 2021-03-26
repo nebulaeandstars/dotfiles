@@ -41,6 +41,9 @@ set vimhelp
 " run executables instead of trying to open them
 set runexec
 
+" don't show './' or '../' unless in an empty directory
+set dotdirs=treeleafsparent
+
 " time format
 set timefmt="%d/%B/%Y, %I:%M%p"
 
@@ -143,6 +146,28 @@ filetype * xdg-open
 " # FILEVIEW # FILEVIEW # FILEVIEW # FILEVIEW # FILEVIEW # FILEVIEW ########## "
 " ############################################################################ "
 
+fileviewer <inode/directory> tree -C -L 2
+
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.txz,*.txz xz --list %c
+fileviewer {*.tar},<application/x-tar> tar -tf %c
+fileviewer {*.rar},<application/x-rar> unrar v %c
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+fileviewer {*.7z},<application/x-7z-compressed> 7z l %c
+
+fileviewer *.html w3m %c
+
+fileviewer *.exe,*.iso,*.o,*.elf,*.bin
+    \ echo no preview available. %i
+
+fileviewer *.sh,*.rs,*.c,*.py,*.java,*.go,*.css,*.js,*.vim,*.md,*.ly,*.tex,*.latex,*.S,*.yml,Makefile,makefile,*.iml
+    \ highlight --out-format=ansi %c
+
+fileviewer {*.torrent},<application/x-bittorrent>
+    \dumptorrent -v %c
+
+" --- vifmimg --- "
 fileviewer *.pdf
     \ vifmimg pdf %px %py %pw %ph %c
     \ %pc
