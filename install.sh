@@ -132,6 +132,8 @@ install_with_pacman stow
 install_with_pacman neovim
 install_with_pacman vimpager
 install_with_pacman neomutt
+install_with_pacman lynx
+install_with_pacman w3m
 install_with_pacman isync
 install_with_pacman msmtp
 install_with_pacman notmuch
