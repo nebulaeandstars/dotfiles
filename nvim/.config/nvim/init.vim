@@ -239,10 +239,10 @@ let g:LanguageClient_serverCommands = {
 " \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
 
 " note that if you are using Plug mapping you should not use `noremap` mappings.
-nmap <F5> <Plug>(lcn-menu)
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nmap <leader><F5> <Plug>(lcn-menu)
+nnoremap <silent> <leader>K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
 
 
 " --- vimwiki config --- "
