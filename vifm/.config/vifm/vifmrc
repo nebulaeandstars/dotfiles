@@ -75,8 +75,7 @@ endif
 
 
 " What should be saved automatically between vifm sessions.
-set vifminfo=dhistory,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+set vifminfo=bookmarks,bmarks,chistory,shistory,phistory
 
 " Set custom status line look
 set statusline="%= %20d "
@@ -253,3 +252,6 @@ nnoremap > :!vifmimg inc<CR>
 nnoremap < :!vifmimg dec<CR>
 
 nnoremap ,q :quit<CR>
+
+" never save state unless told to explicitly with :w
+nnoremap ZZ ZQ
