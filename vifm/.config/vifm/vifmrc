@@ -53,7 +53,9 @@ set wildstyle=popup
 
 " Display suggestions in normal, visual and view modes for keys, marks and
 " registers (at most 5 files).  In other view, when available.
-set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers,delay:0
+
+set timeoutlen=3000
 
 " use smartcase
 set ignorecase
