@@ -235,11 +235,11 @@ nnoremap go :!setsid $TERMINAL -e xdg-open %f &>/dev/null &<cr>
 nnoremap gi :!sxiv -t %d &>/dev/null &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
+nnoremap <space>c :write | edit $MYVIFMRC | restart<cr>
 
 " Select all files in a directory
-nnoremap ,a ggvG
-vnoremap ,a <esc>ggvG
+nnoremap <space>a ggvG
+vnoremap <space>a <esc>ggvG
 
 " Toggle visibility of preview window
 nnoremap w :view<cr>
@@ -247,13 +247,13 @@ vnoremap w :view<cr>gv
 
 nnoremap S :sort<cr>
 
-" Toggle wrap setting on ,w
-nnoremap ,w :set wrap!<cr>
+" Toggle wrap setting on <space>w
+nnoremap <space>w :set wrap!<cr>
 
 nnoremap > :!vifmimg inc<CR>
 nnoremap < :!vifmimg dec<CR>
 
-nnoremap ,q :quit<CR>
+nnoremap <space>q :quit<CR>
 
 " never save state unless told to explicitly with :w
 nnoremap ZZ ZQ
