@@ -237,6 +237,19 @@ for PACKAGE in $(ls -d $(pwd)/*/) ; do
 done
 echo
 
+# create a cache directory for mutt (fixes an error)
+mkdir -p .cache/mutt
+
+# move xdg directories into the right places
+mv ~/Documents ~/docs
+mv ~/Downloads ~/dl
+mv ~/Pictures ~/img
+mv ~/Videos ~/vids
+mv ~/Music ~/music
+mv ~/Public ~/.local/public
+mv ~/Desktop ~/.local/desktop
+mv ~/Templates ~/.local/templates
+
 
 # change default shell to zsh
 sudo usermod --shell /bin/zsh "$USER" && echo "default shell changed to zsh"
