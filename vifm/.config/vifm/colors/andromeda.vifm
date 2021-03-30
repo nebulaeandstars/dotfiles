@@ -99,9 +99,9 @@ highlight Socket cterm=bold ctermfg=magenta ctermbg=default
 " file name specific highlight
 highlight /^.*\.(pdf)$/I cterm=none ctermfg=red ctermbg=default
 highlight /^.*\.(bat|btm|cmd|com|csh|css|exe|sh)$/I cterm=none ctermfg=green ctermbg=default
-highlight /^.*\.(aac|au|flac|js|m4a|mid|midi|mka|mp3|mpc|ogg|ra|wav)$/I cterm=none ctermfg=yellow ctermbg=default
+highlight /^.*\.(aac|au|flac|js|jsx|m4a|mid|midi|mka|mp3|mpc|ogg|ra|ts|tsx|wav)$/I cterm=none ctermfg=yellow ctermbg=default
 highlight /^.*\.(bmp|gif|jpeg|jpg|mjpeg|mjpg|mng|pbm|pcx|pgm|png|ppm|svg|svgz|tga|tif|tiff|xbm|xpm)$/I cterm=none ctermfg=blue ctermbg=default
 highlight /^.*\.(7z|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|dwm|dz|ear|esd|gz|html|jar|latex|lha|lrz|ly|lz|lz4|lzh|lzma|lzo|md|rar|rpm|rz|sar|swm|t7z|tar|taz|tbz|tbz2|tex|tgz|tlz|txz|tz|tzo|tzst|war|wim|xz|z|zip|zoo|zst)$/I cterm=none ctermfg=magenta ctermbg=default
-highlight /^.*\.(asf|avi|cgm|dl|emf|flc|fli|flv|gl|go|iso|java|m2v|m4v|mkv|mov|mp4|mp4v|mpeg|mpg|nuv|oga|ogm|opus|qt|rm|rmvb|rs|spx|vob|webm|webp|wmv|xcf|xspf|xwd|yuv)$/I cterm=none ctermfg=cyan ctermbg=default
+highlight /^.*\.(asf|asm|avi|c|cc|cgm|cpp|cs|cxx|dl|emf|flc|fli|flv|gl|go|iso|java|m2v|m4v|mkv|mov|mp4|mp4v|mpeg|mpg|nuv|oga|ogm|opus|php|py|qt|rm|rmvb|rs|s|spx|vob|webm|webp|wmv|xcf|xspf|xwd|yuv)$/I cterm=none ctermfg=cyan ctermbg=default
 highlight /^.*\.(json|lock|toml|xml)$/I cterm=none ctermfg=white ctermbg=default
 highlight /^.*\.(ogv|ogx)$/I cterm=bold ctermfg=magenta ctermbg=default
