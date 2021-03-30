@@ -44,13 +44,15 @@ config.bind('<Ctrl-->', 'zoom-out')
 # config.bind('J', 'tab-prev')
 # config.bind('K', 'tab-next')
 
-config.bind(',ht', 'set tabs.show switching')
-config.bind(',st', 'set tabs.show multiple')
-config.bind(',hs', 'set statusbar.show in-mode')
-config.bind(',ss', 'set statusbar.show always')
-config.bind(',p',  'open --private')
-config.bind(',l',  'set colors.webpage.bg #ffffd8')
-config.bind(',d',  'set colors.webpage.bg #2d2d2d')
+config.bind(' ht', 'set tabs.show switching')
+config.bind(' st', 'set tabs.show multiple')
+config.bind(' hs', 'set statusbar.show in-mode')
+config.bind(' ss', 'set statusbar.show always')
+config.bind(' p',  'open --private')
+config.bind(' l',  'set colors.webpage.bg #ffffd8')
+config.bind(' d',  'set colors.webpage.bg #2d2d2d')
+config.bind(' q',  'close')
+config.bind('m',  'set-mark')
 
 ###########################################################################
 ## FONTS # FONTS # FONTS # FONTS # FONTS # FONTS # FONTS # FONTS # FONTS ##
