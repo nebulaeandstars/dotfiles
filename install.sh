@@ -221,8 +221,11 @@ install_with_pacman unclutter
 # install_with_pacman blueman
 install_with_pacman lxappearance
 install_with_pacman mpv
-install_with_pacman qutebrowser
 install_with_pacman zathura-pdf-poppler
+
+install_with_pacman qutebrowser
+install_with_pacman python-adblock
+install_with_pacman python-tldextract
 echo
 
 
