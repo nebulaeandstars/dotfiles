@@ -156,7 +156,6 @@ Plug 'terryma/vim-multiple-cursors'
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-rooter'
 
 
 " --- operators --- "
@@ -538,7 +537,7 @@ nnoremap Y y$
 
 " compile and preview
 nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
-nnoremap <leader>p :!preview %<CR><CR>
+nnoremap <leader>p :!preview %<CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
 nnoremap <silent> <leader><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
