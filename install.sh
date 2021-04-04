@@ -88,8 +88,11 @@ echo
 # install xorg, picom, ALSA, and pulseaudio
 install_with_pacman alsa
 install_with_pacman alsa-utils
-install_with_pacman pulseaudio-alsa
-install_with_pacman pulseaudio-bluetooth
+# install_with_pacman pulseaudio-alsa
+# install_with_pacman pulseaudio-bluetooth
+install_with_pacman pipewire
+install_with_pacman pipewire-alsa
+install_with_pacman pipewire-jack
 install_with_pacman xorg
 install_with_yay picom-ibhagwan-git
 echo
