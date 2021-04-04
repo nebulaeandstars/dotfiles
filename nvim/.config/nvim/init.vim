@@ -58,6 +58,8 @@ syntax on
 colorscheme andromeda
 runtime statusline.vim
 
+let mapleader = " "
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -65,6 +67,7 @@ set expandtab
 
 set autoindent
 set textwidth=80
+set colorcolumn=+1
 
 set wrap
 set linebreak
@@ -448,7 +451,6 @@ endfunction
 " ############################################################################ "
 " # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS ########## "
 " ############################################################################ "
-let mapleader = " "
 
 " --- Multiple Modes --- "
 
@@ -509,7 +511,7 @@ nnoremap <leader>hf :set foldcolumn-=2<CR>
 nnoremap <leader>sg :GitGutterEnable<CR>
 nnoremap <leader>hg :GitGutterDisable<CR>
 
-nnoremap <leader>sc :set colorcolumn=81<CR>
+nnoremap <leader>sc :set colorcolumn=+1<CR>
 nnoremap <leader>hc :set colorcolumn=<CR>
 
 " refresh
@@ -604,6 +606,10 @@ autocmd BufWritePre * GitGutter
 
 " run xrdb whenever .Xresources is updated
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+
+" automatically format .rs files
+autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
+
 
 " " toggle relative numbers when switching in and out of insert mode
 " augroup numbertoggle
