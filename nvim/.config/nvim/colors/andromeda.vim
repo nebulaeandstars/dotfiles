@@ -181,6 +181,9 @@ hi link javaScriptIdentifier TypeDef
 hi link xmlTagName Tag
 hi link jsReturn Function
 
+" rust
+call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
+
 " latex/lilypond
 call s:hi('lilyKeyword', s:fg10, s:none, s:bold)
 call s:hi('texSection', s:fg12, s:none, s:bold)
