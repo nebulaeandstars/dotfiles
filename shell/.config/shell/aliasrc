@@ -50,6 +50,7 @@ alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
 
 # git
 alias ga="git add"
+alias gb="git checkout"
 alias gc="git commit -m"
 alias gf="git fetch"
 alias gm="git merge"
