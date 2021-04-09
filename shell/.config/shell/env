@@ -28,6 +28,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # cleanup
 export LESSHISTFILE="-"
+export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
 
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
