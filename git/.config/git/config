@@ -17,3 +17,7 @@
     path = ~/.config/git/school.conf
 [includeIf "gitdir:~/docs/work/"]
     path = ~/.config/git/work.conf
+[fetch]
+	prune = true
+[push]
+	default = current
