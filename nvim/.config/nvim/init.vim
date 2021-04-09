@@ -233,8 +233,13 @@ call deoplete#custom#var('around', {
             \   'range_below': 20,
             \   'mark_above': '[↑]',
             \   'mark_below': '[↓]',
-            \   'mark_changes': '[*]',
+            \   'mark_changes': '[~]',
             \})
+
+call deoplete#custom#source('ale', 'mark', '[A]')
+call deoplete#custom#source('omni', 'mark', '[O]')
+call deoplete#custom#source('file', 'mark', '[F]')
+call deoplete#custom#source('buffer', 'mark', '[B]')
 
 
 " --- ALE config --- "
