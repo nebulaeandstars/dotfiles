@@ -255,6 +255,13 @@ let g:ale_linters = {
             \ 'latex': ['texlab'],
             \ }
 
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%severity%%code%](%linter%) %s'
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
 
 " --- vimwiki config --- "
 
@@ -512,6 +519,11 @@ nnoremap <leader>tg :GitGutterToggle<CR>
 nnoremap <leader>zg :GitGutterFold<CR>
 nnoremap <leader>th :HardTimeToggle<CR>
 nnoremap <leader>f :Goyo<CR>
+
+" ALE
+nnoremap <leader>gd :ALEGoToDefinition<CR>
+nnoremap <leader>gh :ALEHover<CR>
+nnoremap <leader>gr :ALERename<CR>
 
 " show/hide
 nnoremap <leader>sf :set foldcolumn+=2<CR>

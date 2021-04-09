@@ -5,11 +5,24 @@
 " a function to wrap around highlight
 " allows you to set both gui and cterm colors concisely
 function! s:hi(color_group, foreground, background, fontStyle)
-    exec  "highlight"
-                \ . " " . a:color_group
-                \ . " " . a:foreground
-                \ . " " . a:background
-                \ . " " . a:fontStyle
+    exec  'highlight'
+                \ . ' ' . a:color_group
+                \ . ' ' . a:foreground
+                \ . ' ' . a:background
+                \ . ' ' . a:fontStyle
+endfunction
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dE, %dW',
+    \   all_errors,
+    \   all_non_errors
+    \)
 endfunction
 
 " ############################################################################ "
@@ -111,4 +124,5 @@ set statusline+=%#StatusEmpty#
 set statusline+=%=
 
 set statusline+=%#StatusFiletype#%y
+set statusline+=%<\ \|\ %{LinterStatus()}
 set statusline+=%<\ \|\ %#StatusInfo#%p%%\ \|\ %l/%L:%c\ %<

@@ -118,6 +118,10 @@ call s:hi('DiffChange', s:fg6, s:none, s:none)
 call s:hi('DiffDelete', s:fg9, s:none, s:none)
 call s:hi('SignColumn', s:fg15, s:bg8, s:none)
 
+" ALE
+call s:hi('ALEErrorSign', s:fg9, s:bg8, s:bold)
+call s:hi('ALEWarningSign', s:fg11, s:bg8, s:bold)
+
 
 " ############################################################################ "
 " # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX # SYNTAX #### "
