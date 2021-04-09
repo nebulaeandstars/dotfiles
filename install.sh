@@ -188,10 +188,13 @@ install_with_pacman rustup
 install_with_pacman gcc
 
 # install language servers
-install_with_pacman texlab
-install_with_pacman ccls
-install_with_pacman python-language-server
 install_with_pacman bash-language-server
+install_with_pacman ccls
+install_with_pacman prettier
+install_with_pacman proselint
+install_with_pacman python-language-server
+install_with_pacman texlab
+install_with_pacman vint
 
 
 # --- GUI stuff --- #
