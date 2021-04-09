@@ -7,8 +7,8 @@ export PATH="$PATH:$HOME/.local/share/cargo/bin/"
 
 # default programs
 export TERMINAL="st"
-export EDITOR="nvim"
-export BROWSER="qutebrowser"
+type -p nvim && export EDITOR="nvim" || export EDITOR="vim"
+type -p qutebrowser && export BROWSER="qutebrowser" || export BROWSER="firefox"
 export TRUEBROWSER="firefox"
 export READER="zathura"
 export PAGER="vimpager"

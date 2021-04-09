@@ -60,8 +60,10 @@ alias gs="git status"
 alias gv="git status -v"
 
 # pacman
-alias R="sudo pacman -Rns"
-alias Rorphs="pacman -Qtdq | sudo pacman -Rns -"
-alias S="sudo pacman -S"
-alias p="sudo pacman"
-alias syu="sudo pacman -Syu"
+type -p pacman && {
+    alias R="sudo pacman -Rns"
+    alias Rorphs="pacman -Qtdq | sudo pacman -Rns -"
+    alias S="sudo pacman -S"
+    alias p="sudo pacman"
+    alias syu="sudo pacman -Syu"
+}
