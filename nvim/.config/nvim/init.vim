@@ -134,23 +134,17 @@ Plug 'mbbill/undotree'
 
 
 " --- usability --- "
+
 " completion engine
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 
-" LSP Client
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
-" Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 Plug 'Shougo/neco-vim'
 " Plug 'artur-shaik/vim-javacomplete2'
 
-" (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
 Plug 'alvan/vim-closetag'
 
@@ -209,42 +203,52 @@ let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
 
 " --- deoplete config --- "
+
+" use yarp if using regular vim
+if !has('nvim')
+    call deoplete#custom#option({'yarp': v:true})
+endif
+
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#rust#racer_binary = "$CARGO_HOME/bin/racer"
+let g:deoplete#sources#rust#racer_binary = '$CARGO_HOME/bin/racer'
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+
 call deoplete#custom#option({
             \ 'auto_complete_delay': 0,
+            \ 'min_pattern_length': 1,
             \ })
+
 call deoplete#custom#option('sources', {
             \ '_': [
-            \'LanguageClient',
-            \'buffer',
-            \'file',
-            \'omni'],
+            \ 'ale',
+            \ 'omni',
+            \ 'file',
+            \ 'buffer',
+            \ 'around',
+            \ ]})
+
+call deoplete#custom#var('around', {
+            \   'range_above': 20,
+            \   'range_below': 20,
+            \   'mark_above': '[↑]',
+            \   'mark_below': '[↓]',
+            \   'mark_changes': '[*]',
             \})
 
 
-" --- LanguageClient config --- "
-let g:LanguageClient_serverCommands = {
-            \ 'rust': ["/usr/bin/rls"],
-            \ 'c': ["/usr/bin/ccls"],
-            \ 'cpp': ["/usr/bin/ccls"],
-            \ 'go': ["$GOBIN/gopls"],
-            \ 'python': ['/usr/bin/pyls'],
-            \ 'bash': ['/usr/bin/bash-language', 'start'],
-            \ 'sh': ['/usr/bin/bash-language-server', 'start'],
-            \ 'tex': ["/usr/bin/texlab"],
-            \ 'latex': ["/usr/bin/texlab"],
+" --- ALE config --- "
+let g:ale_linters = {
+            \ 'rust': ['rls'],
+            \ 'c': ['ccls'],
+            \ 'cpp': ['ccls'],
+            \ 'go': ['$GOBIN/gopls'],
+            \ 'python': ['pyls'],
+            \ 'bash': ['bash-language', 'start'],
+            \ 'sh': ['bash-language-server', 'start'],
+            \ 'tex': ['texlab'],
+            \ 'latex': ['texlab'],
             \ }
-
-" \ 'java': ["/usr/local/lib/java-language-server/dist/lang_server_linux.sh"],
-
-" note that if you are using Plug mapping you should not use `noremap` mappings.
-nmap <leader><F5> <Plug>(lcn-menu)
-nnoremap <silent> <leader>K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
 
 
 " --- vimwiki config --- "
