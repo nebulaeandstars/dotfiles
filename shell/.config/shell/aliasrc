@@ -37,11 +37,11 @@ alias anaconda="source /opt/anaconda/bin/activate root"
 alias smk="sudo cp config.def.h config.h && sudo make clean install"
 
 # config
-alias i3c="nvim ~/.config/i3/config"
-alias vifmrc="nvim ~/.config/vifm/vifmrc"
-alias vrc="nvim ~/.config/nvim/init.vim"
-alias xrc="nvim ~/.xinitrc"
-alias zrc="nvim $ZDOTDIR/.zshrc"
+alias i3c="$EDITOR ~/.config/i3/config"
+alias vifmrc="$EDITOR ~/.config/vifm/vifmrc"
+alias vrc="$EDITOR ~/.config/nvim/init.vim"
+alias xrc="$EDITOR ~/.xinitrc"
+alias zrc="$EDITOR $ZDOTDIR/.zshrc"
 
 # fixes
 alias abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook"
