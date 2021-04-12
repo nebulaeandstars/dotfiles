@@ -1,9 +1,7 @@
 set wrap
 set linebreak
-set textwidth=0
 set nolist
 set spell
-set fo+=w
 
 let g:section_heading = '^== '
 let g:section_heading_top_gap = 2
