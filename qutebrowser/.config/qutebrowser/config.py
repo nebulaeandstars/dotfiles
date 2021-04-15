@@ -29,7 +29,7 @@ c.editor.encoding = 'utf-8'
 c.content.blocking.method = 'both'
 
 # allow desktop notifications
-c.content.notifications = True
+c.content.notifications.enabled = True
 
 # default character encoding
 c.content.default_encoding = 'utf-8'
