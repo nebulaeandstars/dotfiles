@@ -198,6 +198,11 @@ call s:hi('texInputFile', s:fg11, s:none, s:bold)
 " vimscript
 call s:hi('vimCommand', s:fg3, s:none, s:bold)
 
+" man
+call s:hi('manHeader', s:fg13, s:none, s:bold)
+call s:hi('manSectionHeading', s:fg11, s:none, s:bold)
+call s:hi('manOptionDesc', s:fg13, s:none, s:bold)
+
 " markdown/vimwiki
 call s:hi('markdownRule', s:fg13, s:none, s:bold)
 hi link VimwikiListTodo markdownListMarker
