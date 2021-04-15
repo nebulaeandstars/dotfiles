@@ -15,7 +15,7 @@ alias mkdir="mkdir -pv"
 alias mv="mv -v"
 alias rm="rm -v"
 alias stow="stow -v"
-alias sx="startx"
+alias sx="startx >/dev/null 2>&1"
 
 # general
 alias SS="sudo systemctl"
@@ -60,7 +60,7 @@ alias gs="git status"
 alias gv="git status -v"
 
 # pacman
-type -p pacman && {
+type -p pacman >/dev/null 2>&1 && {
     alias R="sudo pacman -Rns"
     alias Rorphs="pacman -Qtdq | sudo pacman -Rns -"
     alias S="sudo pacman -S"
