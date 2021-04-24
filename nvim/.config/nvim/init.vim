@@ -512,7 +512,6 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 nnoremap <leader>ts :set spell!<CR>
 nnoremap <leader>ss :set spell!<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
-nnoremap <leader>a :ALEToggleBuffer<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>o :Vifm<CR>
 nnoremap <leader>tg :GitGutterToggle<CR>
@@ -521,6 +520,8 @@ nnoremap <leader>th :HardTimeToggle<CR>
 nnoremap <leader>f :Goyo<CR>
 
 " ALE
+nnoremap <leader>a :ALEToggleBuffer<CR>
+nnoremap <leader>d :ALEDetail<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>gh :ALEHover<CR>
 nnoremap <leader>gr :ALERename<CR>
