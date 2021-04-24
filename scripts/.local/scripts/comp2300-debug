@@ -4,17 +4,22 @@
 [ -f "$XDG_CONFIG_HOME/gdb/init" ] && GDBFLAGS="-nh -x $XDG_CONFIG_HOME/gdb/init"
 
 # compile and upload the program.
-make || ( echo "ERROR: Failed to build file" ; exit )
-make upload || ( echo "ERROR: Failed to upload file" ; exit )
+echo compiling...
+make >/dev/null || ( echo "ERROR: Failed to build file" ; exit )
+echo uploading...
+make upload >/dev/null || ( echo "ERROR: Failed to upload file" ; exit )
 
 # start openocd and fork it to the background.
-"$HOME/.comp2300/openocd/bin/openocd" -f interface/stlink.cfg -f target/stm32l4x.cfg -c "program program.elf verify reset" &>/dev/null &
+echo starting openocd...
+"$HOME/.comp2300/openocd/bin/openocd" -f interface/stlink.cfg -f target/stm32l4x.cfg -c "program program.elf verify reset" >/dev/null 2>&1 &
 
 # wait for openocd to actually connect before trying to talk to it.. :P
 sleep 1s
 
 # start the gdb instance.
+echo starting gdb...
 "$HOME/.comp2300/arm-none-eabi/bin/arm-none-eabi-gdb" ./program.elf -ex 'target extended-remote :3333' -ex 'monitor reset halt' -ex 'b main' -ex 'c' $GDBFLAGS
 
 # when gdb exits, kill openocd.
+echo killing openocd...
 pkill openocd
