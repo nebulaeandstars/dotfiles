@@ -10,4 +10,6 @@ case "${*}" in
 	*.html) setsid -f "$BROWSER" "$basename".html >/dev/null 2>&1 ;;
 	*.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
 	*.rs) cargo run -q ;;
+	*.c) make run -s ;;
+	*.cpp) make run -s ;;
 esac
