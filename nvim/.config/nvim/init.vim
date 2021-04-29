@@ -142,6 +142,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'dense-analysis/ale'
 
+Plug 'deoplete-plugins/deoplete-clang'
 Plug 'Shougo/neco-vim'
 " Plug 'artur-shaik/vim-javacomplete2'
 
@@ -629,8 +630,9 @@ autocmd BufWritePre * GitGutter
 " run xrdb whenever .Xresources is updated
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
-" automatically format .rs files
+" automatically format .rs, .c, and .cpp files
 autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
+autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4}\" %" | edit
 
 
 " " toggle relative numbers when switching in and out of insert mode
