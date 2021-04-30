@@ -63,7 +63,10 @@ let mapleader = " "
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
+
+set listchars+=tab:\|\ " display tab characters (do not remove this comment)
+set list
 
 set autoindent
 set textwidth=80
@@ -250,7 +253,7 @@ let g:ale_linters = {
             \ 'cpp': ['ccls'],
             \ 'go': ['$GOBIN/gopls'],
             \ 'python': ['pyls'],
-            \ 'bash': ['bash-language', 'start'],
+            \ 'bash': ['bash-language-server', 'start'],
             \ 'sh': ['bash-language-server', 'start'],
             \ 'tex': ['texlab'],
             \ 'latex': ['texlab'],
@@ -632,7 +635,7 @@ autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
 " automatically format .rs, .c, and .cpp files
 autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
-autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4}\" %" | edit
+autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
 
 
 " " toggle relative numbers when switching in and out of insert mode
