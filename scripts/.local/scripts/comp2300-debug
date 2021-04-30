@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# make sure that openocd isn't already running
+pkill openocd
+
 # run gdb in a way that is compatible with xdg-user-dirs
 [ -f "$XDG_CONFIG_HOME/gdb/init" ] && GDBFLAGS="-nh -x $XDG_CONFIG_HOME/gdb/init"
 
