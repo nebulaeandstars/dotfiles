@@ -108,6 +108,10 @@ call s:hi('Pmenu', s:fg0, s:bg6, s:none)
 " color column
 call s:hi('ColorColumn', s:fg15, s:bg8, s:none)
 
+" cursor line
+call s:hi('cursorline', s:none, s:bg8, s:none)
+call s:hi('cursorcolumn', s:none, s:bg8, s:none)
+
 " folds
 call s:hi('Folded', s:fg6, s:bg8, s:none)
 call s:hi('FoldColumn', s:fg6, s:bg8, s:none)
