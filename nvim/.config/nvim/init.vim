@@ -65,7 +65,7 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
-set listchars+=tab:\|\ " display tab characters (do not remove this comment)
+set listchars=tab:\|\ ,precedes:\<,extends:\>
 set list
 
 set autoindent
