@@ -8,9 +8,15 @@ pkill openocd
 
 # compile and upload the program.
 echo compiling...
-make >/dev/null || ( echo "ERROR: Failed to build file" ; exit )
+make >/dev/null || {
+	echo "ERROR: Failed to build file"
+	exit
+}
 echo uploading...
-make upload >/dev/null || ( echo "ERROR: Failed to upload file" ; exit )
+make upload >/dev/null || {
+	echo "ERROR: Failed to upload file"
+	exit
+}
 
 # start openocd and fork it to the background.
 echo starting openocd...
