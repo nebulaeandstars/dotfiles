@@ -81,6 +81,7 @@ set showbreak=>\  " do not remove this comment
 autocmd FileType * setlocal formatoptions+=crnv1jql
 autocmd FileType * setlocal formatoptions-=o
 autocmd FileType * setlocal formatoptions-=w
+autocmd FileType * setlocal formatoptions-=t
 
 " " automatically wrap lines
 " set columns=80
@@ -157,6 +158,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-rooter'
 
 
 " --- operators --- "
@@ -265,6 +267,11 @@ let g:ale_echo_msg_format = '[%severity%%code%](%linter%) %s'
 
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+
+
+" ---- vim-rooter config --- "
+let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml']
+let g:rooter_change_directory_for_non_project_files = 'current'
 
 
 " --- vimwiki config --- "
