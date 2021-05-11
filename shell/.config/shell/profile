@@ -1,8 +1,8 @@
 #!/bin/sh
 
-[[ -f ~/.config/zsh/.zshrc ]] && . ~/.config/zsh/zshrc || . ~/.bashrc
+# [[ -f ~/.config/zsh/.zshrc ]] && . ~/.config/zsh/.zshrc || . ~/.bashrc
 
 # automatically startx at login iff on tty1
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
-    then exec startx >/dev/null 2>&1
-fi
+# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
+#     then exec startx >/dev/null 2>&1
+# fi
