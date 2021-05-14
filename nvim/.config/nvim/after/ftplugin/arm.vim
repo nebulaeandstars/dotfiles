@@ -1,7 +1,7 @@
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
+" set expandtab
 
 let g:section_heading = '@@@@@@@@@@@@@@@@@@@@'
 let g:section_heading_top_gap = 2

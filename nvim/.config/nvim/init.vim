@@ -153,6 +153,9 @@ Plug 'Shougo/neco-vim'
 Plug 'junegunn/fzf'
 Plug 'alvan/vim-closetag'
 
+" smarter tabs
+Plug 'Thyrum/vim-stabs'
+
 " other
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
@@ -566,16 +569,17 @@ nnoremap <A-S-l> <C-w>l
 
 " other
 nnoremap S :%s//g<Left><Left>
-nnoremap <silent> <Space> :noh<CR>
+nnoremap <silent> <Space><Space> :noh<CR>
 nnoremap == gg=G``
 nnoremap Y y$
+nnoremap Q gq
 
 " compile and preview
 nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
 nnoremap <leader>p :!preview %<CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
-nnoremap <silent> <leader><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
+nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
 
 " show the highlighting groups for the current word
 nnoremap <C-S-L> :call <SID>SynStack()<CR>
@@ -629,6 +633,14 @@ augroup filetypedetect
     au! BufRead,BufNewFile */vimwiki/* set filetype=vimwiki
 augroup END
 
+" solve 'tabs vs spaces' debate by retabbing before reading and writing.
+" requires a 'smart tabs' plugin
+" augroup autoretab
+" 	autocmd BufRead * silent execute "RetabIndent"
+" 	autocmd BufWritePre * silent execute "set expandtab | RetabIndent"
+" 	autocmd BufWritePost * silent execute "set noexpandtab | RetabIndent"
+" augroup END
+
 " automatically delete trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
 autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
@@ -643,7 +655,6 @@ autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 " automatically format .rs, .c, and .cpp files
 autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
 autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
-
 
 " " toggle relative numbers when switching in and out of insert mode
 " augroup numbertoggle
