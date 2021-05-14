@@ -1,36 +1,36 @@
 # Basic binds
 super + Return
-    $TERMINAL
+	$TERMINAL
 super + d
-    dmenu_run
+	dmenu_run
 super + w
-    $BROWSER
+	$BROWSER
 super + shift + w
 	$TRUEBROWSER
 super + control + w
 	torbrowser-launcher
 super + f
-    $TERMINAL -e vifmrun
+	$TERMINAL -e vifmrun
 super + m
-    $TERMINAL -e neomutt
+	$TERMINAL -e neomutt
 super + n
-    $TERMINAL -e newsboat
+	$TERMINAL -e newsboat
 super + a
 	$TERMINAL -e abook --config "$XDG_CONFIG_HOME/abook/abookrc" --datafile "$XDG_DATA_HOME/abook/addressbook"
 super + c
 	$TERMINAL -e calcurse
 super + shift + u
-    manpdf
+	manpdf
 super + shift + p
 	passmenu2 || passmenu
 super + shift + b
-    cycle-backgrounds
+	cycle-backgrounds
 super + control + shift + b
 	bgset $(xdg-user-dir PICTURES)/backgrounds/
 
 # picom
 super + shift + i
-    dmenu_change_compositor_settings
+	dmenu_change_compositor_settings
 
 # switch between keyboard layouts
 super + control + shift + d
@@ -48,9 +48,9 @@ alt + shift + Print
 
 # volume
 XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +2% ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
+	pactl set-sink-volume @DEFAULT_SINK@ +2% ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
 XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -2% ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
+	pactl set-sink-volume @DEFAULT_SINK@ -2% ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
 XF86AudioMicMute
@@ -61,6 +61,6 @@ super + shift + t
 
 # brightness
 XF86MonBrightnessUp
-    brightnessctl s +10% &
+	brightnessctl s +10% &
 XF86MonBrightnessDown
-    brightnessctl s 10%- &
+	brightnessctl s 10%- &
