@@ -580,7 +580,7 @@ nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
 nnoremap <leader>p :!preview %<CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
-nnoremap <silent> <Space><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
+nnoremap <silent> <Space><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
 
 " show the highlighting groups for the current word
 nnoremap <C-S-L> :call <SID>SynStack()<CR>
@@ -608,6 +608,9 @@ inoremap '' ''<Left>
 inoremap `` ``<Left>
 
 inoremap ;; ();<Left><Left>
+
+" edit next \<++> tag (not including tags preceeded by a \
+inoremap <silent> <Space><Space> <Esc>/\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
 
 
 " --- Command Mode --- "
