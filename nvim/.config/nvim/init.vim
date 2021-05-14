@@ -558,6 +558,7 @@ nnoremap <leader>vs :mkview!<CR>
 nnoremap <leader>vl :loadview<CR>
 nnoremap <leader>e :e<CR>gg
 nnoremap <leader>w :w<CR>
+nnoremap <leader>ww :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 
@@ -569,7 +570,7 @@ nnoremap <A-S-l> <C-w>l
 
 " other
 nnoremap S :%s//g<Left><Left>
-nnoremap <silent> <Space><Space> :noh<CR>
+nnoremap <silent> <Space>, :noh<CR>
 nnoremap == gg=G``
 nnoremap Y y$
 nnoremap Q gq
@@ -579,7 +580,7 @@ nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
 nnoremap <leader>p :!preview %<CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
-nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
+nnoremap <silent> <Space><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zvc4l
 
 " show the highlighting groups for the current word
 nnoremap <C-S-L> :call <SID>SynStack()<CR>

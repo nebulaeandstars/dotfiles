@@ -4,7 +4,6 @@ set shiftwidth=2
 
 set wrap
 set linebreak
-set nolist
 set spell
 
 let g:section_heading = '\\section'
