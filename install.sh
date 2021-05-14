@@ -28,11 +28,11 @@ install_with_pacman() {
     fi
 }
 
-install_with_yay() {
+install_with_paru() {
     if ! pacman -Qs "$1" > /dev/null ; then
         echo
         echo "installing $1..."
-        yay -S "$1" --noconfirm
+        paru -S "$1" --noconfirm
         echo
     else
         echo "$1 is already installed!"
@@ -94,7 +94,7 @@ install_with_pacman pipewire
 install_with_pacman pipewire-alsa
 install_with_pacman pipewire-jack
 install_with_pacman xorg
-install_with_yay picom-ibhagwan-git
+install_with_paru picom-ibhagwan-git
 echo
 
 
@@ -103,7 +103,7 @@ install_with_pacman i3-gaps
 install_with_pacman openbox
 
 # other
-install_with_yay libxft-bgra
+install_with_paru libxft-bgra
 install_with_pacman cmake
 install_with_pacman ueberzug
 
@@ -112,19 +112,19 @@ install_with_pacman npm
 
 # --- CLI stuff --- #
 
-# install git and yay
+# install git and paru
 install_with_pacman git
-if ! pacman -Qi yay > /dev/null ; then
+if ! pacman -Qi paru > /dev/null ; then
     echo
-    echo "installing yay..."
+    echo "installing paru..."
     cd /tmp || exit
-    git clone https://aur.archlinux.org/yay.git
-    cd yay || exit
+    git clone https://aur.archlinux.org/paru.git
+    cd paru || exit
     makepkg -si --noconfirm
     cd ~/.dotfiles || exit
     echo
 else
-    echo "yay is already installed"
+    echo "paru is already installed"
 fi
 echo
 
@@ -150,8 +150,8 @@ echo
 install_with_pacman vifm
 install_with_pacman ffmpeg
 install_with_pacman ffmpegthumbnailer
-install_with_yay vifmimg
-install_with_yay fontpreview
+install_with_paru vifmimg
+install_with_paru fontpreview
 
 # install other CLI apps
 install_with_pacman cowsay
@@ -160,7 +160,7 @@ install_with_pacman lolcat
 install_with_pacman neofetch
 install_with_pacman youtube-dl
 install_with_pacman youtube-viewer
-install_with_yay cbonsai
+install_with_paru cbonsai
 
 install_with_pacman imagemagick
 install_with_pacman i3lock
@@ -170,7 +170,7 @@ echo
 
 # install zsh
 install_with_pacman zsh
-install_with_yay antigen
+install_with_paru antigen
 [ ! -d ~/.local/share/zsh/ ] && mkdir -p ~/.local/share/zsh/
 [ ! -d ~/.local/share/zsh/pure/ ] && git clone https://github.com/sindresorhus/pure.git "$HOME/.local/share/zsh/pure/"
 
@@ -205,12 +205,12 @@ install_with_pacman sxiv
 install_with_pacman xwallpaper
 install_with_pacman rxvt-unicode
 install_with_pacman dunst
-# install_with_yay polybar
+# install_with_paru polybar
 echo
 
 
 # install some basic fonts
-install_with_yay ttf-dejavu-emojiless
+install_with_paru ttf-dejavu-emojiless
 install_with_pacman ttf-liberation
 install_with_pacman noto-fonts-cjk
 install_with_pacman noto-fonts-emoji
@@ -218,7 +218,7 @@ echo
 
 
 # install icons
-# install_with_yay paper-icon-theme-git
+# install_with_paru paper-icon-theme-git
 
 # install unclutter
 install_with_pacman unclutter
