@@ -8,12 +8,12 @@ pkill openocd
 
 # compile and upload the program.
 echo compiling...
-make >/dev/null || {
+make -s || {
 	echo "ERROR: Failed to build file"
 	exit
 }
 echo uploading...
-make upload >/dev/null || {
+make -s upload || {
 	echo "ERROR: Failed to upload file"
 	exit
 }
