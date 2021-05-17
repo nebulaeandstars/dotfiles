@@ -63,7 +63,7 @@ let mapleader = " "
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 
 set listchars=tab:\|\ ,precedes:\<,extends:\>
 set list
@@ -154,7 +154,11 @@ Plug 'junegunn/fzf'
 Plug 'alvan/vim-closetag'
 
 " smarter tabs
-Plug 'Thyrum/vim-stabs'
+" Plug 'nebulaeandstars/vim-stabs'
+
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " other
 Plug 'terryma/vim-multiple-cursors'
@@ -205,11 +209,13 @@ let g:gitgutter_sign_removed_first_line = '^-'
 let g:gitgutter_sign_removed_above_and_below = '{-'
 let g:gitgutter_sign_modified_removed = '~-'
 
+
 " --- vifm.vim config --- "
 let g:vifm_replace_netrw = 1
 let g:vifm_replace_netrw_cmd = "Vifm"
 let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
+
 
 " --- deoplete config --- "
 
@@ -230,12 +236,12 @@ call deoplete#custom#option({
 
 call deoplete#custom#option('sources', {
             \ '_': [
+            \ 'ultisnips',
             \ 'ale',
             \ 'omni',
             \ 'file',
-            \ 'buffer',
-            \ 'around',
             \ ]})
+            " \ 'buffer',
 
 call deoplete#custom#var('around', {
             \   'range_above': 20,
@@ -246,9 +252,16 @@ call deoplete#custom#var('around', {
             \})
 
 call deoplete#custom#source('ale', 'mark', '[A]')
+call deoplete#custom#source('ultisnips', 'mark', '[S]')
 call deoplete#custom#source('omni', 'mark', '[O]')
 call deoplete#custom#source('file', 'mark', '[F]')
 call deoplete#custom#source('buffer', 'mark', '[B]')
+
+
+" --- ultisnips config --- "
+let g:UltiSnipsExpandTrigger='<A-Enter>'
+let g:UltiSnipsJumpForwardTrigger='<A-Space>'
+let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 
 
 " --- ALE config --- "
@@ -295,6 +308,8 @@ let g:vimwiki_global_ext = 0
 let g:hardtime_default_on = 0
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
+
+
 
 
 " ############################################################################ "
@@ -580,7 +595,7 @@ nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
 nnoremap <leader>p :!preview %<CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
-nnoremap <silent> <Space><Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
+nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
 
 " show the highlighting groups for the current word
 nnoremap <C-S-L> :call <SID>SynStack()<CR>
@@ -608,9 +623,6 @@ inoremap '' ''<Left>
 inoremap `` ``<Left>
 
 inoremap ;; ();<Left><Left>
-
-" edit next \<++> tag (not including tags preceeded by a \
-inoremap <silent> <Space><Space> <Esc>/\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
 
 
 " --- Command Mode --- "
@@ -640,9 +652,9 @@ augroup END
 " solve 'tabs vs spaces' debate by retabbing before reading and writing.
 " requires a 'smart tabs' plugin
 " augroup autoretab
-" 	autocmd BufRead * silent execute "RetabIndent"
-" 	autocmd BufWritePre * silent execute "set expandtab | RetabIndent"
-" 	autocmd BufWritePost * silent execute "set noexpandtab | RetabIndent"
+" 	autocmd BufRead * silent execute 'RetabIndent'
+" 	autocmd BufWritePre * silent execute 'set expandtab | RetabIndent'
+" 	autocmd BufWritePost * silent execute 'set noexpandtab | RetabIndent'
 " augroup END
 
 " automatically delete trailing whitespace
@@ -658,7 +670,8 @@ autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
 " automatically format .rs, .c, and .cpp files
 autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
-autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
+" autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
+autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4}\" %" | edit
 
 " " toggle relative numbers when switching in and out of insert mode
 " augroup numbertoggle
