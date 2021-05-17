@@ -132,9 +132,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'vifm/vifm.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
+Plug 'junegunn/fzf'
 
 
 " --- usability --- "
@@ -144,14 +144,8 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
+" LSP client and linter
 Plug 'dense-analysis/ale'
-
-Plug 'deoplete-plugins/deoplete-clang'
-Plug 'Shougo/neco-vim'
-" Plug 'artur-shaik/vim-javacomplete2'
-
-Plug 'junegunn/fzf'
-Plug 'alvan/vim-closetag'
 
 " smarter tabs
 " Plug 'nebulaeandstars/vim-stabs'
@@ -162,8 +156,6 @@ Plug 'honza/vim-snippets'
 
 " other
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
 
@@ -177,15 +169,10 @@ Plug 'tpope/vim-repeat'
 
 
 " --- language support --- "
-" Plug 'lervag/vimtex'
 Plug 'ARM9/arm-syntax-vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'kovetskiy/sxhkd-vim'
-" Plug 'rust-lang/rust.vim'
-Plug 'sophacles/vim-processing'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'cespare/vim-toml'
 
 
@@ -285,7 +272,7 @@ let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 
 
-" ---- vim-rooter config --- "
+" --- vim-rooter config --- "
 let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml']
 let g:rooter_change_directory_for_non_project_files = 'current'
 
@@ -302,12 +289,6 @@ let g:vimwiki_list = [{
 
 " only do vimwiki stuff in a vimwiki
 let g:vimwiki_global_ext = 0
-
-
-" --- misc config --- "
-let g:hardtime_default_on = 0
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 2
 
 
 
