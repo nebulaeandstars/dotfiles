@@ -15,9 +15,9 @@
 
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
-if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
-if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
-if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME.'/.cache'       | endif
+if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME.'/.config'      | endif
+if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME.'/.local/share' | endif
 
 set runtimepath^=$XDG_CONFIG_HOME/nvim
 set runtimepath+=$XDG_DATA_HOME/nvim
@@ -26,8 +26,8 @@ set runtimepath+=$XDG_CONFIG_HOME/nvim/after
 set packpath^=$XDG_DATA_HOME/nvim,$XDG_CONFIG_HOME/nvim
 set packpath+=$XDG_CONFIG_HOME/nvim/after,$XDG_DATA_HOME/nvim/after
 
-let g:netrw_home = $XDG_DATA_HOME."/nvim"
-call mkdir($XDG_DATA_HOME."/nvim/spell", 'p', 0700)
+let g:netrw_home = $XDG_DATA_HOME.'/nvim'
+call mkdir($XDG_DATA_HOME.'/nvim/spell', 'p', 0700)
 set viewdir=$XDG_DATA_HOME/nvim/view | call mkdir(&viewdir, 'p', 0700)
 
 set backupdir=$XDG_CACHE_HOME/nvim/backup | call mkdir(&backupdir, 'p', 0700)
@@ -58,7 +58,7 @@ syntax on
 colorscheme andromeda
 runtime statusline.vim
 
-let mapleader = " "
+let mapleader = ' '
 
 set tabstop=4
 set softtabstop=4
@@ -78,17 +78,10 @@ set breakindent
 set showbreak=>\  " do not remove this comment
 
 " set autoformat options
-autocmd FileType * setlocal formatoptions+=crnv1jql
-autocmd FileType * setlocal formatoptions-=o
-autocmd FileType * setlocal formatoptions-=w
-autocmd FileType * setlocal formatoptions-=t
-
-" " automatically wrap lines
-" set columns=80
-" if (&columns > 80) | set columns=80 | endif
-" augroup resize
-"     autocmd VimResized * if (&columns > 80) | set columns=80 | endif
-" augroup END
+set formatoptions+=crnv1jql
+set formatoptions-=o
+set formatoptions-=w
+set formatoptions-=t
 
 " used for folding
 " override these as needed
@@ -111,17 +104,18 @@ let g:empty_line = '^\s*$'
 
 " Install python support if it isn't installed already
 if has('nvim')
-    if !has("python3")
-        exec "!python -m pip install --user pynvim"
+    if !has('python3')
+        exec '!python -m pip install --user pynvim'
         q
     endif
 endif
 
 " Install vim-plug if it isn't installed already "
-if empty(glob("~/.config/nvim/autoload/plug.vim"))
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    PlugInstall --sync | source $MYVIMRC
     q
 endif
 
@@ -199,7 +193,7 @@ let g:gitgutter_sign_modified_removed = '~-'
 
 " --- vifm.vim config --- "
 let g:vifm_replace_netrw = 1
-let g:vifm_replace_netrw_cmd = "Vifm"
+let g:vifm_replace_netrw_cmd = 'Vifm'
 let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
 
@@ -375,7 +369,7 @@ set t_vb=
 " --- Utilities --- "
 " Show highlighting groups for current word "
 function! s:SynStack()
-    if !exists("*synstack")
+    if !exists('*synstack')
         return
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
@@ -386,9 +380,9 @@ inoremap <expr> <CR> InsertMapForEnter()
 function! InsertMapForEnter()
     if pumvisible()
         return "\<C-y>"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) ==? '}'
         return "\<CR>\<Esc>O"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) ==? '</'
         return "\<CR>\<Esc>O"
     else
         return "\<CR>"
@@ -433,37 +427,37 @@ function! VimFoldText()
     let l:folded_line_num = v:foldend - v:foldstart
     let l:line_text = substitute(getline(v:foldstart), '', '', 'g')
     let l:fillcharcount = &textwidth - len(l:line_text) - len(l:folded_line_num) - 10
-    return v:folddashes . "| " . l:line_text . repeat(' ', l:fillcharcount) . ' (' . l:folded_line_num . ' L)' . repeat(' ', 200)
+    return v:folddashes . '| ' . l:line_text . repeat(' ', l:fillcharcount) . ' (' . l:folded_line_num . ' L)' . repeat(' ', 200)
 endfunction
 
 
 " ---- Custom text objects --- "
 function! s:IndTxtObj(inner)
-    let curline = line(".")
-    let lastline = line("$")
-    let i = indent(line(".")) - &shiftwidth * (v:count1 - 1)
+    let curline = line('.')
+    let lastline = line('$')
+    let i = indent(line('.')) - &shiftwidth * (v:count1 - 1)
     let i = i < 0 ? 0 : i
-    if getline(".") =~ "^\\s*$"
+    if getline('.') =~? "^\\s*$"
         return
     endif
-    let p = line(".") - 1
-    let nextblank = getline(p) =~ "^\\s*$"
+    let p = line('.') - 1
+    let nextblank = getline(p) =~? "^\\s*$"
     while p > 0 && (nextblank || indent(p) >= i )
         -
-        let p = line(".") - 1
-        let nextblank = getline(p) =~ "^\\s*$"
+        let p = line('.') - 1
+        let nextblank = getline(p) =~? "^\\s*$"
     endwhile
     if (!a:inner)
         -
     endif
     normal! 0V
     call cursor(curline, 0)
-    let p = line(".") + 1
-    let nextblank = getline(p) =~ "^\\s*$"
+    let p = line('.') + 1
+    let nextblank = getline(p) =~? "^\\s*$"
     while p <= lastline && (nextblank || indent(p) >= i )
         +
-        let p = line(".") + 1
-        let nextblank = getline(p) =~ "^\\s*$"
+        let p = line('.') + 1
+        let nextblank = getline(p) =~? "^\\s*$"
     endwhile
     if (!a:inner)
         +
@@ -639,20 +633,28 @@ augroup END
 " augroup END
 
 " automatically delete trailing whitespace
-autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
-autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
-autocmd BufWritePre * %s/\%^\n\+//e " newlines at beginning
+augroup delete_whitespace
+    autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
+    autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
+    autocmd BufWritePre * %s/\%^\n\+//e " newlines at beginning
+augroup END
 
 " refresh the gitgutter when saving
-autocmd BufWritePre * GitGutter
+augroup gitgutter
+    autocmd BufWritePre * GitGutter
+augroup END
 
 " run xrdb whenever .Xresources is updated
-autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+augroup xrdb
+    autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+augroup END
 
-" automatically format .rs, .c, and .cpp files
-autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
-" autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
-autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4}\" %" | edit
+augroup autoformat
+    " automatically format .rs, .c, and .cpp files
+    autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
+    " autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
+    autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4}\" %" | edit
+augroup END
 
 " " toggle relative numbers when switching in and out of insert mode
 " augroup numbertoggle
@@ -667,8 +669,10 @@ augroup watchvimrc
 augroup END
 
 " toggle some settings when entering and leaving Goyo
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup goyo_extras
+    autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
 
 " use Goyo by default in mutt
 augroup mutt
