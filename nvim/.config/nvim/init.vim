@@ -221,9 +221,10 @@ call deoplete#custom#option('sources', {
             \ 'ale',
             \ 'omni',
             \ 'file',
+            \ 'around',
             \ ]})
-            " \ 'buffer',
 
+" source tags
 call deoplete#custom#var('around', {
             \   'range_above': 20,
             \   'range_below': 20,
@@ -231,12 +232,19 @@ call deoplete#custom#var('around', {
             \   'mark_below': '[↓]',
             \   'mark_changes': '[~]',
             \})
-
 call deoplete#custom#source('ale', 'mark', '[A]')
 call deoplete#custom#source('ultisnips', 'mark', '[S]')
 call deoplete#custom#source('omni', 'mark', '[O]')
 call deoplete#custom#source('file', 'mark', '[F]')
 call deoplete#custom#source('buffer', 'mark', '[B]')
+
+" source priorities
+call deoplete#custom#source('buffer', 'rank', 0)
+call deoplete#custom#source('around', 'rank', 1)
+call deoplete#custom#source('file', 'rank', 2)
+call deoplete#custom#source('omni', 'rank', 3)
+call deoplete#custom#source('ale', 'rank', 4)
+call deoplete#custom#source('ultisnips', 'rank', 5)
 
 
 " --- ultisnips config --- "
