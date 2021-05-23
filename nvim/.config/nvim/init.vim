@@ -285,8 +285,12 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 " use markdown syntax
 " let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{
-            \'path': '~/.local/share/vimwiki',
-            \'path_html': '~/.local/share/vimwiki_html',
+            \'path': '~/.local/share/vimwiki/default',
+            \'path_html': '~/.local/share/vimwiki/html',
+            \'syntax': 'markdown', 'ext': '.md'
+            \},{
+            \'path': '~/.local/share/vimwiki/yypel',
+            \'path_html': '~/.local/share/yypel/html',
             \'syntax': 'markdown', 'ext': '.md'
             \}]
 
@@ -560,7 +564,6 @@ nnoremap <leader>vs :mkview!<CR>
 nnoremap <leader>vl :loadview<CR>
 nnoremap <leader>e :e<CR>gg
 nnoremap <leader>w :w<CR>
-nnoremap <leader>ww :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 
