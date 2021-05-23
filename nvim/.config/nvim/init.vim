@@ -172,6 +172,7 @@ Plug 'cespare/vim-toml'
 
 " --- other --- "
 Plug 'vimwiki/vimwiki'
+Plug 'LukeSmithxyz/vimling'
 
 call plug#end()
 
@@ -537,6 +538,9 @@ nnoremap <leader>d :ALEDetail<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>gh :ALEHover<CR>
 nnoremap <leader>gr :ALERename<CR>
+
+" vimling
+nnoremap <leader>tl :call ToggleIPA() \| call ToggleDeadKeys()<CR>
 
 " show/hide
 nnoremap <leader>sf :set foldcolumn+=2<CR>
