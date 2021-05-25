@@ -286,12 +286,12 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 " let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{
             \'path': '~/.local/share/vimwiki/default',
-            \'path_html': '~/.local/share/vimwiki/html',
-            \'syntax': 'markdown', 'ext': '.md'
+            \'path_html': '~/.local/share/vimwiki/default/html',
+            \'syntax': 'markdown',
+            \'ext': '.md',
             \},{
             \'path': '~/.local/share/vimwiki/yypel',
-            \'path_html': '~/.local/share/yypel/html',
-            \'syntax': 'markdown', 'ext': '.md'
+            \'path_html': '~/.local/share/vimwiki/yypel/html',
             \}]
 
 " only do vimwiki stuff in a vimwiki
