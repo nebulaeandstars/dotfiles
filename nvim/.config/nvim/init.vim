@@ -208,8 +208,10 @@ endif
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#rust#racer_binary = '$CARGO_HOME/bin/racer'
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+imap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+inoremap <a-n> <c-n>
+inoremap <a-n> <c-n>
 
 call deoplete#custom#option({
             \ 'auto_complete_delay': 0,
