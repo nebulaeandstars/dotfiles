@@ -190,6 +190,12 @@ hi link xmlTagName Tag
 hi link jsReturn Function
 
 " rust
+call s:hi('rustOperator', s:fg14, s:none, s:bold)
+call s:hi('rustSigil', s:fg13, s:none, s:none)
+call s:hi('rustKeyword', s:fg9, s:none, s:bold)
+call s:hi('rustString', s:fg9, s:none, s:none)
+call s:hi('rustStructure', s:fg13, s:none, s:bold)
+call s:hi('rustConditional', s:fg9, s:none, s:italic)
 call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
 
 " latex/lilypond
