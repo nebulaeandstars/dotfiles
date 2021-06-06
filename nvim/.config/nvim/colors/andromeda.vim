@@ -108,6 +108,10 @@ call s:hi('Pmenu', s:fg0, s:bg6, s:none)
 " color column
 call s:hi('ColorColumn', s:fg15, s:bg8, s:none)
 
+" split divider
+call s:hi('VertSplit', s:fg8, s:bg0, s:none)
+set fillchars+=vert:\ " do not remove this comment
+
 " cursor line
 call s:hi('cursorline', s:none, s:bg8, s:none)
 call s:hi('cursorcolumn', s:none, s:bg8, s:none)
@@ -198,6 +202,16 @@ call s:hi('rustStructure', s:fg13, s:none, s:bold)
 call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
 call s:hi('rustConditional', s:fg9, s:none, s:italic)
 hi link rustRepeat rustConditional
+
+" ada
+call s:hi('adaBegin', s:fg12, s:none, s:bold)
+call s:hi('adaSpecial', s:fg14, s:none, s:bold)
+call s:hi('adaTypedef', s:fg13, s:none, s:bold)
+call s:hi('adaOperator', s:fg14, s:none, s:bold)
+call s:hi('adaString', s:fg12, s:none, s:none)
+hi link adaAssignment adaOperator
+hi link adaStructure adaStorageClass
+hi link adaEnd adaBegin
 
 " latex/lilypond
 call s:hi('lilyKeyword', s:fg10, s:none, s:bold)

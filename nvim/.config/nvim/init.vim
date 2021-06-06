@@ -58,7 +58,7 @@ syntax on
 colorscheme andromeda
 runtime statusline.vim
 
-let mapleader = ' '
+let mapleader = ','
 
 set tabstop=4
 set softtabstop=4
@@ -652,6 +652,12 @@ augroup delete_whitespace
     autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
     autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
     autocmd BufWritePre * %s/\%^\n\+//e " newlines at beginning
+augroup END
+
+" set the leader key to ',' when in insert mode
+augroup change_leader_in_insert_mode
+    autocmd InsertEnter * let mapleader = ','
+    autocmd InsertLeave * let mapleader = ' '
 augroup END
 
 " refresh the gitgutter when saving
