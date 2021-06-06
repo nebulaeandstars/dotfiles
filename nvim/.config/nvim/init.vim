@@ -600,8 +600,6 @@ vnoremap S :s//g<Left><Left>
 
 
 " --- Insert Mode --- "
-inoremap OO <CR><CR><Up>
-
 inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap [] []<Left>
