@@ -569,11 +569,22 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 
-" window commands
+" split navigation
 nnoremap <A-S-h> <C-w>h
 nnoremap <A-S-j> <C-w>j
 nnoremap <A-S-k> <C-w>k
 nnoremap <A-S-l> <C-w>l
+
+" split resizing
+nnoremap <silent> <A-C-h> :vertical resize +1<CR>
+nnoremap <silent> <A-C-j> :resize -1<CR>
+nnoremap <silent> <A-C-k> :resize +1<CR>
+nnoremap <silent> <A-C-l> :vertical resize -1<CR>
+
+" split opening
+nnoremap <leader>tt :vnew term://zsh<CR>
+nnoremap <leader>th <C-w>t<C-w>K
+nnoremap <leader>tv <C-w>t<C-w>H
 
 " other
 nnoremap S :%s//g<Left><Left>
