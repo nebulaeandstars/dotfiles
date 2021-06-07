@@ -168,6 +168,7 @@ Plug 'kovetskiy/sxhkd-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'cespare/vim-toml'
+Plug 'nebulaeandstars/vim-chapel'
 
 
 " --- other --- "
@@ -225,6 +226,7 @@ call deoplete#custom#option('sources', {
             \ 'omni',
             \ 'file',
             \ 'around',
+            \ 'buffer',
             \ ]})
 
 " source tags
@@ -663,12 +665,6 @@ augroup delete_whitespace
     autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
     autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
     autocmd BufWritePre * %s/\%^\n\+//e " newlines at beginning
-augroup END
-
-" set the leader key to ',' when in insert mode
-augroup change_leader_in_insert_mode
-    autocmd InsertEnter * let mapleader = ','
-    autocmd InsertLeave * let mapleader = ' '
 augroup END
 
 " refresh the gitgutter when saving
