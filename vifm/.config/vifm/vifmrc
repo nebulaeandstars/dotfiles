@@ -137,6 +137,8 @@ command! reload :write | restart
 filextype *.mp4,*.jpg,*.png,*.pdf
     \ xdg-open &>/dev/null &
 
+filextype *.aseprite aseprite &>/dev/null
+
 " open everything else in the terminal using xdg-open
 filetype * xdg-open
 
@@ -235,11 +237,11 @@ nnoremap go :!setsid $TERMINAL -e xdg-open %f &>/dev/null &<cr>
 nnoremap gi :!sxiv -t %d &>/dev/null &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap <space>c :write | edit $MYVIFMRC | restart<cr>
+nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
 
 " Select all files in a directory
-nnoremap <space>a ggvG
-vnoremap <space>a <esc>ggvG
+nnoremap ,a ggvG
+vnoremap ,a <esc>ggvG
 
 " Toggle visibility of preview window
 nnoremap w :view<cr>
@@ -247,13 +249,13 @@ vnoremap w :view<cr>gv
 
 nnoremap S :sort<cr>
 
-" Toggle wrap setting on <space>w
-nnoremap <space>w :set wrap!<cr>
+" Toggle wrap setting on ,w
+nnoremap ,w :set wrap!<cr>
 
 nnoremap > :!vifmimg inc<CR>
 nnoremap < :!vifmimg dec<CR>
 
-nnoremap <space>q :quit<CR>
+nnoremap ,q :quit<CR>
 
 " never save state unless told to explicitly with :w
 nnoremap ZZ ZQ
