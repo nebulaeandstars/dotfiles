@@ -2,6 +2,8 @@
 
 *.font: monospace:size=10
 
+Xft.dpi: 96
+
 ! special
 *.foreground:   #ffffff
 *.background:   #2d2d2d
