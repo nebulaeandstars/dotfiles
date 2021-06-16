@@ -20,14 +20,14 @@ done
 
 edit_file() {
     [ $FADE_STEP ] && {
-        sed -i "s/^fade-in-step =.*/fade-in-step = $FADE_STEP;/" "$1"
-        sed -i "s/^fade-out-step =.*/fade-out-step = $FADE_STEP;/" "$1"
+        sed -i "s/^fade-in-step =.*/fade-in-step = $FADE_STEP;/ \
+        ; s/^fade-out-step =.*/fade-out-step = $FADE_STEP;/" "$1"
     }
     [ "$CORNER_RADIUS" ] && \
         sed -i "s/^corner-radius =.*/corner-radius = $CORNER_RADIUS;/" "$1"
     [ "$ACTIVE_OPACITY" ] && {
-        sed -i "s/^active-opacity =.*/active-opacity = $ACTIVE_OPACITY;/" "$1"
-        sed -i "s/^frame-opacity =.*/frame-opacity = $ACTIVE_OPACITY;/" "$1"
+        sed -i "s/^active-opacity =.*/active-opacity = $ACTIVE_OPACITY;/ \
+        ; s/^frame-opacity =.*/frame-opacity = $ACTIVE_OPACITY;/" "$1"
     }
     [ "$INACTIVE_OPACITY" ] && \
         sed -i "s/^inactive-opacity =.*/inactive-opacity = $INACTIVE_OPACITY;/" "$1"
