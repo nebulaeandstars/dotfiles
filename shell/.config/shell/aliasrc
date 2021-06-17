@@ -60,6 +60,16 @@ alias gr="git restore --staged"
 alias gs="git status"
 alias gv="git status -v"
 
+alias gl="git log -30 --graph \
+    --pretty=format:'¶%h %s' \
+    | column -t -s '¶' -W3"
+alias gll="git log --graph"
+
+# alias gll="git log -30 --graph \
+#     --pretty=format:'¶%h¶%ad¶%an¶%s' \
+#     --date=format:'%Y-%m-%d %H:%M' \
+#     | column -t -s '¶' -W5 -T4"
+
 # pacman
 type -p pacman >/dev/null 2>&1 && {
     alias R="sudo pacman -Rns"
