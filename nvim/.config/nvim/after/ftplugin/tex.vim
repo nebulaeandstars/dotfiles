@@ -15,3 +15,4 @@ let g:subsection_heading = '\\subsection'
 inoremap "" ``''<Left><Left>
 inoremap __ \emph{}<Left>
 inoremap ** \textbf{}<Left>
+inoremap $$ $$<Left>
