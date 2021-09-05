@@ -41,7 +41,7 @@ case "$ext" in
 	# c) cc "$file" -o "$base" && "$base" ;;
 	# cpp) g++ "$file" -o "$base" && "$base" ;;
 	# cs) mcs "$file" && mono "$base".exe ;;
-	go) go run "$file" ;;
+	go) go build ;;
 	# h) sudo make install ;;
 	# java) javac -d classes "$file" && java -cp classes "${1%.*}" ;;
 	# m) octave "$file" ;;
