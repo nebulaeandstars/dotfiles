@@ -64,3 +64,10 @@ XF86MonBrightnessUp
 	brightnessctl s +10% &
 XF86MonBrightnessDown
 	brightnessctl s 10%- &
+
+# other
+super + control + shift + k
+	kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" && \
+		[ $kb = 'us' ] && kb='gr' || kb='us' ; \
+		setxkbmap -layout "$kb" && \
+		pkill -RTMIN+14 "${STATUSBAR:-dwmblocks}"

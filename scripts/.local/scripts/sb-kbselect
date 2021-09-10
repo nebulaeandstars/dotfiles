@@ -4,11 +4,11 @@
 kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" || exit 1
 
 case $BLOCK_BUTTON in
-	1) [ $kb = 'us' ] && kb='dvorak' || kb='us'
+	1) [ $kb = 'us' ] && kb='gr' || kb='us'
 	    setxkbmap -layout "$kb"
 	    pkill -RTMIN+14 "${STATUSBAR:-dwmblocks}";;
 	3) notify-send "⌨  Keyboard/language module" "$(printf "%s" "\- Current layout: $(setxkbmap -query | grep -oP 'layout:\s*\K\w+')")
-- Left click to toggle between the dvorak and us layouts.";;
+- Left click to switch between keyboard layouts.";;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
