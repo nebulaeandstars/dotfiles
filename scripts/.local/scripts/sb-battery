@@ -3,6 +3,20 @@
 # Prints all batteries, their percentage remaining and an emoji corresponding
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
+#    ║     ║     ║     ║     ║
+# ╠══════╬══════╬══════╬══════╬══════╣
+# ║ f57d ║ f57e ║ f57f ║ f580 ║ f581 ║
+# ║     ║     ║     ║     ║     ║
+# ╠══════╬══════╬══════╬══════╬══════╣
+# ║ f582 ║ f583 ║ f584 ║ f585 ║ f586 ║
+# ║     ║     ║     ║     ║     ║
+# ╠══════╬══════╬══════╬══════╬══════╣
+# ║ f587 ║ f588 ║ f589 ║ f58a ║ f58b ║
+# ║     ║     ║     ║     ║     ║
+# ╠══════╬══════╬══════╬══════╬══════╣
+# ║ f58c ║ f58d ║ f58e ║ f58f ║ f590 ║
+# ║     ║     ║     ║        
+
 case $BLOCK_BUTTON in
 	3) notify-send "🔋 Battery module" "🔋: discharging
 🛑: not charging
@@ -25,18 +39,18 @@ do
 	# Sets up the status and capacity
 	status=$(cat "$battery/status")
 	case "$status" in
-		"Full") status="⚡" ;;
-		"Discharging") status="🔋" ;;
-		"Charging") status="🔌" ;;
-		"Not charging") status="🛑" ;;
-		"Unknown") status="♻️" ;;
+		"Full") status="" ;;
+		"Discharging") status="" ;;
+		"Charging") status="" ;;
+		"Not charging") status="" ;;
+		"Unknown") status="" ;;
 	esac
 	capacity=$(cat "$battery/capacity")
 	# Will make a warn variable if discharging and low
-	[ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗"
+	[ "$status" = "" ] && [ "$capacity" -le 25 ] && warn="❗"
 
     # Send a warning if below 10%
-    [ "$status" = "🔋" ] && [ "$capacity" -le 10 ] && notify-send --app-name="sb-battery" --urgency critical "❗WARNING:" "Battery at $capacity%"
+    [ "$status" = "" ] && [ "$capacity" -le 10 ] && notify-send --app-name="sb-battery" --urgency critical "❗WARNING:" "Battery at $capacity%"
 
 	# Prints the info
 	printf "%s%s%d%%\n" "$status" "$warn" "$capacity"; unset warn

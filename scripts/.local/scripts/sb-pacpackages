@@ -27,7 +27,8 @@ case $BLOCK_BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-[ $(pidof yay) ] && icon="⬇️" || icon="📦"
+# ﰶ ﮥ      
+[ $(pidof paru) ] && icon="ﰭ" || icon=""
 
 # pacman -Qu | grep -Fcv "[ignored]" | sed "s/^/📦/;s/^📦0$//g"
 pacman -Qu | grep -Fcv "[ignored]" | sed "s/^/$icon/g"

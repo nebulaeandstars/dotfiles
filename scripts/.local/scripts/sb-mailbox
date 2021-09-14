@@ -17,13 +17,19 @@ unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx
 
 mutt_open=$(pidof neomutt || pidof mutt)
 
+# [ "$unread" = "0" ] && {
+#     [ $mutt_open ] && icon="📭" || icon="📪"
+# } || {
+#     [ $mutt_open ] && icon="📬" || icon="📫"
+# }
+
 [ "$unread" = "0" ] && {
-    [ $mutt_open ] && icon="📭" || icon="📪"
+    [ $mutt_open ] && icon="﫮" || icon="﫯"
 } || {
-    [ $mutt_open ] && icon="📬" || icon="📫"
+    [ $mutt_open ] && icon="﫮" || icon="﫯"
 }
 
-pidof mbsync >/dev/null 2>&1 && icon="🔃"
+pidof mbsync >/dev/null 2>&1 && icon=""
 
 # [ "$unread" = "0" ] && [ "$icon" = "" ] || echo " $icon$unread"
 echo "$icon$unread"
