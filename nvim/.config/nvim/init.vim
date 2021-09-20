@@ -137,6 +137,7 @@ Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 
 " LSP client and linter
 Plug 'dense-analysis/ale'
@@ -169,11 +170,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'cespare/vim-toml'
 Plug 'nebulaeandstars/vim-chapel'
+Plug 'chr4/nginx.vim'
 
 
 " --- other --- "
 Plug 'vimwiki/vimwiki'
 Plug 'LukeSmithxyz/vimling'
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -263,7 +266,8 @@ let g:ale_linters = {
             \ 'rust': ['rls'],
             \ 'c': ['ccls'],
             \ 'cpp': ['ccls'],
-            \ 'go': ['$GOBIN/gopls'],
+            \ 'go': ['gopls'],
+            \ 'java': ['javac'],
             \ 'python': ['pyls'],
             \ 'bash': ['bash-language-server', 'start'],
             \ 'sh': ['bash-language-server', 'start'],
@@ -617,15 +621,16 @@ inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap [] []<Left>
 inoremap <> <><Left>
-inoremap (( (
-inoremap [[ [
-inoremap {{ {
-inoremap << <
+inoremap ()) ()
+inoremap {}} {}
+inoremap []] []
+inoremap <>> <>
+
+inoremap ;; ();<Left><Left>
+
 inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
-
-inoremap ;; ();<Left><Left>
 
 
 " --- Command Mode --- "
@@ -678,10 +683,7 @@ augroup xrdb
 augroup END
 
 augroup autoformat
-    " automatically format .rs, .c, and .cpp files
-    autocmd BufWritePost *.rs silent execute "!rustfmt %" | edit
-    " autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4, TabWidth: 4, UseTab: Always}\" %" | edit
-    autocmd BufWritePost *.c,*.cpp silent execute "!clang-format -i --style=\"{IndentWidth: 4}\" %" | edit
+    au BufWrite *.rs,*.c,*.cpp,*.cs,*.py,*.go :Autoformat
 augroup END
 
 " " toggle relative numbers when switching in and out of insert mode

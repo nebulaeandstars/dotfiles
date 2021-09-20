@@ -194,6 +194,7 @@ hi link xmlTagName Tag
 hi link jsReturn Function
 
 " rust
+syntax keyword rustKeyword async
 call s:hi('rustOperator', s:fg14, s:none, s:bold)
 call s:hi('rustSigil', s:fg13, s:none, s:none)
 call s:hi('rustKeyword', s:fg9, s:none, s:bold)
@@ -202,6 +203,10 @@ call s:hi('rustStructure', s:fg13, s:none, s:bold)
 call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
 call s:hi('rustConditional', s:fg9, s:none, s:italic)
 hi link rustRepeat rustConditional
+
+" go
+call s:hi('goKeyword', s:fg10, s:none, s:bold)
+call s:hi('goString', s:fg4, s:none, s:none)
 
 " ada
 call s:hi('adaBegin', s:fg12, s:none, s:bold)
