@@ -3,7 +3,7 @@
 # Prints all batteries, their percentage remaining and an emoji corresponding
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
-#    ║     ║     ║     ║     ║
+#       ║     ║     ║     ║     ║
 # ╠══════╬══════╬══════╬══════╬══════╣
 # ║ f57d ║ f57e ║ f57f ║ f580 ║ f581 ║
 # ║     ║     ║     ║     ║     ║
@@ -47,10 +47,11 @@ do
 	esac
 	capacity=$(cat "$battery/capacity")
 	# Will make a warn variable if discharging and low
-	[ "$status" = "" ] && [ "$capacity" -le 25 ] && warn="❗"
+	# [ "$status" = "" ] && [ "$capacity" -le 25 ] && warn="❗"
+	[ "$status" = "" ] && [ "$capacity" -le 25 ] && warn="!"
 
     # Send a warning if below 10%
-    [ "$status" = "" ] && [ "$capacity" -le 10 ] && notify-send --app-name="sb-battery" --urgency critical "❗WARNING:" "Battery at $capacity%"
+    [ "$status" = "" ] && [ "$capacity" -le 10 ] && notify-send --app-name="sb-battery" --urgency critical "WARNING:" "Battery at $capacity%"
 
 	# Prints the info
 	printf "%s%s%d%%\n" "$status" "$warn" "$capacity"; unset warn
