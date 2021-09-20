@@ -255,6 +255,7 @@ nnoremap ,w :set wrap!<cr>
 nnoremap > :!vifmimg inc<CR>
 nnoremap < :!vifmimg dec<CR>
 
+nnoremap q :quit<CR>
 nnoremap ,q :quit<CR>
 
 " never save state unless told to explicitly with :w
