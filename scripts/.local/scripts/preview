@@ -7,6 +7,7 @@ basename="$(echo "${*}" | sed 's/\.[^\/.]*$//')"
 
 case "${*}" in
 	*.tex|*.m[dse]|*.[rR]md|*.mom|*.[0-9]) setsid -f xdg-open "$basename".pdf >/dev/null 2>&1 ;;
+    *.md) setsid -f xdg-open "$basename".pdf >/dev/null 2>&1 ;;
 	*.html) setsid -f "$BROWSER" "$basename".html >/dev/null 2>&1 ;;
 	*.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
 	*.rs) cargo run -q ;;

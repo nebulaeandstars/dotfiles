@@ -45,6 +45,7 @@ case "$ext" in
 	# h) sudo make install ;;
 	# java) javac -d classes "$file" && java -cp classes "${1%.*}" ;;
 	# m) octave "$file" ;;
+    md) pandoc -f markdown -t pdf "$file" > "$filedir"/"$base".pdf ;;
 	# md)	if  [ -x "$(command -v lowdown)" ]; then
 	# 		lowdown -d nointem -e super "$file" -Tms | groff -mpdfmark -ms -kept > "$base".pdf
 	# 	elif [ -x "$(command -v groffdown)" ]; then
