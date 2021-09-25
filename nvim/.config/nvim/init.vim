@@ -646,9 +646,14 @@ cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 " # AUTOMATIC COMMANDS # AUTOMATIC COMMANDS # AUTOMATIC COMMANDS ############# "
 " ############################################################################ "
 
+augroup inform_new_buffer
+    autocmd!
+    autocmd BufEnter * echom "New buffer!"
+augroup end
+
 " custom file-typing
-augroup filetypedetect
-    au!
+augroup filetype_detect
+    autocmd!
     autocmd BufRead,BufNewFile *vifm set filetype=vim
     autocmd BufRead,BufNewFile *.S set filetype=arm
 
@@ -661,25 +666,25 @@ augroup END
 
 " automatically delete trailing whitespace
 augroup delete_whitespace
-    au!
+    autocmd!
     autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
     autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
     autocmd BufWritePre * %s/\%^\n\+//e " newlines at beginning
 augroup END
 
 " refresh the gitgutter when saving
-augroup gitgutter
-    au!
-    autocmd BufWritePre * GitGutter
+augroup gitgutter_refresh
+    autocmd!
+    autocmd BufEnter,BufWritePre * GitGutter
 augroup END
 
 augroup autoformat
-    au!
+    autocmd!
     au BufWrite *.rs,*.c,*.cpp,*.cs,*.py,*.go :Autoformat
 augroup END
 
-augroup reload
-    au!
+augroup autoreload
+    autocmd!
     autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
     autocmd BufWritePost $MYVIMRC so $MYVIMRC
 augroup END
