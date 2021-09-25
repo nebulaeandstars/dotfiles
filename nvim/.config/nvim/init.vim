@@ -126,6 +126,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'vifm/vifm.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf'
@@ -305,6 +306,22 @@ let g:vimwiki_list = [{
 
 " only do vimwiki stuff in a vimwiki
 let g:vimwiki_global_ext = 0
+
+
+" --- goyo & limelight config --- "
+
+let g:goyo_width = 81
+let g:goyo_height = 85
+let g:goyo_linenr = 0
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_guifg = 'DarkGray'
+
+let g:limelight_paragraph_span = 0
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 
 
 
@@ -651,11 +668,6 @@ cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 " # AUTOMATIC COMMANDS # AUTOMATIC COMMANDS # AUTOMATIC COMMANDS ############# "
 " ############################################################################ "
 
-augroup inform_new_buffer
-    autocmd!
-    autocmd BufEnter * echom "New buffer!"
-augroup end
-
 " custom file-typing
 augroup filetype_detect
     autocmd!
@@ -681,6 +693,12 @@ augroup END
 augroup gitgutter_refresh
     autocmd!
     autocmd BufEnter,BufWritePre * GitGutter
+augroup END
+
+augroup goyo_limelight
+    autocmd!
+    autocmd User GoyoEnter Limelight
+    autocmd User GoyoLeave Limelight!
 augroup END
 
 augroup autoformat
