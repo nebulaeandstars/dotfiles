@@ -161,6 +161,7 @@ Plug 'tpope/vim-commentary'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'
 
 
 " --- language support --- "
@@ -538,19 +539,23 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 nnoremap <leader>ts :set spell!<CR>
 nnoremap <leader>ss :set spell!<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
-nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>o :Vifm<CR>
+nnoremap <leader>u  :UndotreeToggle<CR>
+nnoremap <leader>o  :Vifm<CR>
 nnoremap <leader>tg :GitGutterToggle<CR>
 nnoremap <leader>zg :GitGutterFold<CR>
 nnoremap <leader>th :HardTimeToggle<CR>
-nnoremap <leader>f :Goyo<CR>
+nnoremap <leader>f  :Goyo<CR>
 
 " ALE
-nnoremap <leader>a :ALEToggleBuffer<CR>
-nnoremap <leader>d :ALEDetail<CR>
+nnoremap <leader>a  :ALEToggleBuffer<CR>
+nnoremap <leader>d  :ALEDetail<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>gh :ALEHover<CR>
 nnoremap <leader>gr :ALERename<CR>
+
+" Alignment
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " vimling
 nnoremap <leader>tl :call ToggleIPA() \| call ToggleDeadKeys()<CR>
@@ -571,9 +576,9 @@ nnoremap <leader>g :GitGutter<CR>
 " save/load
 nnoremap <leader>vs :mkview!<CR>
 nnoremap <leader>vl :loadview<CR>
-nnoremap <leader>e :e<CR>gg
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :call Quit()<CR>
+nnoremap <leader>e  :e<CR>gg
+nnoremap <leader>w  :w<CR>
+nnoremap <leader>q  :call Quit()<CR>
 nnoremap <leader>wq :call Quit()<CR>
 
 " split navigation
