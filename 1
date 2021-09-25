@@ -412,6 +412,15 @@ endfunction
 
 
 " --- Goyo --- "
+function! s:goyo_enter()
+    set noshowmode
+    set noshowcmd
+endfunction
+
+function! s:goyo_leave()
+    set showmode
+    set showcmd
+endfunction
 
 " get around Goyo not quitting properly
 cabbrev wq :w<cr>:call Quit()<cr>
@@ -648,7 +657,6 @@ cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 
 " custom file-typing
 augroup filetypedetect
-    au!
     autocmd BufRead,BufNewFile *vifm set filetype=vim
     autocmd BufRead,BufNewFile *.S set filetype=arm
 
@@ -659,9 +667,16 @@ augroup filetypedetect
     au! BufRead,BufNewFile */vimwiki/* set filetype=vimwiki
 augroup END
 
+" solve 'tabs vs spaces' debate by retabbing before reading and writing.
+" requires a 'smart tabs' plugin
+" augroup autoretab
+" 	autocmd BufRead * silent execute 'RetabIndent'
+" 	autocmd BufWritePre * silent execute 'set expandtab | RetabIndent'
+" 	autocmd BufWritePost * silent execute 'set noexpandtab | RetabIndent'
+" augroup END
+
 " automatically delete trailing whitespace
 augroup delete_whitespace
-    au!
     autocmd BufWritePre * %s/\s\+$//e   " trailing spaces
     autocmd BufWritePre * %s/\n\+\%$//e " trailing newlines
     autocmd BufWritePre * %s/\%^\n\+//e " newlines at beginning
@@ -669,17 +684,39 @@ augroup END
 
 " refresh the gitgutter when saving
 augroup gitgutter
-    au!
     autocmd BufWritePre * GitGutter
 augroup END
 
+" run xrdb whenever .Xresources is updated
+augroup xrdb
+    autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+augroup END
+
 augroup autoformat
-    au!
     au BufWrite *.rs,*.c,*.cpp,*.cs,*.py,*.go :Autoformat
 augroup END
 
-augroup reload
+" " toggle relative numbers when switching in and out of insert mode
+" augroup numbertoggle
+"     autocmd!
+"     autocmd InsertLeave * set relativenumber
+"     autocmd InsertEnter * set norelativenumber
+" augroup END
+
+augroup watchvimrc
     au!
-    autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
-    autocmd BufWritePost $MYVIMRC so $MYVIMRC
+    au BufWritePost $MYVIMRC so $MYVIMRC
+augroup END
+
+" toggle some settings when entering and leaving Goyo
+augroup goyo_extras
+    autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
+
+" use Goyo by default in mutt
+augroup mutt
+    autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
+    autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
+    autocmd BufRead,BufNewFile /tmp/neomutt* gg
 augroup END
