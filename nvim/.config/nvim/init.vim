@@ -605,6 +605,14 @@ nnoremap <leader>w  :w<CR>
 nnoremap <leader>q  :call Quit()<CR>
 nnoremap <leader>wq :call Quit()<CR>
 
+" split opening
+nnoremap <leader>tt :vnew term://zsh<CR>
+nnoremap <leader>so :split<CR>
+
+" split manipulation
+nnoremap <leader>sh <C-w>t<C-w>K
+nnoremap <leader>sv <C-w>t<C-w>H
+
 " split navigation
 nnoremap <A-S-h> <C-w>h
 nnoremap <A-S-j> <C-w>j
@@ -617,10 +625,20 @@ nnoremap <silent> <A-C-j> :resize -1<CR>
 nnoremap <silent> <A-C-k> :resize +1<CR>
 nnoremap <silent> <A-C-l> :vertical resize -1<CR>
 
-" split opening
-nnoremap <leader>tt :vnew term://zsh<CR>
-nnoremap <leader>th <C-w>t<C-w>K
-nnoremap <leader>tv <C-w>t<C-w>H
+" tab opening
+nnoremap <leader>to :TabVifm<CR>
+
+" tab navigation
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 10gt
 
 " other
 nnoremap S :%s//g<Left><Left>
