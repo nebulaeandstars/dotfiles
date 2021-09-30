@@ -130,6 +130,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf'
+Plug 'justinmk/vim-syntax-extra' " extra highlighting for c
 
 
 " --- usability --- "
@@ -414,6 +415,12 @@ function! s:SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+command! CheckHighlightUnderCursor echo {l,c,n ->
+        \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
+        \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
+        \  .'lo<'    . synIDattr(synIDtrans(synID(l, c, 1)), n) . '> '
+        \ }(line("."), col("."), "name")
+
 " Handle pressing enter inside {} or <><>
 inoremap <expr> <CR> InsertMapForEnter()
 function! InsertMapForEnter()
@@ -630,7 +637,8 @@ nnoremap <leader>p :!preview %<CR>
 nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
 
 " show the highlighting groups for the current word
-nnoremap <C-S-L> :call <SID>SynStack()<CR>
+" nnoremap <C-S-L> :call <SID>SynStack()<CR>
+nnoremap <C-S-L> :CheckHighlightUnderCursor<CR>
 
 
 " --- Visual Mode --- "
@@ -701,9 +709,16 @@ augroup goyo_limelight
     autocmd User GoyoLeave Limelight!
 augroup END
 
-augroup autoformat
+if expand('%:p:h:h:t') !=# 'suckless'
+    augroup autoform:tat
+        autocmd!
+        autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.py,*.go :Autoformat
+    augroup END
+endif
+
+augroup disable_ale
     autocmd!
-    au BufWrite *.rs,*.c,*.cpp,*.cs,*.py,*.go :Autoformat
+    autocmd BufEnter config.def.h :ALEDisable
 augroup END
 
 augroup autoreload

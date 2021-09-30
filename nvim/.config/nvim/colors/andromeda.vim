@@ -193,6 +193,22 @@ hi link javaScriptIdentifier TypeDef
 hi link xmlTagName Tag
 hi link jsReturn Function
 
+" c
+call s:hi('cComment', s:fg7, s:none, s:none)
+call s:hi('cKeyword', s:fg12, s:none, s:bold)
+hi link cTypedef cKeyword
+hi link cStatement cKeyword
+hi link cRepeat cKeyword
+hi link cConditional cKeyword
+hi link cUserFunction cKeyword
+call s:hi('cType', s:fg13, s:none, s:none)
+hi link cStructure cType
+hi link cInclude cKeyword
+call s:hi('cIncluded', s:fg2, s:none, s:none)
+call s:hi('cOperator', s:fg14, s:none, s:bold)
+call s:hi('cDelimiter', s:fg15, s:none, s:none)
+call s:hi('cLabel', s:fg5, s:none, s:underline)
+
 " rust
 syntax keyword rustKeyword async
 call s:hi('rustOperator', s:fg14, s:none, s:bold)
