@@ -21,7 +21,10 @@ dunst &
 abar &
 bgset "$(xdg-user-dir PICTURES)/backgrounds/"
 
-dwm
+while true
+    do
+    dwm 2> /dev/null
+done
 
 # session=${1:-i3}
 # case $session in
