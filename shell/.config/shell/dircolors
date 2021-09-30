@@ -134,6 +134,10 @@ EXEC 01;32 # files with execute permission
 .zoo 00;35
 .zst 00;35
 
+ # unreadable/binary data
+.d 00;35
+.o 00;35
+
 # image formats
 .jpg 00;34
 .jpeg 00;34
@@ -219,6 +223,7 @@ EXEC 01;32 # files with execute permission
 # programming source files
 .S 00;36
 .asm 00;36
+.h 00;37
 .c 00;36
 .cc 00;36
 .cpp 00;36
@@ -246,3 +251,4 @@ EXEC 01;32 # files with execute permission
 .pdf 00;31
 .ts 00;33
 .tsx 00;33
+.diff 00;35
