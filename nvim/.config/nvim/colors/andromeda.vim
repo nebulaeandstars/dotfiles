@@ -180,7 +180,6 @@ call s:hi('Debug', s:fg1, s:none, s:bold)
 " ############################################################################ "
 
 " python
-syntax keyword pythonSelf self
 call s:hi('pythonStatement', s:fg10, s:none, s:bold)
 call s:hi('pythonOperator', s:fg14, s:none, s:bold)
 call s:hi('pythonSpaceError', s:fg8, s:none, s:inverse)
@@ -210,7 +209,6 @@ call s:hi('cDelimiter', s:fg15, s:none, s:none)
 call s:hi('cLabel', s:fg5, s:none, s:underline)
 
 " rust
-syntax keyword rustKeyword async
 call s:hi('rustOperator', s:fg14, s:none, s:bold)
 call s:hi('rustSigil', s:fg13, s:none, s:none)
 call s:hi('rustKeyword', s:fg9, s:none, s:bold)
