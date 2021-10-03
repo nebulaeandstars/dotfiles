@@ -222,6 +222,9 @@ fileviewer <font/*>
 " Start shell in current directory
 nnoremap s :shell<cr>
 
+" Open and quit
+nnoremap L l:quit<CR>
+
 " Open file in a text editor
 nnoremap o :!$EDITOR %f<cr>
 " Open file in a text editor in a new terminal
