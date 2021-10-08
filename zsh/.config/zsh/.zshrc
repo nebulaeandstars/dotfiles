@@ -160,7 +160,8 @@ message_bonsai() {
 }
 
 message() {
-    message_bonsai
+    which cbonsai > /dev/null && message_bonsai \
+        || { which cowsay > /dev/null && message_cowsay }
 }
 
 message
