@@ -174,6 +174,7 @@ Plug 'mxw/vim-jsx'
 Plug 'cespare/vim-toml'
 Plug 'nebulaeandstars/vim-chapel'
 Plug 'chr4/nginx.vim'
+Plug 'gentoo/gentoo-syntax'
 
 
 " --- other --- "
