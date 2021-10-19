@@ -153,10 +153,15 @@ message_cowsay() {
 message_bonsai() {
     BONSAI_LINES=$(tput lines)
     BONSAI_MESSAGE=$(date_message)
+    # (( BONSAI_LINES < 8 )) && BONSAI_BASE=3 \
+    #     || { (( BONSAI_LINES < 15 )) && BONSAI_BASE=2 \
+    #     || BONSAI_BASE=1 }
+    #         cbonsai -p -m="$BONSAI_MESSAGE" -L $BONSAI_LINES -b $BONSAI_BASE -s $(( $RANDOM % 30000 ))
+
     (( BONSAI_LINES < 8 )) && BONSAI_BASE=3 \
         || { (( BONSAI_LINES < 15 )) && BONSAI_BASE=2 \
         || BONSAI_BASE=1 }
-            cbonsai -p -m="$BONSAI_MESSAGE" -L $BONSAI_LINES -b $BONSAI_BASE -s $(( $RANDOM % 30000 ))
+            cbonsai -p -L $BONSAI_LINES -b $BONSAI_BASE -s $(( $RANDOM % 30000 ))
 }
 
 message() {
