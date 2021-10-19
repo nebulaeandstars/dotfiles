@@ -50,6 +50,9 @@ alias abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DA
 alias gbd="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
 alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
 
+# wrappers
+alias android-studio="_JAVA_AWT_WM_NONREPARENTING=1 android-studio &disown && exit"
+
 # git
 alias ga="git add"
 alias gb="git checkout"

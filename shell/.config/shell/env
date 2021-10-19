@@ -13,7 +13,7 @@ type -p nvim >/dev/null 2>&1 \
 # type -p nvim >/dev/null 2>&1 \
     # && export MANPAGER="nvim +Man!" || export EDITOR="vim -M +MANPAGER -"
 type -p qutebrowser >/dev/null 2>&1 && export BROWSER="qutebrowser"
-export TRUEBROWSER="brave"
+export TRUEBROWSER="firefox"
 export READER="zathura"
 export PAGER="vimpager"
 
