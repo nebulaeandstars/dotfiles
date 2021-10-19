@@ -132,7 +132,7 @@ IMAPStore mfc-remote
 Host imap.gmail.com
 Port 993
 User thomas@musicforcanberra.org.au
-PassCmd "pass google.com/mfc"
+PassCmd "pass app-passwords/mfc-mutt"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
