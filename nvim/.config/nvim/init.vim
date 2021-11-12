@@ -266,7 +266,7 @@ let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 
 " --- ALE config --- "
 let g:ale_linters = {
-            \ 'rust': ['rls'],
+            \ 'rust': ['analyzer'],
             \ 'c': ['ccls'],
             \ 'cpp': ['ccls'],
             \ 'go': ['gopls'],
@@ -576,6 +576,7 @@ nnoremap <leader>d  :ALEDetail<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>gh :ALEHover<CR>
 nnoremap <leader>gr :ALERename<CR>
+nnoremap <leader>n :ALENextWrap<CR>
 
 " Alignment
 xmap ga <Plug>(EasyAlign)
@@ -699,6 +700,7 @@ augroup filetype_detect
     autocmd!
     autocmd BufRead,BufNewFile *vifm set filetype=vim
     autocmd BufRead,BufNewFile *.S set filetype=arm
+    autocmd BufRead,BufNewFile *.asm set filetype=nasm
 
     autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
     autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff

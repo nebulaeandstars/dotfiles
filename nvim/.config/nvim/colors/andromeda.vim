@@ -218,6 +218,11 @@ call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
 call s:hi('rustConditional', s:fg9, s:none, s:italic)
 hi link rustRepeat rustConditional
 
+" asm
+call s:hi('nasmLabel', s:fg12, s:none, s:bold)
+call s:hi('nasmDirective', s:fg13, s:none, s:bold)
+call s:hi('nasmString', s:fg4, s:none, s:none)
+
 " go
 call s:hi('goKeyword', s:fg10, s:none, s:bold)
 call s:hi('goString', s:fg4, s:none, s:none)
