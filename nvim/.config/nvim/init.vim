@@ -174,6 +174,8 @@ Plug 'cespare/vim-toml'
 Plug 'nebulaeandstars/vim-chapel'
 Plug 'chr4/nginx.vim'
 Plug 'gentoo/gentoo-syntax'
+Plug 'sevko/vim-nand2tetris-syntax'
+Plug 'elixir-editors/vim-elixir'
 
 
 " --- other --- "
@@ -266,7 +268,7 @@ let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 
 " --- ALE config --- "
 let g:ale_linters = {
-            \ 'rust': ['analyzer'],
+            \ 'rust': ['rls'],
             \ 'c': ['ccls'],
             \ 'cpp': ['ccls'],
             \ 'go': ['gopls'],

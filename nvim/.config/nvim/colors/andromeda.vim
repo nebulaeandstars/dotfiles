@@ -218,6 +218,19 @@ call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
 call s:hi('rustConditional', s:fg9, s:none, s:italic)
 hi link rustRepeat rustConditional
 
+" elixir
+call s:hi('elixirKeyword', s:fg13, s:none, s:bold)
+call s:hi('elixirString', s:fg5, s:none, s:none)
+call s:hi('elixirDocString', s:fg14, s:none, s:bold)
+call s:hi('elixirOperator', s:fg10, s:none, s:bold)
+hi link elixirStringDelimiter elixirString
+hi link elixirStringDelimiter elixirString
+hi link elixirDefine elixirKeyword
+hi link elixirModuleDefine elixirKeyword
+hi link elixirBlockDefinition elixirKeyword
+hi link elixirModuleDeclaration elixirFunctionDeclaration
+hi link elixirId elixirFunctionDeclaration
+
 " asm
 call s:hi('nasmLabel', s:fg12, s:none, s:bold)
 call s:hi('nasmDirective', s:fg13, s:none, s:bold)
