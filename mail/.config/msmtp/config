@@ -37,7 +37,7 @@ host smtp.gmail.com
 port 587
 from thomas@musicforcanberra.org.au
 user thomas@musicforcanberra.org.au
-passwordeval "pass google/app-passwords/mfc-mutt"
+passwordeval "pass app-passwords/mfc-mutt"
 
 account u6379186@anu.edu.au
 host smtp.office365.com

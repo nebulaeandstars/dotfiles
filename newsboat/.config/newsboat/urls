@@ -2,14 +2,14 @@
 https://archlinux.org/feeds/news/ "updates" "~Arch Linux (Updates)"
 https://lukesmith.xyz/rss.xml "updates" "~Luke Smith (Updates)"
 https://landchad.net/rss.xml "updates" "~landchad.net"
+https://os.phil-opp.com/rss.xml "updates" "~blog-os"
 
--------------------
+# -------------------
 # News
-https://www.abc.net.au/science/news/topic/latest/latest.xml "news" "~ABC Science (News)"
-https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml "news" "~NYT World News (News)"
-http://feeds.bbci.co.uk/news/world/rss.xml "news" "~BBC World News (News)"
-https://www.canberratimes.com.au/rss.xml "news" "~Canberra Times (News)"
-https://www.news.com.au/feed/ "news" "~news.com.au (News)"
+# https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml "news" "~NYT World News (News)"
+# http://feeds.bbci.co.uk/news/world/rss.xml "news" "~BBC World News (News)"
+# https://www.canberratimes.com.au/rss.xml "news" "~Canberra Times (News)"
+# https://www.news.com.au/feed/ "news" "~news.com.au (News)"
 
 -------------------
 # Videos
