@@ -48,13 +48,13 @@ alt + shift + Print
 
 # volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +2% ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
+	pactl set-sink-volume @DEFAULT_SINK@ +2% ; abar update volume
 XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -2% ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
+	pactl set-sink-volume @DEFAULT_SINK@ -2% ; abar update volume
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
+	pactl set-sink-mute @DEFAULT_SINK@ toggle ; abar update volume
 XF86AudioMicMute
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pkill -RTMIN+13 "${STATUSBAR-dwmblocks}"
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle ; abar update volume
 
 super + shift + t
 	pkill -RTMIN+13 "${STATUSBAR:-dwmblocks}"
