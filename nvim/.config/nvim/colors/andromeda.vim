@@ -216,7 +216,15 @@ call s:hi('rustString', s:fg9, s:none, s:none)
 call s:hi('rustStructure', s:fg13, s:none, s:bold)
 call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
 call s:hi('rustConditional', s:fg9, s:none, s:italic)
+call s:hi('rustLifetime', s:fg2, s:none, s:none)
+call s:hi('rustAttribute', s:fg7, s:none, s:none)
+call s:hi('rustTrait', s:fg5, s:none, s:none)
+call s:hi('rustMacro', s:fg13, s:none, s:bold)
 hi link rustRepeat rustConditional
+hi link rustDerive rustAttribute
+hi link rustAssert rustMacro
+hi link rustQuestionMark rustOperator
+hi link rustAttributeParameter rustTrait
 
 " elixir
 call s:hi('elixirKeyword', s:fg13, s:none, s:bold)

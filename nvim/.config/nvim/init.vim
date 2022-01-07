@@ -104,7 +104,7 @@ let g:empty_line = '^\s*$'
 " Install python support if it isn't installed already
 if has('nvim')
     if !has('python3')
-        exec '!python -m pip install --user pynvim'
+        exec '!sudo python -m pip install pynvim'
         q
     endif
 endif
@@ -176,6 +176,8 @@ Plug 'chr4/nginx.vim'
 Plug 'gentoo/gentoo-syntax'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'elixir-editors/vim-elixir'
+
+Plug 'deoplete-plugins/deoplete-jedi'
 
 
 " --- other --- "
@@ -388,6 +390,10 @@ set splitbelow splitright
 
 " display the cursor position in the status line
 set ruler
+
+" highlight the current line and column
+set cursorline
+set cursorcolumn
 
 " always display the status line, even if only one window is displayed
 set laststatus=2
@@ -724,6 +730,15 @@ augroup gitgutter_refresh
     autocmd!
     autocmd BufEnter,BufWritePre * GitGutter
 augroup END
+
+" python language server init
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
 
 augroup goyo_limelight
     autocmd!
