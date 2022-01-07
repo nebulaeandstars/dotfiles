@@ -34,9 +34,11 @@ super + shift + i
 
 # switch between keyboard layouts
 super + control + shift + d
-	setxkbmap -layout dvorak &
+	setxkbmap -layout dvorak && abar update keyboard
+super + control + shift + d
+	setxkbmap -layout gr && abar update keyboard
 super + control + shift + q
-	setxkbmap -layout us &
+	setxkbmap -layout us && abar update keyboard
 
 # screenshot
 Print
@@ -75,5 +77,4 @@ control + alt + shift + space
 super + control + shift + k
 	kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" && \
 		[ $kb = 'us' ] && kb='gr' || kb='us' ; \
-		setxkbmap -layout "$kb" && \
-		pkill -RTMIN+14 "${STATUSBAR:-dwmblocks}"
+		setxkbmap -layout "$kb" && abar update keyboard
