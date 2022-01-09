@@ -675,20 +675,20 @@ vnoremap S :s//g<Left><Left>
 
 
 " --- Insert Mode --- "
-inoremap () ()<Left>
-inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap <> <><Left>
+inoremap () ()<C-g>U<Left>
+inoremap {} {}<C-g>U<Left>
+inoremap [] []<C-g>U<Left>
+inoremap <> <><C-g>U<Left>
 inoremap ()) ()
 inoremap {}} {}
 inoremap []] []
 inoremap <>> <>
 
-inoremap ;; ();<Left><Left>
+inoremap ;; ();<C-g>U<Left><C-g>U<Left>
 
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap `` ``<Left>
+inoremap "" ""<C-g>U<Left>
+inoremap '' ''<C-g>U<Left>
+inoremap `` ``<C-g>U<Left>
 
 
 " --- Command Mode --- "
