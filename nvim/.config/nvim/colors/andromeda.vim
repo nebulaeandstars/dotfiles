@@ -88,7 +88,7 @@ call s:hi('SpellCap', s:fg0, s:bg12, s:none)
 
 " delimiters
 call s:hi('Delimiter', s:fg14, s:none, s:bold)
-call s:hi('MatchParen', s:fg14, s:bg8, s:bold)
+call s:hi('MatchParen', s:fg0, s:bg7, s:bold)
 
 
 " ############################################################################ "
@@ -101,9 +101,40 @@ call s:hi('CursorLineNr', s:fg14, s:none, s:none)
 
 " error messages
 call s:hi('ErrorMsg', s:fg9, s:none, s:none)
+call s:hi('WarningMsg', s:fg12, s:none, s:none)
 
 " pmenu (for autocomplete, etc)
 call s:hi('Pmenu', s:fg0, s:bg6, s:none)
+call s:hi('PmenuSel', s:fg6, s:bg8, s:none)
+call s:hi('PmenuSbar', s:fg7, s:bg8, s:none)
+call s:hi('PmenuThumb', s:fg7, s:bg8, s:none)
+
+" coc.nvim
+call s:hi('CocFloating', s:fg15, s:bg8, s:none)
+" call s:hi('CocFadeOut', s:fg15, s:none, s:none)
+
+call s:hi('CocErrorSign', s:fg9, s:none, s:none)
+call s:hi('CocErrorVirtualText', s:fg9, s:none, s:none)
+call s:hi('CocErrorFloat', s:fg9, s:none, s:none)
+call s:hi('CocErrorHighlight', s:fg9, s:none, s:underline)
+
+call s:hi('CocWarningSign', s:fg12, s:none, s:none)
+call s:hi('CocWarningVirtualText', s:fg12, s:none, s:none)
+call s:hi('CocWarningFloat', s:fg12, s:none, s:none)
+call s:hi('CocWarningHighlight', s:fg12, s:none, s:underline)
+call s:hi('CocDeprecatedHighlight', s:fg13, s:none, s:underline)
+call s:hi('CocUnusedHighlight', s:fg7, s:none, s:underline)
+
+call s:hi('CocInfoSign', s:fg11, s:none, s:none)
+call s:hi('CocInfoVirtualText', s:fg11, s:none, s:none)
+call s:hi('CocInfoFloat', s:fg11, s:none, s:none)
+call s:hi('CocInfoHighlight', s:fg11, s:none, s:underline)
+
+call s:hi('CocHintSign', s:fg7, s:none, s:none)
+call s:hi('CocHintVirtualText', s:fg7, s:none, s:none)
+call s:hi('CocHintFloat', s:fg10, s:none, s:none)
+call s:hi('CocHintVirtualText', s:fg7, s:none, s:underline)
+
 
 " color column
 call s:hi('ColorColumn', s:fg15, s:bg8, s:none)

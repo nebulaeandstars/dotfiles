@@ -54,6 +54,8 @@ set runtimepath+=/usr/share/vim/vimfiles/ftplugin/lilypond.vim
 filetype indent plugin on
 syntax on
 
+set encoding=utf-8
+
 colorscheme andromeda
 runtime statusline.vim
 
@@ -102,12 +104,12 @@ let g:empty_line = '^\s*$'
 " --- Install Plug --- "
 
 " Install python support if it isn't installed already
-if has('nvim')
-    if !has('python3')
-        exec '!sudo python -m pip install pynvim'
-        q
-    endif
-endif
+" if has('nvim')
+"     if !has('python3')
+"         exec '!sudo python -m pip install pynvim'
+"         q
+"     endif
+" endif
 
 " Install vim-plug if it isn't installed already "
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -134,17 +136,8 @@ Plug 'justinmk/vim-syntax-extra' " extra highlighting for c
 
 " --- usability --- "
 
-" completion engine
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
-
 " LSP client and linter
-Plug 'dense-analysis/ale'
-
-" smarter tabs
-" Plug 'nebulaeandstars/vim-stabs'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -177,8 +170,6 @@ Plug 'gentoo/gentoo-syntax'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'elixir-editors/vim-elixir'
 
-Plug 'deoplete-plugins/deoplete-jedi'
-
 
 " --- other --- "
 Plug 'vimwiki/vimwiki'
@@ -210,84 +201,53 @@ let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
 
 
-" --- deoplete config --- "
-
-" use yarp if using regular vim
-if !has('nvim')
-    call deoplete#custom#option({'yarp': v:true})
-endif
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#rust#racer_binary = '$CARGO_HOME/bin/racer'
-imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-imap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-inoremap <a-n> <c-n>
-inoremap <a-n> <c-n>
-
-call deoplete#custom#option({
-            \ 'auto_complete_delay': 0,
-            \ 'min_pattern_length': 1,
-            \ })
-
-call deoplete#custom#option('sources', {
-            \ '_': [
-            \ 'ultisnips',
-            \ 'ale',
-            \ 'omni',
-            \ 'file',
-            \ 'around',
-            \ 'buffer',
-            \ ]})
-
-" source tags
-call deoplete#custom#var('around', {
-            \   'range_above': 20,
-            \   'range_below': 20,
-            \   'mark_above': '[↑]',
-            \   'mark_below': '[↓]',
-            \   'mark_changes': '[~]',
-            \})
-call deoplete#custom#source('ale', 'mark', '[A]')
-call deoplete#custom#source('ultisnips', 'mark', '[S]')
-call deoplete#custom#source('omni', 'mark', '[O]')
-call deoplete#custom#source('file', 'mark', '[F]')
-call deoplete#custom#source('buffer', 'mark', '[B]')
-
-" source priorities
-call deoplete#custom#source('buffer', 'rank', 0)
-call deoplete#custom#source('around', 'rank', 1)
-call deoplete#custom#source('file', 'rank', 2)
-call deoplete#custom#source('omni', 'rank', 3)
-call deoplete#custom#source('ale', 'rank', 4)
-call deoplete#custom#source('ultisnips', 'rank', 5)
-
-
 " --- ultisnips config --- "
 let g:UltiSnipsExpandTrigger='<A-Enter>'
 let g:UltiSnipsJumpForwardTrigger='<A-Space>'
 let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 
 
-" --- ALE config --- "
-let g:ale_linters = {
-            \ 'rust': ['rls'],
-            \ 'c': ['ccls'],
-            \ 'cpp': ['ccls'],
-            \ 'go': ['gopls'],
-            \ 'java': ['javac'],
-            \ 'python': ['pyls'],
-            \ 'bash': ['bash-language-server', 'start'],
-            \ 'sh': ['bash-language-server', 'start'],
-            \ 'tex': ['texlab'],
-            \ 'latex': ['texlab'],
-            \ }
+" --- coc.nvim config --- "
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%severity%%code%](%linter%) %s'
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+function! CocToggle()
+    if g:coc_enabled
+        CocDisable
+    else
+        CocEnable
+    endif
+endfunction
+command! CocToggle :call CocToggle()
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" scroll inline floating documentation
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
+  nnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
+  inoremap <silent><nowait><expr> <C-j> "\<c-r>=coc#float#scroll(1, 2)\<cr>"
+  inoremap <silent><nowait><expr> <C-k> "\<c-r>=coc#float#scroll(0, 2)\<cr>"
+  vnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
+  vnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
+endif
 
 
 " --- vim-rooter config --- "
@@ -375,6 +335,13 @@ set tildeop
 
 set undofile
 set nobackup
+
+" reduce the delay after typing before the swapfile is written
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
 
 " follow imports for autocomplete
 " use the dictionary for autocomplete when spellchecking is enabled
@@ -578,13 +545,16 @@ nnoremap <leader>zg :GitGutterFold<CR>
 nnoremap <leader>th :HardTimeToggle<CR>
 nnoremap <leader>f  :Goyo<CR>
 
-" ALE
-nnoremap <leader>a  :ALEToggleBuffer<CR>
-nnoremap <leader>d  :ALEDetail<CR>
-nnoremap <leader>gd :ALEGoToDefinition<CR>
-nnoremap <leader>gh :ALEHover<CR>
-nnoremap <leader>gr :ALERename<CR>
-nnoremap <leader>n :ALENextWrap<CR>
+" coc.nvim
+nnoremap <leader>a :call CocToggle()<CR>
+nmap <leader>d  <plug>(coc-diagnostic-info)
+nmap <leader>n  <plug>(coc-diagnostic-next)
+nmap <leader>gd <plug>(coc-definition)
+nmap <leader>gi <plug>(coc-implementation)
+nmap <leader>rn <plug>(coc-rename)
+nmap <leader>gr <plug>(coc-refactor)
+nmap <leader>gc <plug>(coc-refactor)
+nmap <leader>gf <plug>(coc-fix-current)
 
 " Alignment
 xmap ga <Plug>(EasyAlign)
@@ -731,15 +701,6 @@ augroup gitgutter_refresh
     autocmd BufEnter,BufWritePre * GitGutter
 augroup END
 
-" python language server init
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-
 augroup goyo_limelight
     autocmd!
     autocmd User GoyoEnter Limelight
@@ -752,11 +713,6 @@ if expand('%:p:h:h:t') !=# 'suckless'
         autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.py,*.go :Autoformat
     augroup END
 endif
-
-augroup disable_ale
-    autocmd!
-    autocmd BufEnter config.def.h :ALEDisable
-augroup END
 
 augroup autoreload
     autocmd!

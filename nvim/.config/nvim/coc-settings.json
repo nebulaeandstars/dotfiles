@@ -1,0 +1,69 @@
+{
+    "diagnostic.errorSign": ">>",
+    "diagnostic.warningSign": ">>",
+    "diagnostic.infoSign": ">>",
+
+    "suggest.noselect": true,
+    "suggest.enablePreselect": true,
+
+    "suggest.completionItemKindLabels": {
+        "module": "\uf0e8",
+
+        "struct": "\ue79b",
+        "class": "C",
+        "interface": "I",
+        "enum": "\ue624",
+        "enumMember": "\ufb44",
+        "field": "\ufb44",
+
+        "value": "\uf89f",
+        "variable": "\uf89f",
+        "constant": "\uf8fe",
+        "reference": "&",
+
+        "function": "\u0192",
+        "method": "\u0192",
+        "constructor": "\uf0ad",
+
+        "snippet": "\ue60b",
+
+        "keyword": "\uf1de",
+        "operator": "\u03a8",
+
+        "text": "\ue612",
+        "file": "\ue612",
+        "folder": "\uf07b",
+
+        "property": "\uf02b",
+
+        "color": "\uf15b",
+        "event": "\ufacd",
+        "typeParameter": "\uf728",
+        "default": "?"
+    },
+
+    "languageserver": {
+        "ccls": {
+            "command": "clangd",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ]
+        },
+
+        "gopls": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "filetypes": ["go"]
+        }
+    }
+}
