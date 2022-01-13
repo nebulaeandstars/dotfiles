@@ -180,10 +180,10 @@ call s:hi('Identifier', s:fg7, s:none, s:none)
 call s:hi('Function', s:fg12, s:none, s:bold)
 
 " statements
-call s:hi('Statement', s:fg2, s:none, s:bold)
-call s:hi('Conditional', s:fg2, s:none, s:bolditalic)
+call s:hi('Statement', s:fg10, s:none, s:bold)
+call s:hi('Conditional', s:fg10, s:none, s:italic)
 call s:hi('Label', s:fg5, s:none, s:none)
-call s:hi('Exception', s:fg1, s:none, s:italic)
+call s:hi('Exception', s:fg1, s:none, s:none)
 hi link Repeat Conditional
 
 call s:hi('PreProc', s:fg13, s:none, s:bolditalic)
@@ -211,11 +211,17 @@ call s:hi('Debug', s:fg1, s:none, s:bold)
 " ############################################################################ "
 
 " python
-call s:hi('pythonStatement', s:fg10, s:none, s:bold)
-call s:hi('pythonOperator', s:fg14, s:none, s:bold)
+call s:hi('pythonKeyword', s:fg10, s:none, s:bold)
+call s:hi('pythonConditional', s:fg2, s:none, s:italic)
+call s:hi('pythonString', s:fg4, s:none, s:none)
 call s:hi('pythonSpaceError', s:fg8, s:none, s:inverse)
 call s:hi('pythonAttribute', s:fg14, s:none, s:inverse)
-call s:hi('pythonSelf', s:fg5, s:none, s:italic)
+call s:hi('pythonSelf', s:fg6, s:none, s:none)
+hi link pythonStatement pythonKeyword
+hi link pythonInclude pythonKeyword
+hi link pythonQuotes pythonString
+hi link pythonException pythonConditional
+hi link pythonExceptions Exception
 
 " javascript/typescript
 call s:hi('xmlAttrib', s:fg5, s:none, s:none)

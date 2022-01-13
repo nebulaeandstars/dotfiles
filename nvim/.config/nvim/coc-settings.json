@@ -10,8 +10,8 @@
         "module": "\uf0e8",
 
         "struct": "\ue79b",
-        "class": "C",
-        "interface": "I",
+        "class": "\uf0e8",
+        "interface": "\uf1de",
         "enum": "\ue624",
         "enumMember": "\ufb44",
         "field": "\ufb44",
@@ -27,7 +27,7 @@
 
         "snippet": "\ue60b",
 
-        "keyword": "\uf1de",
+        "keyword": "\uf02b",
         "operator": "\u03a8",
 
         "text": "\ue612",
