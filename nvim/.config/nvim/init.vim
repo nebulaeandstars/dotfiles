@@ -162,7 +162,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ARM9/arm-syntax-vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'cespare/vim-toml'
 Plug 'nebulaeandstars/vim-chapel'
 Plug 'chr4/nginx.vim'
@@ -555,6 +556,9 @@ nmap <leader>rn <plug>(coc-rename)
 nmap <leader>gr <plug>(coc-refactor)
 nmap <leader>gc <plug>(coc-refactor)
 nmap <leader>gf <plug>(coc-fix-current)
+
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Alignment
 xmap ga <Plug>(EasyAlign)

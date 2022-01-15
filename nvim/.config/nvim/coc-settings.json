@@ -6,6 +6,14 @@
     "suggest.noselect": true,
     "suggest.enablePreselect": true,
 
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "typescript",
+        "javascript",
+        "typescriptreact",
+        "javascriptreact"
+    ],
+
     "suggest.completionItemKindLabels": {
         "module": "\uf0e8",
 

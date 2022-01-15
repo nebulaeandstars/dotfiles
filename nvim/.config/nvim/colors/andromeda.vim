@@ -68,6 +68,7 @@ let s:bold = "gui=bold cterm=bold"
 let s:italic = "gui=bold cterm=italic"
 let s:bolditalic = "gui=bold,italic cterm=bold,italic"
 let s:underline = "gui=underline cterm=underline"
+let s:boldunderline = "gui=bold,italic cterm=bold,underline"
 let s:inverse = "gui=inverse cterm=inverse"
 let s:none = "gui=none cterm=none"
 
@@ -88,7 +89,7 @@ call s:hi('SpellCap', s:fg0, s:bg12, s:none)
 
 " delimiters
 call s:hi('Delimiter', s:fg14, s:none, s:bold)
-call s:hi('MatchParen', s:fg0, s:bg7, s:bold)
+call s:hi('MatchParen', s:fg14, s:bg8, s:boldunderline)
 
 
 " ############################################################################ "
@@ -216,18 +217,49 @@ call s:hi('pythonConditional', s:fg2, s:none, s:italic)
 call s:hi('pythonString', s:fg4, s:none, s:none)
 call s:hi('pythonSpaceError', s:fg8, s:none, s:inverse)
 call s:hi('pythonAttribute', s:fg14, s:none, s:inverse)
-call s:hi('pythonSelf', s:fg6, s:none, s:none)
+call s:hi('pythonBuiltin', s:fg6, s:none, s:none)
+hi link pythonSelf pythonBuiltin
 hi link pythonStatement pythonKeyword
 hi link pythonInclude pythonKeyword
 hi link pythonQuotes pythonString
 hi link pythonException pythonConditional
 hi link pythonExceptions Exception
 
-" javascript/typescript
+" javascript
+call s:hi('jsKeyword', s:fg10, s:none, s:bold)
+call s:hi('jsOperator', s:fg14, s:none, s:bold)
+call s:hi('jsThis', s:fg6, s:none, s:none)
+call s:hi('jsString', s:fg12, s:none, s:none)
+call s:hi('jsParens', s:fg15, s:none, s:none)
 call s:hi('xmlAttrib', s:fg5, s:none, s:none)
+call s:hi('jsStorageClass', s:fg13, s:none, s:none)
+hi link jsFunction jsKeyword
+hi link jsFuncParens jsParens
+hi link jsReturn jsKeyword
+hi link jsImport jsKeyword
+hi link jsFrom jsImport
 hi link javaScriptIdentifier TypeDef
 hi link xmlTagName Tag
 hi link jsReturn Function
+
+" typescript
+call s:hi('typescriptEndColons', s:fg15, s:none, s:none)
+call s:hi('typescriptBraces', s:fg15, s:none, s:bold)
+hi link tsKeyword jsKeyword
+hi link typescriptReserved tsKeyword
+hi link typescriptStorageClass jsStorageClass
+hi link typescriptOpSymbols jsOperator
+hi link typescriptStatement tsKeyword
+hi link typescriptThis jsThis
+hi link typescriptString jsString
+hi link typescriptStringS jsString
+hi link typescriptParens jsParens
+hi link typescriptFuncKeyword jsFunction
+
+" jsx/tsx
+call s:hi('jsxBraces', s:fg14, s:none, s:none)
+call s:hi('jsxDot', s:fg14, s:none, s:none)
+call s:hi('jsxComponentName', s:fg7, s:none, s:none)
 
 " c
 call s:hi('cComment', s:fg7, s:none, s:none)
@@ -306,6 +338,11 @@ call s:hi('texSection', s:fg12, s:none, s:bold)
 call s:hi('texDocType', s:fg13, s:none, s:bold)
 call s:hi('texStatement', s:fg10, s:none, s:bold)
 call s:hi('texInputFile', s:fg11, s:none, s:bold)
+
+" html
+call s:hi('htmlTag', s:fg7, s:none, s:none)
+call s:hi('htmlEndTag', s:fg7, s:none, s:none)
+call s:hi('htmlTagName', s:fg12, s:none, s:bold)
 
 " vimscript
 call s:hi('vimCommand', s:fg3, s:none, s:bold)
