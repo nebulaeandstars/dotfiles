@@ -4,7 +4,7 @@
     "diagnostic.infoSign": ">>",
 
     "suggest.noselect": true,
-    "suggest.enablePreselect": true,
+    "suggest.enablePreselect": false,
 
     "coc.preferences.formatOnSaveFiletypes": [
         "css",

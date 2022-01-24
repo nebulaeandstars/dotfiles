@@ -233,6 +233,9 @@ function! CocToggle()
 endfunction
 command! CocToggle :call CocToggle()
 
+let g:coc_snippet_next = '<a-space>'
+let g:coc_snippet_prev = '<c-space>'
+
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
