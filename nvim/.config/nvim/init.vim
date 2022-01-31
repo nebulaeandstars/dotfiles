@@ -308,6 +308,9 @@ set timeoutlen=1000 ttimeoutlen=0
 " enable the mouse "
 set mouse=a
 
+" set cursor styles "
+set guicursor=n:hor10,i-ci:ver10,r-cr:ver10,v:block
+
 " use the system clipboard as the default register "
 set clipboard+=unnamedplus
 
@@ -589,7 +592,6 @@ nnoremap <leader>vl :loadview<CR>
 nnoremap <leader>e  :e<CR>gg
 nnoremap <leader>w  :w<CR>
 nnoremap <leader>q  :call Quit()<CR>
-nnoremap <leader>wq :call Quit()<CR>
 
 " split opening
 nnoremap <leader>tt :vnew term://zsh<CR>
