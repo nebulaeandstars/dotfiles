@@ -594,10 +594,12 @@ nnoremap <leader>wq :call Quit()<CR>
 " split opening
 nnoremap <leader>tt :vnew term://zsh<CR>
 nnoremap <leader>so :split<CR>
+nnoremap <leader>sh :new %<CR>
+nnoremap <leader>sv :vnew %<CR>
 
 " split manipulation
-nnoremap <leader>sh <C-w>t<C-w>K
-nnoremap <leader>sv <C-w>t<C-w>H
+nnoremap <leader>sgh <C-w>t<C-w>K
+nnoremap <leader>sgv <C-w>t<C-w>H
 
 " split navigation
 nnoremap <A-S-h> <C-w>h
@@ -635,7 +637,8 @@ nnoremap Q gq
 
 " compile and preview
 nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
-nnoremap <leader>p :!preview %<CR>
+nnoremap <leader>p :vnew term://preview %<CR>
+nnoremap <leader>tp :vnew term://cargo test -- --include-ignored <CR>
 
 " edit next \<++> tag (not including tags preceeded by a \
 nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
@@ -672,6 +675,7 @@ inoremap `` ``<C-g>U<Left>
 
 " save as sudo with w!! "
 cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
+cnoremap run vnew term://
 
 
 
