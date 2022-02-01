@@ -41,9 +41,8 @@ set viewdir=$XDG_DATA_HOME/nvim/view | call mkdir(&viewdir, 'p', 0700)
 
 
 
-
 " ############################################################################ "
-" # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL # GENERAL ###### "
+" # SETTINGS # SETTINGS # SETTINGS # SETTINGS # SETTINGS # SETTINGS ########## "
 " ############################################################################ "
 
 " add language files here
@@ -93,211 +92,6 @@ let g:subsection_heading = '\%(!.*\)\@<!--- .* ---'
 let g:subsection_heading_top_gap = 0
 let g:subsection_heading_bottom_gap = 0
 let g:empty_line = '^\s*$'
-
-
-
-
-" ############################################################################ "
-" # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ###### "
-" ############################################################################ "
-
-" --- Install Plug --- "
-
-" Install python support if it isn't installed already
-" if has('nvim')
-"     if !has('python3')
-"         exec '!sudo python -m pip install pynvim'
-"         q
-"     endif
-" endif
-
-" Install vim-plug if it isn't installed already "
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    PlugInstall --sync | source $MYVIMRC
-    q
-endif
-
-call plug#begin('~/.config/nvim/plugged')
-
-
-" --- ui tweaks --- "
-Plug 'airblade/vim-gitgutter'
-Plug 'vifm/vifm.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'ap/vim-css-color'
-Plug 'mbbill/undotree'
-Plug 'junegunn/fzf'
-Plug 'justinmk/vim-syntax-extra' " extra highlighting for c
-
-
-" --- usability --- "
-
-" LSP client and linter
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" other
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-rooter'
-
-
-" --- operators --- "
-Plug 'christoomey/vim-sort-motion'
-Plug 'tpope/vim-commentary'
-Plug 'inkarkat/vim-ReplaceWithRegister'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'junegunn/vim-easy-align'
-
-
-" --- language support --- "
-Plug 'ARM9/arm-syntax-vim'
-Plug 'kovetskiy/sxhkd-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'cespare/vim-toml'
-Plug 'nebulaeandstars/vim-chapel'
-Plug 'chr4/nginx.vim'
-Plug 'gentoo/gentoo-syntax'
-Plug 'sevko/vim-nand2tetris-syntax'
-Plug 'elixir-editors/vim-elixir'
-
-
-" --- other --- "
-Plug 'vimwiki/vimwiki'
-Plug 'LukeSmithxyz/vimling'
-Plug 'Chiel92/vim-autoformat'
-
-call plug#end()
-
-
-
-
-" ############################################################################ "
-" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
-" ############################################################################ "
-
-" --- gitgutter config --- "
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_removed = '--'
-let g:gitgutter_sign_removed_first_line = '^-'
-let g:gitgutter_sign_removed_above_and_below = '{-'
-let g:gitgutter_sign_modified_removed = '~-'
-
-
-" --- vifm.vim config --- "
-let g:vifm_replace_netrw = 1
-let g:vifm_replace_netrw_cmd = 'Vifm'
-let g:vifm_embed_term = 1
-let g:vifm_embed_split = 1
-
-
-" --- ultisnips config --- "
-let g:UltiSnipsExpandTrigger='<A-Enter>'
-let g:UltiSnipsJumpForwardTrigger='<A-Space>'
-let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
-
-
-" --- coc.nvim config --- "
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-function! CocToggle()
-    if g:coc_enabled
-        CocDisable
-    else
-        CocEnable
-    endif
-endfunction
-command! CocToggle :call CocToggle()
-
-let g:coc_snippet_next = '<a-space>'
-let g:coc_snippet_prev = '<c-space>'
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" scroll inline floating documentation
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
-  nnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
-  inoremap <silent><nowait><expr> <C-j> "\<c-r>=coc#float#scroll(1, 2)\<cr>"
-  inoremap <silent><nowait><expr> <C-k> "\<c-r>=coc#float#scroll(0, 2)\<cr>"
-  vnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
-  vnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
-endif
-
-
-" --- vim-rooter config --- "
-let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml']
-let g:rooter_change_directory_for_non_project_files = 'current'
-
-
-" --- vimwiki config --- "
-
-" use markdown syntax
-" let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{
-            \'path': '~/.local/share/vimwiki/default',
-            \'path_html': '~/.local/share/vimwiki/default/html',
-            \'syntax': 'markdown',
-            \'ext': '.md',
-            \},{
-            \'path': '~/.local/share/vimwiki/yypel',
-            \'path_html': '~/.local/share/vimwiki/yypel/html',
-            \}]
-
-" only do vimwiki stuff in a vimwiki
-let g:vimwiki_global_ext = 0
-
-
-" --- goyo & limelight config --- "
-
-let g:goyo_width = 81
-let g:goyo_height = 85
-let g:goyo_linenr = 0
-
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_guifg = 'DarkGray'
-
-let g:limelight_paragraph_span = 0
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-
-
-
-
-" ############################################################################ "
-" # SETTINGS # SETTINGS # SETTINGS # SETTINGS # SETTINGS # SETTINGS ########## "
-" ############################################################################ "
 
 " show line numbers
 set number relativenumber
@@ -382,7 +176,175 @@ set visualbell
 set t_vb=
 
 
+" ############################################################################ "
+" # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ###### "
+" ############################################################################ "
 
+" --- Install Plug --- "
+
+" Install vim-plug if it isn't installed already "
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    PlugInstall --sync | source $MYVIMRC
+    q
+endif
+
+call plug#begin('~/.config/nvim/plugged')
+
+" --- ui tweaks --- "
+Plug 'airblade/vim-gitgutter'
+Plug 'vifm/vifm.vim'
+Plug 'ap/vim-css-color'
+Plug 'mbbill/undotree'
+Plug 'junegunn/fzf'
+
+" --- usability --- "
+
+" LSP client and linter
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" other
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-rooter'
+
+" --- operators --- "
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
+Plug 'christoomey/vim-sort-motion'
+Plug 'inkarkat/vim-ReplaceWithRegister'
+
+" --- language support --- "
+Plug 'ARM9/arm-syntax-vim'
+Plug 'kovetskiy/sxhkd-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'cespare/vim-toml'
+Plug 'nebulaeandstars/vim-chapel'
+Plug 'chr4/nginx.vim'
+Plug 'gentoo/gentoo-syntax'
+Plug 'sevko/vim-nand2tetris-syntax'
+Plug 'elixir-editors/vim-elixir'
+Plug 'justinmk/vim-syntax-extra'
+
+" --- other --- "
+Plug 'vimwiki/vimwiki'
+Plug 'LukeSmithxyz/vimling'
+Plug 'Chiel92/vim-autoformat'
+
+call plug#end()
+
+
+" ############################################################################ "
+" # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG # PLUGIN CONFIG ############ "
+" ############################################################################ "
+
+" --- gitgutter config --- "
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '--'
+let g:gitgutter_sign_removed_first_line = '^-'
+let g:gitgutter_sign_removed_above_and_below = '{-'
+let g:gitgutter_sign_modified_removed = '~-'
+
+" --- vifm.vim config --- "
+let g:vifm_replace_netrw = 1
+let g:vifm_replace_netrw_cmd = 'Vifm'
+let g:vifm_embed_term = 1
+let g:vifm_embed_split = 1
+
+" --- ultisnips config --- "
+let g:UltiSnipsExpandTrigger='<A-Enter>'
+let g:UltiSnipsJumpForwardTrigger='<A-Space>'
+let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
+
+" --- coc.nvim config --- "
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! CocToggle()
+    if g:coc_enabled
+        CocDisable
+    else
+        CocEnable
+    endif
+endfunction
+command! CocToggle :call CocToggle()
+
+let g:coc_snippet_next = '<a-space>'
+let g:coc_snippet_prev = '<c-space>'
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" scroll inline floating documentation
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
+  nnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
+  inoremap <silent><nowait><expr> <C-j> "\<c-r>=coc#float#scroll(1, 2)\<cr>"
+  inoremap <silent><nowait><expr> <C-k> "\<c-r>=coc#float#scroll(0, 2)\<cr>"
+  vnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
+  vnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
+endif
+
+" --- vim-rooter config --- "
+let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml']
+let g:rooter_change_directory_for_non_project_files = 'current'
+
+" --- vimwiki config --- "
+" use markdown syntax
+" let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{
+            \'path': '~/.local/share/vimwiki/default',
+            \'path_html': '~/.local/share/vimwiki/default/html',
+            \'syntax': 'markdown',
+            \'ext': '.md',
+            \},{
+            \'path': '~/.local/share/vimwiki/yypel',
+            \'path_html': '~/.local/share/vimwiki/yypel/html',
+            \}]
+
+" only do vimwiki stuff in a vimwiki
+let g:vimwiki_global_ext = 0
+
+" --- goyo & limelight config --- "
+
+let g:goyo_width = 81
+let g:goyo_height = 85
+let g:goyo_linenr = 0
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_guifg = 'DarkGray'
+
+let g:limelight_paragraph_span = 0
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 
 " ############################################################################ "
 " # FUNCTIONS # FUNCTIONS # FUNCTIONS # FUNCTIONS # FUNCTIONS # FUNCTIONS #### "
@@ -417,7 +379,6 @@ function! InsertMapForEnter()
     endif
 endfunction
 
-
 " --- Goyo --- "
 
 " get around Goyo not quitting properly
@@ -429,7 +390,6 @@ function! Quit()
     endif
     quit
 endfunction
-
 
 " --- Folding --- "
 function! VimFolds(lnum)
@@ -458,7 +418,6 @@ function! VimFoldText()
     let l:fillcharcount = &textwidth - len(l:line_text) - len(l:folded_line_num) - 10
     return v:folddashes . '| ' . l:line_text . repeat(' ', l:fillcharcount) . ' (' . l:folded_line_num . ' L)' . repeat(' ', 200)
 endfunction
-
 
 " ---- Custom text objects --- "
 function! s:IndTxtObj(inner)
@@ -495,8 +454,6 @@ function! s:IndTxtObj(inner)
 endfunction
 
 
-
-
 " ############################################################################ "
 " # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS # MAPPINGS ########## "
 " ############################################################################ "
@@ -519,7 +476,6 @@ nnoremap <C-j> :<C-u>move+<CR>==
 xnoremap <C-k> :move-2<CR>='[gv
 xnoremap <C-j> :move'>+<CR>='[gv
 
-
 " --- Custom Text Objects --- "
 
 " current indent
@@ -538,19 +494,31 @@ onoremap <silent> il :<C-U>normal! g_v^<CR>
 xnoremap <silent> id :<C-U>normal! G$Vgg0<CR>
 onoremap <silent> id :<C-U>normal! GVgg<CR>
 
-
 " --- Normal Mode --- "
+
+" use space to enter command mode
+nnoremap <Space> :
 
 " toggle
 nnoremap <leader>ts :set spell!<CR>
-nnoremap <leader>ss :set spell!<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
 nnoremap <leader>u  :UndotreeToggle<CR>
 nnoremap <leader>o  :Vifm<CR>
 nnoremap <leader>tg :GitGutterToggle<CR>
 nnoremap <leader>zg :GitGutterFold<CR>
-nnoremap <leader>th :HardTimeToggle<CR>
-nnoremap <leader>f  :Goyo<CR>
+
+" show/hide
+nnoremap <leader>sf :set foldcolumn+=2<CR>
+nnoremap <leader>hf :set foldcolumn-=2<CR>
+
+nnoremap <leader>sg :GitGutterEnable<CR>
+nnoremap <leader>hg :GitGutterDisable<CR>
+
+nnoremap <leader>sc :set colorcolumn=+1<CR>
+nnoremap <leader>hc :set colorcolumn=<CR>
+
+nnoremap <leader>ss :set spell<CR>
+nnoremap <leader>hs :set nospell<CR>
 
 " coc.nvim
 nnoremap <leader>a :call CocToggle()<CR>
@@ -572,19 +540,6 @@ nmap ga <Plug>(EasyAlign)
 
 " vimling
 nnoremap <leader>tl :call ToggleIPA() \| call ToggleDeadKeys()<CR>
-
-" show/hide
-nnoremap <leader>sf :set foldcolumn+=2<CR>
-nnoremap <leader>hf :set foldcolumn-=2<CR>
-
-nnoremap <leader>sg :GitGutterEnable<CR>
-nnoremap <leader>hg :GitGutterDisable<CR>
-
-nnoremap <leader>sc :set colorcolumn=+1<CR>
-nnoremap <leader>hc :set colorcolumn=<CR>
-
-" refresh
-nnoremap <leader>g :GitGutter<CR>
 
 " save/load
 nnoremap <leader>vs :mkview!<CR>
@@ -632,7 +587,7 @@ nnoremap <A-0> 10gt
 
 " other
 nnoremap S :%s//g<Left><Left>
-nnoremap <silent> <Space>, :noh<CR>
+nnoremap <silent> <leader><Space> :noh<CR>
 nnoremap == gg=G``
 nnoremap Y y$
 nnoremap Q gq
@@ -640,21 +595,21 @@ nnoremap Q gq
 " compile and preview
 nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
 nnoremap <leader>p :vnew term://preview %<CR>
-nnoremap <leader>tp :vnew term://cargo test -- --include-ignored <CR>
+nnoremap <leader>pp :vnew term://preview %<CR>
+nnoremap <leader>pr :vnew term://preview %<CR>
+nnoremap <leader>pt :vnew term://cargo test -- --include-ignored <CR>
 
-" edit next \<++> tag (not including tags preceeded by a \
+" edit next \<++> tag (not including tags preceeded by a \)
 nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
 
 " show the highlighting groups for the current word
 " nnoremap <C-S-L> :call <SID>SynStack()<CR>
 nnoremap <C-S-L> :CheckHighlightUnderCursor<CR>
 
-
 " --- Visual Mode --- "
 
 vnoremap . :normal .<CR>
 vnoremap S :s//g<Left><Left>
-
 
 " --- Insert Mode --- "
 inoremap () ()<C-g>U<Left>
@@ -672,14 +627,11 @@ inoremap "" ""<C-g>U<Left>
 inoremap '' ''<C-g>U<Left>
 inoremap `` ``<C-g>U<Left>
 
-
 " --- Command Mode --- "
 
 " save as sudo with w!! "
 cnoremap w!!<CR> execute 'silent! write !sudo tee % >/dev/null' <bar> edit!<CR>
 cnoremap run vnew term://
-
-
 
 
 " ############################################################################ "
