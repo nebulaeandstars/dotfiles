@@ -29,16 +29,23 @@ export HISTFILESIZE=10000
 export SAVEHIST=10000
 
 # history settings
-setopt inc_append_history
+setopt share_history
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
-setopt share_history
+
+# automatically cd into directories
+setopt auto_cd
 
 # use the completion configuration from oh-my-zsh
 source "$ZDOTDIR/completion.zsh"
+
+# completion settings
+setopt menu_complete
+setopt auto_param_keys
+setopt auto_param_slash
 
 # use custom colors for ls
 eval $(dircolors "$XDG_CONFIG_HOME/shell/dircolors")
@@ -51,10 +58,12 @@ source "$XDG_CONFIG_HOME/shell/aliasrc"
 # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ##########
 ################################################################################
 
+bindkey -v
+
 source /usr/share/zsh/share/antigen.zsh
 
-antigen bundle woefe/vi-mode.zsh
-antigen bundle hcgraf/zsh-sudo
+# antigen bundle woefe/vi-mode.zsh # removed because default is fine
+# antigen bundle hcgraf/zsh-sudo # removed because it doesn't work
 
 antigen bundle djui/alias-tips
 
@@ -64,6 +73,43 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
+
+
+################################################################################
+# VIM-MODE # VIM-MODE # VIM-MODE # VIM-MODE # VIM-MODE # VIM-MODE # VIM-MODE ###
+################################################################################
+
+# Activate vim mode.
+bindkey -v
+
+# Remove mode switching delay.
+KEYTIMEOUT=5
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'line' ]]; then
+    echo -ne '\e[3 q'
+
+  elif [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+
+# Use beam shape cursor on startup.
+echo -ne '\e[5 q'
+
+# Use beam shape cursor for each new prompt.
+preexec() {
+   echo -ne '\e[5 q'
+}
 
 
 ################################################################################
@@ -96,37 +142,52 @@ prompt pure
 ################################################################################
 
 # Syntax highlighting (requires zsh-syntax-highlighting)
+# see https://github.com/zsh-users/zsh-syntax-highlighting/ for details
 typeset -A ZSH_HIGHLIGHT_STYLES
 
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=9,bold'
+ZSH_HIGHLIGHT_STYLES[default]='fg=15'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=9'
 ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=11,bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=5,bold'
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=10,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=5,bold'
-ZSH_HIGHLIGHT_STYLES[command]='fg=10,bold'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=10,bold'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=15,bold'
-ZSH_HIGHLIGHT_STYLES[path]='fg=14,bold'
-ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=14,bold'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=14,bold'
-ZSH_HIGHLIGHT_STYLES[globbing]='fg=13,bold'
-ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=13,bold'
-ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=13,bold'
-ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=11,bold'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=12,bold'
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=12,bold'
-ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=11,bold'
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=12,bold'
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=4,bold'
-ZSH_HIGHLIGHT_STYLES[assign]='fg=12,bold'
-ZSH_HIGHLIGHT_STYLES[redirection]='fg=15,bold'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=6'
+
+ZSH_HIGHLIGHT_STYLES[command]='fg=10,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=10,bold'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=10,bold'
+
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=6'
+
+ZSH_HIGHLIGHT_STYLES[alias]='fg=13,bold'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=13,bold'
+
+ZSH_HIGHLIGHT_STYLES[path]='fg=14,underline'
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=14,underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=14,underline'
+ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=14,underline'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=13,underline'
+
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=13'
+ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=13'
+ZSH_HIGHLIGHT_STYLES[arithmetic-expansion]='fg=7'
+
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=7'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=7'
+
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=4'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=4'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=2'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=2'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=12'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=12'
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=12'
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=12'
+ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=11'
+
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=13'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=13'
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=13'
+
+ZSH_HIGHLIGHT_STYLES[assign]='fg=7,underline'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=8'
 ZSH_HIGHLIGHT_STYLES[named-fd]='fg=5,bold'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=10,bold'
