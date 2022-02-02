@@ -313,6 +313,14 @@ hi link elixirBlockDefinition elixirKeyword
 hi link elixirModuleDeclaration elixirFunctionDeclaration
 hi link elixirId elixirFunctionDeclaration
 
+" haskell
+call s:hi('hsOperator', s:fg14, s:none, s:bold)
+call s:hi('hsLineComment', s:fg7, s:none, s:none)
+call s:hi('hsDelimiter', s:fg14, s:none, s:bold)
+call s:hi('ConId', s:fg5, s:none, s:none)
+hi link hsConSym hsOperator
+hi link hsVarSym hsOperator
+
 " asm
 call s:hi('nasmLabel', s:fg12, s:none, s:bold)
 call s:hi('nasmDirective', s:fg13, s:none, s:bold)

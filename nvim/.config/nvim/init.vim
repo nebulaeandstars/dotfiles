@@ -103,7 +103,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set mouse=a
 
 " set cursor styles "
-set guicursor=n:hor10,i-ci:ver10,r-cr:ver10,v:block
+set guicursor=n:hor10,i-ci:ver10,r-cr:hor10,v:block
 
 " use the system clipboard as the default register "
 set clipboard+=unnamedplus
@@ -163,6 +163,12 @@ set ruler
 set cursorline
 set cursorcolumn
 
+augroup toggle_cursorline
+    autocmd!
+    autocmd InsertEnter * set nocursorline nocursorcolumn
+    autocmd InsertLeave * set cursorline cursorcolumn
+augroup END
+
 " always display the status line, even if only one window is displayed
 set laststatus=2
 
@@ -196,9 +202,12 @@ call plug#begin('~/.config/nvim/plugged')
 " --- ui tweaks --- "
 Plug 'airblade/vim-gitgutter'
 Plug 'vifm/vifm.vim'
-Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf'
+
+if has('nvim')
+    Plug 'ap/vim-css-color'
+endif
 
 " --- usability --- "
 
@@ -236,7 +245,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'justinmk/vim-syntax-extra'
 
 " --- other --- "
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'LukeSmithxyz/vimling'
 Plug 'Chiel92/vim-autoformat'
 
@@ -312,7 +321,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 " --- vim-rooter config --- "
-let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml']
+let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml', 'stack.yaml']
 let g:rooter_change_directory_for_non_project_files = 'current'
 
 " --- vimwiki config --- "
@@ -597,7 +606,7 @@ nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
 nnoremap <leader>p :vnew term://preview %<CR>
 nnoremap <leader>pp :vnew term://preview %<CR>
 nnoremap <leader>pr :vnew term://preview %<CR>
-nnoremap <leader>pt :vnew term://cargo test -- --include-ignored <CR>
+nnoremap <leader>pt :vnew term://preview-test % <CR>
 
 " edit next \<++> tag (not including tags preceeded by a \)
 nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
