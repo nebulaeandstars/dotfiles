@@ -42,7 +42,7 @@ Xft.dpi: 96
 *.color15:      #ffffff
 
 
-*.alpha: 1
+/* *.alpha: 1 */
 
 !! URxvt Appearance
 
