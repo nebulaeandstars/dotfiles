@@ -15,37 +15,37 @@
     ],
 
     "suggest.completionItemKindLabels": {
-        "module": "\uf0e8",
+        "module": "",
 
-        "struct": "\ue79b",
-        "class": "\uf0e8",
-        "interface": "\uf1de",
-        "enum": "\ue624",
-        "enumMember": "\ufb44",
-        "field": "\ufb44",
+        "struct": "",
+        "class": "",
+        "interface": "",
+        "enum": "ﴯ",
+        "enumMember": "ﴯ",
+        "field": "ﰠ",
 
-        "value": "\uf89f",
-        "variable": "\uf89f",
-        "constant": "\uf8fe",
+        "value": "",
+        "variable": "",
+        "constant": "",
         "reference": "&",
 
         "function": "\u0192",
         "method": "\u0192",
         "constructor": "\uf0ad",
 
-        "snippet": "\ue60b",
+        "snippet": "",
 
-        "keyword": "\uf02b",
-        "operator": "\u03a8",
+        "keyword": "",
+        "operator": "",
 
-        "text": "\ue612",
-        "file": "\ue612",
-        "folder": "\uf07b",
+        "text": "",
+        "file": "",
+        "folder": "",
 
         "property": "\uf02b",
 
-        "color": "\uf15b",
-        "event": "\ufacd",
+        "color": "",
+        "event": "",
         "typeParameter": "\uf728",
         "default": "?"
     },
