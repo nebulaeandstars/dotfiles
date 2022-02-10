@@ -82,7 +82,7 @@ call s:hi('Normal', s:fg15, s:none, s:none)
 call s:hi('Comment', s:fg14, s:none, s:none)
 
 " linting
-call s:hi('Error', s:fg15, s:bg1, s:none)
+call s:hi('Error', s:fg9, s:none, s:none)
 call s:hi('Todo', s:fg11, s:bg8, s:bold)
 call s:hi('SpellBad', s:fg0, s:bg9, s:none)
 call s:hi('SpellCap', s:fg0, s:bg12, s:none)

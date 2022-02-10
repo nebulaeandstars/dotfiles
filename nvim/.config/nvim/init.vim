@@ -603,10 +603,9 @@ nnoremap Q gq
 
 " compile and preview
 nnoremap <leader>c :w \| !compile %:p &>/dev/null &<CR><CR>
-nnoremap <leader>p :vnew term://preview %<CR>
-nnoremap <leader>pp :vnew term://preview %<CR>
-nnoremap <leader>pr :vnew term://preview %<CR>
-nnoremap <leader>pt :vnew term://preview-test % <CR>
+nnoremap <leader>pp :w \| !preview %<CR><CR>
+nnoremap <leader>pr :w \| vnew term://preview %<CR>
+nnoremap <leader>pt :w \| vnew term://preview-test % <CR>
 
 " edit next \<++> tag (not including tags preceeded by a \)
 nnoremap <silent> g<Space> /\%(\\.*\)\@<!<++><CR>:noh<CR>zv"_c4l
