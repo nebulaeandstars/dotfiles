@@ -5,8 +5,8 @@ xrdb ~/.Xresources &
 # keyboard settings
 # sxhkd -m -1 &
 sxhkd &
-sudo -n setxkbmap -option caps:escape &
-sudo -n setkeycodes e038 125 &
+setxkbmap -option caps:escape &
+setkeycodes e038 125 &
 xset r rate 300 50 &
 
 # daemons
