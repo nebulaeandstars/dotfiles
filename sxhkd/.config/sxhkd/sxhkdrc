@@ -26,7 +26,7 @@ super + shift + p
 super + shift + b
 	cycle-backgrounds
 super + control + shift + b
-	bgset $(xdg-user-dir PICTURES)/backgrounds/
+	bgset $HOME/img/backgrounds/
 
 # picom
 super + shift + i
@@ -39,14 +39,18 @@ super + control + shift + d
 	setxkbmap -layout gr && abar update keyboard
 super + control + shift + q
 	setxkbmap -layout us && abar update keyboard
+super + control + shift + k
+	kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" && \
+		[ $kb = 'us' ] && kb='gr' || kb='us' ; \
+		setxkbmap -layout "$kb" && abar update keyboard
 
 # screenshot
 Print
-	scrot -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%y-%m-%d_%I:%M:%S_$wx$h.png')"
+	scrot -e 'mv $f '"$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
 control + shift + Print
-	scrot -s -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%y-%m-%d_%I:%M:%S_$wx$h.png')"
+	scrot -s -e 'mv $f '"$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
 alt + shift + Print
-	scrot -u -e 'mv $f '"$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%y-%m-%d_%I:%M:%S_$wx$h.png')"
+	scrot -u -e 'mv $f '"$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
 
 # volume
 XF86AudioRaiseVolume
@@ -72,9 +76,3 @@ control + shift + space
 	dunstctl close-all
 control + alt + shift + space
 	dunstctl history-pop
-
-# other
-super + control + shift + k
-	kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" && \
-		[ $kb = 'us' ] && kb='gr' || kb='us' ; \
-		setxkbmap -layout "$kb" && abar update keyboard
