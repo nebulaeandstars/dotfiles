@@ -1,16 +1,19 @@
 # vim: filetype=neomuttrc
 
 
-# Default mail colors
+# Default color is white
 color index white default '.*'
-color index_author blue default '.*'
-color index_number blue default
 color index_subject cyan default '.*'
 
-# New mail is boldened:
+# New mail is bold
 color index brightwhite black "~N"
-# color index_author brightblue black "~N"
 color index_subject brightcyan black "~N"
+
+# Default "mailbox theme" is blue
+color index_author blue default '.*'
+color index_number blue default
+color indicator brightblue black
+color sidebar_indicator brightblue black
 
 # Deleted mail has a red index
 color index red black "~D"
@@ -24,7 +27,6 @@ mono underline underline
 mono indicator reverse
 mono error bold
 color normal default default
-color indicator black brightgreen
 color normal white default
 color error black brightred
 color tilde black default
@@ -45,18 +47,12 @@ color bold black default
 color underline black default
 color normal default default
 
-color sidebar_indicator black brightgreen
-color sidebar_highlight black brightblue
 # color sidebar_spoolfile brightgreen default
+color sidebar_highlight brightcyan black
 color sidebar_new brightwhite default
 color sidebar_ordinary white default
 color sidebar_flagged brightyellow default
-color sidebar_divider white default
-
-# color sidebar_highlight brightgreen default
-# color sidebar_divider brightblack black
-# color sidebar_flagged brightyellow black
-# color sidebar_new green black
+color sidebar_divider brightblack default
 
 # Regex highlighting:
 color header blue default ".*"

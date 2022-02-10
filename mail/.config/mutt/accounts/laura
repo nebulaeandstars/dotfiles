@@ -10,6 +10,11 @@ set signature="~/.config/mutt/signatures/laura"
 
 color index_number blue default
 color index_author blue default '.*'
+color index_author brightblue default '~N'
+color indicator blue black
+color sidebar_indicator brightblue black
+
+macro index,pager A "<save-message>=Archive<enter>"  "mark message as Archived"
 
 set spoolfile= "+INBOX"
 set postponed = "+Drafts"

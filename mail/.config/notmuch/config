@@ -4,7 +4,7 @@ path=/home/laura/.local/share/mail
 [user]
 name=nebulaeandstars
 primary_email=laura@laurapowles.com
-other_email=thomas@thomaspowles.com;nebulaeandstars@gmail.com;thomas.powles@gmail.com;thomas@musicforcanberra.org.au;u6379186@anu.edu.au;
+other_email=thomas@thomaspowles.com;nebulaeandstars@gmail.com;thomas.powles@gmail.com;thomas@clearboxsystems.com.au;thomas@musicforcanberra.org.au;u6379186@anu.edu.au;
 
 [new]
 tags=unread;inbox;

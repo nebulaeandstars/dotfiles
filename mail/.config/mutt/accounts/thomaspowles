@@ -8,8 +8,11 @@ set realname = "Thomas Powles"
 
 set signature="~/.config/mutt/signatures/thomaspowles"
 
-color index_number cyan default
-color index_author cyan default '.*'
+color index_number red default
+color index_author red default '.*'
+color index_author brightred default '~N'
+color indicator red black
+color sidebar_indicator brightred black
 
 set spoolfile= "+INBOX"
 set postponed = "+[Gmail]/Drafts"

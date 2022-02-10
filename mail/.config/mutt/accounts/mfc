@@ -10,6 +10,9 @@ set signature="~/.config/mutt/signatures/mfc"
 
 color index_number yellow default
 color index_author yellow default '.*'
+color index_author brightyellow default '~N'
+color indicator yellow black
+color sidebar_indicator brightyellow black
 
 set spoolfile= "+INBOX"
 set postponed = "+[Gmail]/Drafts"

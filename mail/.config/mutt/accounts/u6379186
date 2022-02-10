@@ -1,7 +1,7 @@
 # vim: filetype=neomuttrc
 
 set imap_user = "u6379186@anu.edu.au"
-set imap_pass = `pass other/u6379186`
+set imap_pass = `pass other/anu`
 set folder = "imaps://outlook.office365.com:993"
 
 set sendmail = "/usr/bin/msmtp -a u6379186@anu.edu.au"
@@ -17,6 +17,9 @@ set signature="~/.config/mutt/signatures/u6379186"
 
 color index_number green default
 color index_author green default '.*'
+color index_author brightgreen default '~N'
+color indicator green black
+color sidebar_indicator brightgreen black
 
 set spoolfile = "+INBOX"
 set postponed = "+Drafts"

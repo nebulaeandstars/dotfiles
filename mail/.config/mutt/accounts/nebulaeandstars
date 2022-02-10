@@ -8,8 +8,11 @@ set realname = "Laura Powles"
 
 set signature="~/.config/mutt/signatures/nebulaeandstars"
 
-color index_number magenta default
-color index_author magenta default '.*'
+color index_number blue default
+color index_author blue default '.*'
+color index_author brightblue default '~N'
+color indicator blue black
+color sidebar_indicator brightblue black
 
 set spoolfile= "+INBOX"
 set postponed = "+[Gmail]/Drafts"

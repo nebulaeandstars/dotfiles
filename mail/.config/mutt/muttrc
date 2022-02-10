@@ -12,19 +12,21 @@ set mbox_type=Maildir
 set mailcap_path = "~/.config/mailcap"
 set date_format="%d/%m/%Y %I:%M%p"
 set index_format="%2C %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
-set sort = 'reverse-date'
+set sort = 'date-sent'
+set use_threads = "reverse"
 set query_command = "abook --config ~/.config/abook/abookrc --datafile ~/.local/share/abook/addressbook --mutt-query '%s'"
 set sleep_time = 0      # Pause 0 seconds for informational messages
 set markers = no        # Disables the `+` displayed at line wraps
 set mark_old = no       # Unread mail stay unread until read
-set mime_forward = yes      # attachments are forwarded with mail
+set mime_forward = yes  # attachments are forwarded with mail
 set wait_key = no       # mutt won't ask "press key to continue"
 set fast_reply          # skip to compose when replying
 set fcc_attach          # save attachments with the body
 set forward_format = "Fwd: %s"  # format of subject when forwarding
 set forward_quote       # include message in forwards
 set reverse_name        # reply as whomever it was to
-set include         # include message in replies
+# set include             # include message in replies
+set arrow_cursor        # use an arrow for the cursor
 
 auto_view text/html
 auto_view application/pgp-encrypted
@@ -43,10 +45,15 @@ bind index,pager \Cp sidebar-prev-new
 bind index,pager \Cn sidebar-next-new
 bind index,pager B sidebar-toggle-visible
 
+# view URLs with C-l (requires urlscan)
+macro index,pager \Cl "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \Cl "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
 folder-hook ~/.local/share/mail/laura/* 'source ~/.config/mutt/accounts/laura'
 folder-hook ~/.local/share/mail/thomas/* 'source ~/.config/mutt/accounts/thomas'
 folder-hook ~/.local/share/mail/nebulaeandstars/* 'source ~/.config/mutt/accounts/nebulaeandstars'
 folder-hook ~/.local/share/mail/thomaspowles/* 'source ~/.config/mutt/accounts/thomaspowles'
+folder-hook ~/.local/share/mail/clearbox/* 'source ~/.config/mutt/accounts/clearbox'
 folder-hook ~/.local/share/mail/mfc/* 'source ~/.config/mutt/accounts/mfc'
 folder-hook imaps://u6379186@anu.edu.au@outlook.office365.com:993 'source ~/.config/mutt/accounts/u6379186'
 
@@ -54,7 +61,8 @@ macro index <F2> '<change-folder>~/.local/share/mail/laura/INBOX<enter>'
 macro index <F3> '<change-folder>~/.local/share/mail/thomas/INBOX<enter>'
 macro index <F4> '<change-folder>~/.local/share/mail/nebulaeandstars/INBOX<enter>'
 macro index <F5> '<change-folder>~/.local/share/mail/thomaspowles/INBOX<enter>'
-macro index <F6> '<change-folder>~/.local/share/mail/mfc/INBOX<enter>'
-macro index <F7> '<change-folder>imaps://u6379186@anu.edu.au@outlook.office365.com:993<enter>'
+macro index <F6> '<change-folder>~/.local/share/mail/clearbox/INBOX<enter>'
+macro index <F7> '<change-folder>~/.local/share/mail/mfc/INBOX<enter>'
+macro index <F8> '<change-folder>imaps://u6379186@anu.edu.au@outlook.office365.com:993<enter>'
 
 source ~/.config/mutt/accounts/laura
