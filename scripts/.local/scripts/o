@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# if run with no dmenu-like finder specified, use fzf
-[ "$2" = "" ] && DMENU="fzf" || DMENU=$(which "$2") || exit
-
-[ "$1" = "book" ] && {
-    BOOK=$(ls "$HOME/.local/share/books" | $DMENU) || exit
-    zathura "$HOME/.local/share/books/$BOOK" & disown >/dev/null 2>&1
-}
