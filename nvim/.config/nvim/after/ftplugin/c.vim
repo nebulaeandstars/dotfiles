@@ -1,3 +1,5 @@
+hi link cTypedef Keyword
+
 let g:section_heading = '----- .* -----'
 let g:section_heading_top_gap = 3
 let g:section_heading_bottom_gap = 2

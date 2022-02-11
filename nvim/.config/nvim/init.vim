@@ -564,8 +564,8 @@ nnoremap <leader>sh :new %<CR>
 nnoremap <leader>sv :vnew %<CR>
 
 " split manipulation
-nnoremap <leader>sgh <C-w>t<C-w>K
-nnoremap <leader>sgv <C-w>t<C-w>H
+nnoremap <leader>gsh <C-w>t<C-w>K
+nnoremap <leader>gsv <C-w>t<C-w>H
 
 " split navigation
 nnoremap <A-S-h> <C-w>h

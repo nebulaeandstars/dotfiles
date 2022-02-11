@@ -79,17 +79,14 @@ let s:none = "gui=none cterm=none"
 
 " basic
 call s:hi('Normal', s:fg15, s:none, s:none)
-call s:hi('Comment', s:fg14, s:none, s:none)
+call s:hi('Comment', s:fg7, s:none, s:none)
+call s:hi('SpecialComment', s:fg7, s:none, s:none)
 
 " linting
 call s:hi('Error', s:fg9, s:none, s:none)
 call s:hi('Todo', s:fg11, s:bg8, s:bold)
 call s:hi('SpellBad', s:fg0, s:bg9, s:none)
 call s:hi('SpellCap', s:fg0, s:bg12, s:none)
-
-" delimiters
-call s:hi('Delimiter', s:fg14, s:none, s:bold)
-call s:hi('MatchParen', s:fg14, s:bg8, s:boldunderline)
 
 
 " ############################################################################ "
@@ -103,6 +100,10 @@ call s:hi('CursorLineNr', s:fg14, s:none, s:none)
 " error messages
 call s:hi('ErrorMsg', s:fg9, s:none, s:none)
 call s:hi('WarningMsg', s:fg12, s:none, s:none)
+
+" searching
+call s:hi('Search', s:none, s:bg12, s:none)
+call s:hi('IncSearch', s:none, s:bg12, s:none)
 
 " pmenu (for autocomplete, etc)
 call s:hi('Pmenu', s:fg0, s:bg6, s:none)
@@ -145,8 +146,8 @@ call s:hi('VertSplit', s:fg8, s:bg0, s:none)
 set fillchars+=vert:\ " do not remove this comment
 
 " cursor line
-call s:hi('cursorline', s:none, s:bg8, s:none)
-call s:hi('cursorcolumn', s:none, s:bg8, s:none)
+call s:hi('CursorLine', s:none, s:bg8, s:none)
+call s:hi('CursorColumn', s:none, s:bg8, s:none)
 
 " folds
 call s:hi('Folded', s:fg6, s:bg8, s:none)
@@ -168,200 +169,50 @@ call s:hi('ALEWarningSign', s:fg11, s:bg8, s:bold)
 " ############################################################################ "
 
 " basic syntax
-call s:hi('Constant', s:fg6, s:none, s:none)
+call s:hi('Keyword', s:fg6, s:none, s:none)
 call s:hi('String', s:fg2, s:none, s:none)
-call s:hi('Number', s:fg6, s:none, s:none)
-hi link Character String
-hi link Float Number
-hi link Boolean Number
-hi link Double Number
-
-" identifiers
-call s:hi('Identifier', s:fg7, s:none, s:none)
-call s:hi('Function', s:fg12, s:none, s:bold)
+call s:hi('Constant', s:fg6, s:none, s:none)
+call s:hi('Operator', s:fg14, s:none, s:none)
+hi link Number Constant
+hi link Character Constant
+hi link Float Constant
+hi link Boolean Constant
+hi link Double Constant
 
 " statements
-call s:hi('Statement', s:fg10, s:none, s:bold)
-call s:hi('Conditional', s:fg10, s:none, s:italic)
-call s:hi('Label', s:fg5, s:none, s:none)
+call s:hi('Statement', s:fg6, s:none, s:none)
+call s:hi('Conditional', s:fg6, s:none, s:italic)
+call s:hi('Label', s:fg5, s:none, s:underline)
 call s:hi('Exception', s:fg1, s:none, s:none)
 hi link Repeat Conditional
 
-call s:hi('PreProc', s:fg13, s:none, s:bolditalic)
-hi link Include PreProc
-hi link Define PreProc
-hi link Macro PreProc
-hi link PreCondit PreProc
-
 " types
 call s:hi('Type', s:fg13, s:none, s:none)
-call s:hi('StorageClass', s:fg13, s:none, s:italic)
-call s:hi('Structure', s:fg5, s:none, s:bold)
-call s:hi('Typedef', s:fg13, s:none, s:none)
+hi link StorageClass Type
+hi link Structure Type
+hi link TypeDef Keyword
+
+" delimiters
+call s:hi('Delimiter', s:fg15, s:none, s:none)
+call s:hi('MatchParen', s:fg15, s:bg8, s:boldunderline)
+
+" identifiers
+call s:hi('Identifier', s:fg7, s:none, s:none)
+call s:hi('Function', s:fg12, s:none, s:none)
+call s:hi('Macro', s:fg5, s:none, s:none)
+
+call s:hi('PreProc', s:fg4, s:none, s:none)
+hi link Include PreProc
+hi link Define PreProc
+hi link PreCondit PreProc
 
 " special
-call s:hi('Special', s:fg3, s:none, s:bold)
-call s:hi('SpecialChar', s:fg3, s:none, s:bold)
-call s:hi('Tag', s:fg3, s:none, s:bold)
-call s:hi('SpecialComment', s:fg3, s:none, s:bold)
-call s:hi('Debug', s:fg1, s:none, s:bold)
+call s:hi('Special', s:fg11, s:none, s:none)
+call s:hi('SpecialChar', s:fg11, s:none, s:none)
+call s:hi('Tag', s:fg11, s:none, s:none)
 
+call s:hi('Debug', s:fg11, s:none, s:none)
+call s:hi('Error', s:fg1, s:none, s:none)
 
-" ############################################################################ "
-" # OVERRIDES # OVERRIDES # OVERRIDES # OVERRIDES # OVERRIDES # OVERRIDES #### "
-" ############################################################################ "
-
-" python
-call s:hi('pythonKeyword', s:fg10, s:none, s:bold)
-call s:hi('pythonConditional', s:fg2, s:none, s:italic)
-call s:hi('pythonString', s:fg4, s:none, s:none)
-call s:hi('pythonSpaceError', s:fg8, s:none, s:inverse)
-call s:hi('pythonAttribute', s:fg14, s:none, s:inverse)
-call s:hi('pythonBuiltin', s:fg6, s:none, s:none)
-hi link pythonSelf pythonBuiltin
-hi link pythonStatement pythonKeyword
-hi link pythonInclude pythonKeyword
-hi link pythonQuotes pythonString
-hi link pythonException pythonConditional
-hi link pythonExceptions Exception
-
-" javascript
-call s:hi('jsKeyword', s:fg10, s:none, s:bold)
-call s:hi('jsOperator', s:fg14, s:none, s:bold)
-call s:hi('jsThis', s:fg6, s:none, s:none)
-call s:hi('jsString', s:fg12, s:none, s:none)
-call s:hi('jsParens', s:fg15, s:none, s:none)
-call s:hi('xmlAttrib', s:fg5, s:none, s:none)
-call s:hi('jsStorageClass', s:fg13, s:none, s:none)
-hi link jsFunction jsKeyword
-hi link jsFuncParens jsParens
-hi link jsReturn jsKeyword
-hi link jsImport jsKeyword
-hi link jsFrom jsImport
-hi link javaScriptIdentifier TypeDef
-hi link xmlTagName Tag
-hi link jsReturn Function
-
-" typescript
-call s:hi('typescriptEndColons', s:fg15, s:none, s:none)
-call s:hi('typescriptBraces', s:fg15, s:none, s:bold)
-hi link tsKeyword jsKeyword
-hi link typescriptReserved tsKeyword
-hi link typescriptStorageClass jsStorageClass
-hi link typescriptOpSymbols jsOperator
-hi link typescriptStatement tsKeyword
-hi link typescriptThis jsThis
-hi link typescriptString jsString
-hi link typescriptStringS jsString
-hi link typescriptParens jsParens
-hi link typescriptFuncKeyword jsFunction
-
-" jsx/tsx
-call s:hi('jsxBraces', s:fg14, s:none, s:none)
-call s:hi('jsxDot', s:fg14, s:none, s:none)
-call s:hi('jsxComponentName', s:fg7, s:none, s:none)
-
-" c
-call s:hi('cComment', s:fg7, s:none, s:none)
-call s:hi('cKeyword', s:fg12, s:none, s:bold)
-hi link cTypedef cKeyword
-hi link cStatement cKeyword
-hi link cRepeat cKeyword
-hi link cConditional cKeyword
-hi link cUserFunction cKeyword
-call s:hi('cType', s:fg13, s:none, s:none)
-hi link cStructure cType
-hi link cInclude cKeyword
-call s:hi('cIncluded', s:fg2, s:none, s:none)
-call s:hi('cOperator', s:fg14, s:none, s:bold)
-call s:hi('cDelimiter', s:fg15, s:none, s:none)
-call s:hi('cLabel', s:fg5, s:none, s:underline)
-
-" rust
-call s:hi('rustOperator', s:fg14, s:none, s:bold)
-call s:hi('rustSigil', s:fg13, s:none, s:none)
-call s:hi('rustKeyword', s:fg9, s:none, s:bold)
-call s:hi('rustString', s:fg9, s:none, s:none)
-call s:hi('rustCommentLineDoc', s:fg14, s:none, s:bold)
-call s:hi('rustConditional', s:fg9, s:none, s:italic)
-call s:hi('rustLifetime', s:fg2, s:none, s:none)
-call s:hi('rustAttribute', s:fg7, s:none, s:none)
-call s:hi('rustTypedef', s:fg9, s:none, s:bold)
-call s:hi('rustTrait', s:fg5, s:none, s:none)
-call s:hi('rustModPath', s:fg4, s:none, s:none)
-call s:hi('rustMacro', s:fg13, s:none, s:bold)
-call s:hi('rustMacroVariable', s:fg6, s:none, s:italic)
-hi link rustRepeat rustConditional
-hi link rustDerive rustAttribute
-hi link rustAssert rustMacro
-hi link rustQuestionMark rustOperator
-hi link rustStructure rustTypedef
-hi link rustAttributeParameter rustTrait
-hi link rustMacroRepeatDelimiters rustMacro
-hi link rustMacroRepeatCount rustMacroRepeatDelimiters
-
-" elixir
-call s:hi('elixirKeyword', s:fg13, s:none, s:bold)
-call s:hi('elixirString', s:fg5, s:none, s:none)
-call s:hi('elixirDocString', s:fg14, s:none, s:bold)
-call s:hi('elixirOperator', s:fg10, s:none, s:bold)
-hi link elixirStringDelimiter elixirString
-hi link elixirStringDelimiter elixirString
-hi link elixirDefine elixirKeyword
-hi link elixirModuleDefine elixirKeyword
-hi link elixirBlockDefinition elixirKeyword
-hi link elixirModuleDeclaration elixirFunctionDeclaration
-hi link elixirId elixirFunctionDeclaration
-
-" haskell
-call s:hi('hsOperator', s:fg14, s:none, s:bold)
-call s:hi('hsLineComment', s:fg7, s:none, s:none)
-call s:hi('hsDelimiter', s:fg14, s:none, s:bold)
-call s:hi('ConId', s:fg5, s:none, s:none)
-hi link hsConSym hsOperator
-hi link hsVarSym hsOperator
-
-" asm
-call s:hi('nasmLabel', s:fg12, s:none, s:bold)
-call s:hi('nasmDirective', s:fg13, s:none, s:bold)
-call s:hi('nasmString', s:fg4, s:none, s:none)
-
-" go
-call s:hi('goKeyword', s:fg10, s:none, s:bold)
-call s:hi('goString', s:fg4, s:none, s:none)
-
-" ada
-call s:hi('adaBegin', s:fg12, s:none, s:bold)
-call s:hi('adaSpecial', s:fg14, s:none, s:bold)
-call s:hi('adaTypedef', s:fg13, s:none, s:bold)
-call s:hi('adaOperator', s:fg14, s:none, s:bold)
-call s:hi('adaString', s:fg12, s:none, s:none)
-hi link adaAssignment adaOperator
-hi link adaStructure adaStorageClass
-hi link adaEnd adaBegin
-
-" latex/lilypond
-call s:hi('lilyKeyword', s:fg10, s:none, s:bold)
-call s:hi('texSection', s:fg12, s:none, s:bold)
-call s:hi('texDocType', s:fg13, s:none, s:bold)
-call s:hi('texStatement', s:fg10, s:none, s:bold)
-call s:hi('texInputFile', s:fg11, s:none, s:bold)
-
-" html
-call s:hi('htmlTag', s:fg7, s:none, s:none)
-call s:hi('htmlEndTag', s:fg7, s:none, s:none)
-call s:hi('htmlTagName', s:fg12, s:none, s:bold)
-
-" vimscript
-call s:hi('vimCommand', s:fg3, s:none, s:bold)
-
-" man
-call s:hi('manHeader', s:fg13, s:none, s:bold)
-call s:hi('manSectionHeading', s:fg11, s:none, s:bold)
-call s:hi('manOptionDesc', s:fg13, s:none, s:bold)
-
-" markdown/vimwiki
-call s:hi('markdownRule', s:fg13, s:none, s:bold)
-hi link VimwikiListTodo markdownListMarker
-hi link VimwikiHeaderChar markdownHeadingDelimiter
-hi link VimwikiHR markdownRule
+" other
+call s:hi('Directory', s:fg6, s:none, s:none)
