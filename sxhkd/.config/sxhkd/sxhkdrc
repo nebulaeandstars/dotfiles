@@ -24,6 +24,8 @@ super + shift + u
 super + shift + p
 	passmenu2 || passmenu
 super + shift + b
+	o bg
+super + control + b
 	cycle-backgrounds
 super + control + shift + b
 	bgset $HOME/img/backgrounds/

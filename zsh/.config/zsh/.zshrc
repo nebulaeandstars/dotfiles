@@ -43,7 +43,8 @@ setopt auto_cd
 source "$ZDOTDIR/completion.zsh"
 
 # completion settings
-setopt menu_complete
+# setopt menu_complete
+setopt auto_list
 setopt auto_param_keys
 setopt auto_param_slash
 
