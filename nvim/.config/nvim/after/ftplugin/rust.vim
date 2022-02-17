@@ -12,3 +12,7 @@ hi link rustLifetime Keyword
 hi link rustAttribute Identifier
 hi link rustDerive rustAttribute
 hi link rustAttributeParameter Macro
+hi link rustQuestionMark Operator
+
+hi link CocRustTypeHint CocHintVirtualText
+hi link CocRustChainingHint CocHintVirtualText

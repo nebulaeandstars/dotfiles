@@ -58,7 +58,7 @@ set encoding=utf-8
 colorscheme andromeda
 runtime statusline.vim
 
-let mapleader = ','
+let mapleader = '\'
 
 set tabstop=4
 set softtabstop=4
@@ -78,10 +78,9 @@ set breakindent
 set showbreak=>\  " do not remove this comment
 
 " set autoformat options
-set formatoptions+=crnv1jql
-set formatoptions-=o
-set formatoptions-=w
-set formatoptions-=t
+augroup format_options
+    autocmd BufNewFile,BufEnter * setlocal formatoptions=crqnl1jp
+augroup END
 
 " used for folding
 " override these as needed
@@ -160,14 +159,18 @@ set splitbelow splitright
 set ruler
 
 " highlight the current line and column
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
-augroup toggle_cursorline
-    autocmd!
-    autocmd InsertEnter * set nocursorline nocursorcolumn
-    autocmd InsertLeave * set cursorline cursorcolumn
-augroup END
+" augroup toggle_cursorline
+"     autocmd!
+"     autocmd InsertEnter * set nocursorline nocursorcolumn
+"     autocmd InsertLeave * set cursorline cursorcolumn
+" augroup END
+
+" alternative to the above (just color the number)
+set cursorline
+set cursorlineopt=number
 
 " always display the status line, even if only one window is displayed
 set laststatus=2
@@ -175,11 +178,13 @@ set laststatus=2
 " set the command window height to 2 lines "
 set cmdheight=1
 
-" use the visual bell instead of beeping when doing something wrong
-set visualbell
+" use bells when things go wrong
+set errorbells
+set belloff=
 
 " disable the bell
-set t_vb=
+" set visualbell
+" set t_vb=
 
 
 " ############################################################################ "
@@ -229,6 +234,7 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'christoomey/vim-sort-motion'
 Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'justinmk/vim-sneak'
 
 " --- language support --- "
 Plug 'ARM9/arm-syntax-vim'
@@ -263,6 +269,13 @@ let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_removed_first_line = '^-'
 let g:gitgutter_sign_removed_above_and_below = '{-'
 let g:gitgutter_sign_modified_removed = '~-'
+
+" --- vim-sneak config --- "
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " --- vifm.vim config --- "
 let g:vifm_replace_netrw = 1
@@ -470,8 +483,8 @@ endfunction
 " --- Multiple Modes --- "
 
 " scroll with J and K
-noremap K <C-y><C-y>
-noremap J <C-e><C-e>
+" noremap K <C-y><C-y>
+" noremap J <C-e><C-e>
 
 " don't yank when using c
 nnoremap c "_c
@@ -508,20 +521,16 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 " use space to enter command mode
 nnoremap <Space> :
 
+" use <A-;> to mimic the original functionality of ,
+nmap <A-;> ,
+
 " toggle
-nnoremap <leader>ts :set spell!<CR>
-nnoremap <leader>tr :RainbowToggle<CR>
 nnoremap <leader>u  :UndotreeToggle<CR>
 nnoremap <leader>o  :Vifm<CR>
-nnoremap <leader>tg :GitGutterToggle<CR>
-nnoremap <leader>zg :GitGutterFold<CR>
 
 " show/hide
 nnoremap <leader>sf :set foldcolumn+=2<CR>
 nnoremap <leader>hf :set foldcolumn-=2<CR>
-
-nnoremap <leader>sg :GitGutterEnable<CR>
-nnoremap <leader>hg :GitGutterDisable<CR>
 
 nnoremap <leader>sc :set colorcolumn=+1<CR>
 nnoremap <leader>hc :set colorcolumn=<CR>
@@ -533,6 +542,7 @@ nnoremap <leader>hs :set nospell<CR>
 nnoremap <leader>a :call CocToggle()<CR>
 nmap <leader>d  <plug>(coc-diagnostic-info)
 nmap <leader>n  <plug>(coc-diagnostic-next)
+nmap <leader>N  <plug>(coc-diagnostic-prev)
 nmap <leader>gd <plug>(coc-definition)
 nmap <leader>gi <plug>(coc-implementation)
 nmap <leader>rn <plug>(coc-rename)
@@ -548,7 +558,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " vimling
-nnoremap <leader>tl :call ToggleIPA() \| call ToggleDeadKeys()<CR>
+nnoremap <leader>l :call ToggleIPA() \| call ToggleDeadKeys()<CR>
 
 " save/load
 nnoremap <leader>vs :mkview!<CR>
@@ -596,7 +606,7 @@ nnoremap <A-0> 10gt
 
 " other
 nnoremap S :%s//g<Left><Left>
-nnoremap <silent> <leader><Space> :noh<CR>
+nnoremap <silent> <Esc> :noh<CR><C-l>
 nnoremap == gg=G``
 nnoremap Y y$
 nnoremap Q gq

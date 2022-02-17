@@ -13,16 +13,22 @@ function! s:hi(color_group, foreground, background, fontStyle)
 endfunction
 
 function! LinterStatus() abort
-    " let l:counts = ale#statusline#Count(bufnr(''))
+    let info = get(b:, 'coc_diagnostic_info', {})
+    let msgs = []
 
-    " let l:all_errors = l:counts.error + l:counts.style_error
-    " let l:all_non_errors = l:counts.total - l:all_errors
+    if empty(info) | return 'OK' | endif
 
-    " return l:counts.total == 0 ? 'OK' : printf(
-    " \   '%dE, %dW',
-    " \   all_errors,
-    " \   all_non_errors
-    " \)
+    if get(info, 'warning', 0)
+        call add(msgs, info['warning'] . 'W')
+    endif
+
+    if get(info, 'error', 0)
+        call add(msgs, info['error'] . 'E')
+    endif
+
+    if empty(msgs) | return 'OK' | endif
+
+    return join(msgs, ' ')
 endfunction
 
 
@@ -73,6 +79,9 @@ let s:inverse = 'gui=inverse cterm=inverse'
 let s:none = 'gui=none cterm=none'
 
 " --- color groups --- "
+call s:hi('StatusLine', s:fg8, s:bg8, s:none)
+call s:hi('StatusLineNC', s:fg8, s:bg8, s:none)
+
 call s:hi('StatusNormal', s:fg0, s:bg12, s:none)
 call s:hi('StatusInsert', s:fg0, s:bg10, s:none)
 call s:hi('StatusReplace', s:fg0, s:bg9, s:none)
