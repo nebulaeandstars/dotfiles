@@ -10,6 +10,7 @@ let g:empty_line = '^\s*$'
 
 hi link rustLifetime Keyword
 hi link rustAttribute Identifier
+hi link rustIdentifier Structure
 hi link rustDerive rustAttribute
 hi link rustAttributeParameter Macro
 hi link rustQuestionMark Operator
