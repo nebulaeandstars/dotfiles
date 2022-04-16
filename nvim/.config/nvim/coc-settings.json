@@ -50,6 +50,12 @@
         "elixirLS": {
             "command": "elixir-ls",
             "filetypes": ["elixir", "eelixir"]
+        },
+
+        "sql": {
+            "command": "sql-language-server",
+            "args" : ["up", "--method", "stdio"],
+            "filetypes": ["sql", "mysql"]
         }
     },
 
