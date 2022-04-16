@@ -58,7 +58,7 @@ set encoding=utf-8
 colorscheme andromeda
 runtime statusline.vim
 
-let mapleader = '\'
+let mapleader = ','
 
 set tabstop=4
 set softtabstop=4
@@ -522,7 +522,7 @@ onoremap <silent> id :<C-U>normal! GVgg<CR>
 nnoremap <Space> :
 
 " use <A-;> to mimic the original functionality of ,
-nmap <A-;> ,
+nnoremap <A-;> ,
 
 " toggle
 nnoremap <leader>u  :UndotreeToggle<CR>
