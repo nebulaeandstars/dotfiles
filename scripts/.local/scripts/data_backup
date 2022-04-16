@@ -9,4 +9,14 @@ TARGET_DIRS="$DATA_DIR/abook $DATA_DIR/calcurse $DATA_DIR/vimwiki $DATA_DIR/pass
 
 [ "$1" = "all" ] && TARGET_DIRS="$TARGET_DIRS $(xdg-user-dir MUSIC) $(xdg-user-dir VIDEOS)"
 
-tar -czv --dereference --exclude target --exclude build -f "$DATA_DIR/data_backup.tar.gz" $TARGET_DIRS
+tar -czv --dereference \
+    --exclude target \
+    --exclude build \
+    --exclude caissabase.si4 \
+    --exclude caissabase.sg4 \
+    --exclude node_modules \
+    --exclude venv --exclude .env \
+    --exclude out \
+    --exclude .git \
+    --exclude .gradle \
+    -f "$DATA_DIR/data_backup.tar.gz" $TARGET_DIRS
