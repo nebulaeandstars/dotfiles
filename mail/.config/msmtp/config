@@ -23,14 +23,14 @@ host smtp.gmail.com
 port 587
 from nebulaeandstars@gmail.com
 user nebulaeandstars@gmail.com
-passwordeval "pass google/nebulaeandstars"
+passwordeval "pass google.com/nebulaeandstars"
 
 account thomas.powles@gmail.com
 host smtp.gmail.com
 port 587
 from thomas.powles@gmail.com
 user thomas.powles@gmail.com
-passwordeval "pass google/thomaspowles"
+passwordeval "pass google.com/thomaspowles"
 
 account thomas@musicforcanberra.org.au
 host smtp.gmail.com
@@ -44,7 +44,7 @@ host smtp.gmail.com
 port 587
 from thomas@clearboxsystems.com.au
 user thomas@clearboxsystems.com.au
-passwordeval "pass google/clearbox"
+passwordeval "pass google.com/clearbox"
 
 account u6379186@anu.edu.au
 host smtp.office365.com
