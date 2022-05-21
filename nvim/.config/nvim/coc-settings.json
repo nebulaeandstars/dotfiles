@@ -16,6 +16,9 @@
 
     "rust-analyzer.inlayHints.chainingHints": false,
 
+    "python.linting.pylintEnabled": true,
+    "pyright.disableDiagnostics": true,
+
     "languageserver": {
         "ccls": {
             "command": "clangd",

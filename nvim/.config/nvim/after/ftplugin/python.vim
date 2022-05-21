@@ -1,3 +1,6 @@
+" black uses a textwidth of 88 (sucks but it's convention)
+set textwidth=88
+
 " let python_highlight_all = 1
 
 " let g:section_heading = '^\s*class '

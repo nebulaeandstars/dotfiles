@@ -254,6 +254,7 @@ Plug 'justinmk/vim-syntax-extra'
 " Plug 'vimwiki/vimwiki'
 Plug 'LukeSmithxyz/vimling'
 Plug 'Chiel92/vim-autoformat'
+Plug 'igorpejic/vim-black'
 
 call plug#end()
 
@@ -681,7 +682,7 @@ augroup END
 " refresh the gitgutter when saving
 augroup gitgutter_refresh
     autocmd!
-    autocmd BufEnter,BufWritePre * GitGutter
+    autocmd BufEnter,BufWritePost * GitGutter
 augroup END
 
 augroup goyo_limelight
@@ -693,7 +694,8 @@ augroup END
 if expand('%:p:h:h:t') !=# 'suckless'
     augroup autoform:tat
         autocmd!
-        autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.py,*.go :Autoformat
+        autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.go :Autoformat
+        autocmd BufWrite *.py execute ':Black'
     augroup END
 endif
 
