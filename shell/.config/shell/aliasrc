@@ -80,5 +80,6 @@ type -p pacman >/dev/null 2>&1 && {
     alias Rorphs="pacman -Qtdq | sudo pacman -Rns -"
     alias S="sudo pacman -S"
     alias p="sudo pacman"
+    alias paru="paru --bottomup --skipreview"
     alias syu="paru -Syu --skipreview --noconfirm"
 }

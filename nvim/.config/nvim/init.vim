@@ -249,6 +249,7 @@ Plug 'gentoo/gentoo-syntax'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'elixir-editors/vim-elixir'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'KSP-KOS/EditorTools', {'rtp': 'VIM/vim-kerboscript'}
 
 " --- other --- "
 " Plug 'vimwiki/vimwiki'
