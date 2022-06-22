@@ -252,9 +252,10 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'KSP-KOS/EditorTools', {'rtp': 'VIM/vim-kerboscript'}
 
 " --- other --- "
-" Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
 Plug 'LukeSmithxyz/vimling'
 Plug 'Chiel92/vim-autoformat'
+Plug 'igorpejic/vim-black'
 
 call plug#end()
 
@@ -294,15 +295,15 @@ let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 function! CocToggle()
@@ -319,19 +320,19 @@ let g:coc_snippet_prev = '<c-space>'
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " scroll inline floating documentation
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
-  nnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
-  inoremap <silent><nowait><expr> <C-j> "\<c-r>=coc#float#scroll(1, 2)\<cr>"
-  inoremap <silent><nowait><expr> <C-k> "\<c-r>=coc#float#scroll(0, 2)\<cr>"
-  vnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
-  vnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
+    nnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
+    nnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
+    inoremap <silent><nowait><expr> <C-j> "\<c-r>=coc#float#scroll(1, 2)\<cr>"
+    inoremap <silent><nowait><expr> <C-k> "\<c-r>=coc#float#scroll(0, 2)\<cr>"
+    vnoremap <silent><nowait><expr> <C-j> coc#float#scroll(1)
+    vnoremap <silent><nowait><expr> <C-k> coc#float#scroll(0)
 endif
 
 " --- vim-rooter config --- "
@@ -342,6 +343,11 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 " use markdown syntax
 " let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{
+            \'path': '~/docs/notes/zettelkasten',
+            \'path_html': '~/docs/notes/html',
+            \'syntax': 'markdown',
+            \'ext': '.md',
+            \},{
             \'path': '~/.local/share/vimwiki/default',
             \'path_html': '~/.local/share/vimwiki/default/html',
             \'syntax': 'markdown',
@@ -383,10 +389,10 @@ function! s:SynStack()
 endfunc
 
 command! CheckHighlightUnderCursor echo {l,c,n ->
-        \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
-        \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
-        \  .'lo<'    . synIDattr(synIDtrans(synID(l, c, 1)), n) . '> '
-        \ }(line("."), col("."), "name")
+            \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
+            \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
+            \  .'lo<'    . synIDattr(synIDtrans(synID(l, c, 1)), n) . '> '
+            \ }(line("."), col("."), "name")
 
 " Handle pressing enter inside {} or <><>
 inoremap <expr> <CR> InsertMapForEnter()
@@ -668,7 +674,7 @@ augroup filetype_detect
     autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
     autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-    au! BufRead,BufNewFile */vimwiki/* set filetype=vimwiki
+    au! BufRead,BufNewFile */vimwiki/*,*/notes/* set filetype=vimwiki
 augroup END
 
 " automatically delete trailing whitespace
@@ -682,7 +688,7 @@ augroup END
 " refresh the gitgutter when saving
 augroup gitgutter_refresh
     autocmd!
-    autocmd BufEnter,BufWritePre * GitGutter
+    autocmd BufEnter,BufWritePost * GitGutter
 augroup END
 
 augroup goyo_limelight
@@ -694,7 +700,8 @@ augroup END
 if expand('%:p:h:h:t') !=# 'suckless'
     augroup autoform:tat
         autocmd!
-        autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.py,*.go :Autoformat
+        autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.go :Autoformat
+        autocmd BufWrite *.py execute ':Black'
     augroup END
 endif
 

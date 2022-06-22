@@ -14,3 +14,4 @@ syn match pythonExceptions +[A-z]*\(Error\|Exception\)+
 syn match pythonFunction +\(\.\?\)\zs\([A-z]\|_\)\+\ze\((\)+
 
 hi link pythonLambdaExpr Operator
+hi link pythonException pythonStatement
