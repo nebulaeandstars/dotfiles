@@ -11,7 +11,8 @@
   "diagnostic.virtualTextLines": 1,
   "diagnostic.virtualTextPrefix": "‣",
 
-  "suggest.snippetIndicator": "",
+  "suggest.noselect": 1,
+  "suggest.snippetIndicator": "~",
   "suggest.triggerCompletionWait": 0,
 
   "rust-analyzer.inlayHints.chainingHints": false,
