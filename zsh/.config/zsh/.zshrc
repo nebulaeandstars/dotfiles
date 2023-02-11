@@ -54,6 +54,9 @@ eval $(dircolors "$XDG_CONFIG_HOME/shell/dircolors")
 # source aliases
 source "$XDG_CONFIG_HOME/shell/aliasrc"
 
+# gpg fig
+export GPG_TTY=$(tty)
+
 
 ################################################################################
 # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS # PLUGINS ##########
