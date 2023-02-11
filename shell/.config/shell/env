@@ -15,7 +15,7 @@ type -p nvim >/dev/null 2>&1 \
 type -p qutebrowser >/dev/null 2>&1 && export BROWSER="qutebrowser"
 export TRUEBROWSER="firefox"
 export READER="zathura"
-export PAGER="vimpager"
+export PAGER="less"
 
 # meta
 export LOCATION="Canberra"
