@@ -1,110 +1,115 @@
 {
-    "diagnostic.errorSign": ">>",
-    "diagnostic.warningSign": ">>",
-    "diagnostic.infoSign": ">>",
-    "diagnostic.enableHighlightLineNumber": false,
+  "diagnostic.errorSign": ">>",
+  "diagnostic.warningSign": ">>",
+  "diagnostic.infoSign": ">>",
+  "diagnostic.enableHighlightLineNumber": false,
 
-    "diagnostic.checkCurrentLine": true,
-    "diagnostic.messageDelay": 0,
-    "diagnostic.virtualText": true,
-    "diagnostic.virtualTextCurrentLineOnly": false,
-    "diagnostic.virtualTextLines": 1,
-    "diagnostic.virtualTextPrefix": "‣",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageDelay": 0,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextLines": 1,
+  "diagnostic.virtualTextPrefix": "‣",
 
-    "suggest.snippetIndicator": "",
-    "suggest.triggerCompletionWait": 0,
+  "suggest.snippetIndicator": "",
+  "suggest.triggerCompletionWait": 0,
 
-    "rust-analyzer.inlayHints.chainingHints": false,
+  "rust-analyzer.inlayHints.chainingHints": false,
 
-    "python.linting.pylintEnabled": true,
-    "pyright.disableDiagnostics": true,
+  "python.linting.pylintEnabled": true,
+  "pyright.disableDiagnostics": true,
 
-    "languageserver": {
-        "ccls": {
-            "command": "clangd",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ]
-        },
-
-        "gopls": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod"],
-            "filetypes": ["go"]
-        },
-
-        "haskell": {
-            "command": "haskell-language-server-wrapper",
-            "args": ["--lsp"],
-            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-            "filetypes": ["haskell", "lhaskell"]
-        },
-
-        "elixirLS": {
-            "command": "elixir-ls",
-            "filetypes": ["elixir", "eelixir"]
-        },
-
-        "sql": {
-            "command": "sql-language-server",
-            "args" : ["up", "--method", "stdio"],
-            "filetypes": ["sql", "mysql"]
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
         }
+      }
     },
 
-    "coc.preferences.formatOnSaveFiletypes": [
-        "css",
-        "python",
-        "typescript",
-        "javascript",
-        "typescriptreact",
-        "javascriptreact",
-        "java"
+    "gopls": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    },
+
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+      "filetypes": ["haskell", "lhaskell"]
+    },
+
+    "elixirLS": {
+      "command": "elixir-ls",
+      "filetypes": ["elixir", "eelixir"]
+    },
+
+    "sql": {
+      "command": "sql-language-server",
+      "args" : ["up", "--method", "stdio"],
+      "filetypes": ["sql", "mysql"]
+    }
+  },
+
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "python",
+    "typescript",
+    "javascript",
+    "typescriptreact",
+    "javascriptreact",
+    "java"
     ],
 
     "suggest.completionItemKindLabels": {
-        "module": "",
+      "module": "",
 
-        "struct": "",
-        "class": "",
-        "interface": "",
-        "enum": "ﴯ",
-        "enumMember": "ﴯ",
-        "field": "ﰠ",
+      "struct": "",
+      "class": "",
+      "interface": "",
+      "enum": "ﴯ",
+      "enumMember": "ﴯ",
+      "field": "ﰠ",
 
-        "value": "",
-        "variable": "",
-        "constant": "",
-        "reference": "&",
+      "value": "",
+      "variable": "",
+      "constant": "",
+      "reference": "&",
 
-        "function": "\u0192",
-        "method": "\u0192",
-        "constructor": "\uf0ad",
+      "function": "\u0192",
+      "method": "\u0192",
+      "constructor": "\uf0ad",
 
-        "snippet": "",
+      "snippet": "",
 
-        "keyword": "",
-        "operator": "",
+      "keyword": "",
+      "operator": "",
 
-        "text": "",
-        "file": "",
-        "folder": "",
+      "text": "",
+      "file": "",
+      "folder": "",
 
-        "property": "\uf02b",
+      "property": "\uf02b",
 
-        "color": "",
-        "event": "",
-        "typeParameter": "\uf728",
-        "default": "?"
+      "color": "",
+      "event": "",
+      "typeParameter": "\uf728",
+      "default": "?"
     }
 }

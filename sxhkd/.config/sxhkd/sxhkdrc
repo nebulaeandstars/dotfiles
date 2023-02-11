@@ -48,21 +48,21 @@ super + control + shift + k
 
 # screenshot
 Print
-	scrot -e 'mv $f '"$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
+	scrot -F "$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
+shift + Print
+	scrot -fs -F "$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
 control + shift + Print
-	scrot -s -e 'mv $f '"$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
-alt + shift + Print
-	scrot -u -e 'mv $f '"$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
+	scrot -u -F "$HOME/img/screenshots/$(date +'screenshot_%FT%T_$wx$h.png')"
 
 # volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +2% ; abar update volume
+	pactl set-sink-volume @DEFAULT_SINK@ +2% && abar update volume
 XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -2% ; abar update volume
+	pactl set-sink-volume @DEFAULT_SINK@ -2% && abar update volume
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle ; abar update volume
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && abar update volume
 XF86AudioMicMute
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle ; abar update volume
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle && abar update volume
 
 super + shift + t
 	pkill -RTMIN+13 "${STATUSBAR:-dwmblocks}"
@@ -76,5 +76,5 @@ XF86MonBrightnessDown
 # notifications
 control + shift + space
 	dunstctl close-all
-control + alt + shift + space
+super + shift + space
 	dunstctl history-pop

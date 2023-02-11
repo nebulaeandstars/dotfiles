@@ -249,11 +249,12 @@ Plug 'gentoo/gentoo-syntax'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'elixir-editors/vim-elixir'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'KSP-KOS/EditorTools', {'rtp': 'VIM/vim-kerboscript'}
 
 " --- other --- "
 Plug 'vimwiki/vimwiki'
 Plug 'LukeSmithxyz/vimling'
-Plug 'Chiel92/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 Plug 'igorpejic/vim-black'
 
 call plug#end()
@@ -293,17 +294,26 @@ let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"             \ pumvisible() ? "\<C-n>" :
+"             \ <SID>check_back_space() ? "\<TAB>" :
+"             \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 function! CocToggle()
     if g:coc_enabled
@@ -335,8 +345,23 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 " --- vim-rooter config --- "
-let g:rooter_patterns = ['.git', 'Makefile', 'makefile', '.clang-format', 'Cargo.toml', 'stack.yaml']
+let g:rooter_patterns = [
+            \'.git',
+            \'Makefile',
+            \'makefile',
+            \'.clang-format',
+            \'.ccls',
+            \'Cargo.toml',
+            \'stack.yaml'
+            \]
 let g:rooter_change_directory_for_non_project_files = 'current'
+
+
+" --- vim-autoformat config --- "
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
 
 " --- vimwiki config --- "
 " use markdown syntax
@@ -344,6 +369,11 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 let g:vimwiki_list = [{
             \'path': '~/docs/notes/zettelkasten',
             \'path_html': '~/docs/notes/html',
+            \'syntax': 'markdown',
+            \'ext': '.md',
+            \},{
+            \'path': '~/windows/Documents/notes-2/notes/zettelkasten',
+            \'path_html': '~/windows/Documents/notes-2/notes/html',
             \'syntax': 'markdown',
             \'ext': '.md',
             \},{
@@ -358,6 +388,9 @@ let g:vimwiki_list = [{
 
 " only do vimwiki stuff in a vimwiki
 let g:vimwiki_global_ext = 0
+
+" don't hide stuff like links and markdown syntax
+let g:vimwiki_conceallevel = 0
 
 " --- goyo & limelight config --- "
 
@@ -699,7 +732,8 @@ augroup END
 if expand('%:p:h:h:t') !=# 'suckless'
     augroup autoform:tat
         autocmd!
-        autocmd BufWrite *.rs,*.c,*.h,*.cpp,*.cs,*.go :Autoformat
+        autocmd BufWrite *.rs,*.go,*.ex,*.exs :Autoformat
+        autocmd BufWrite *.c,*.h,*.cc,*.cpp,*.cs :Autoformat
         autocmd BufWrite *.py execute ':Black'
     augroup END
 endif

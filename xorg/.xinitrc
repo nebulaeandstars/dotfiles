@@ -17,14 +17,20 @@ timidity -iA &
 unclutter --timeout 2 --jitter 50 --ignore-scrolling &
 dunst &
 
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
 # other
 abar &
 bgset "$(xdg-user-dir PICTURES)/backgrounds/"
 
-while true
-    do
-    dwm 2> /dev/null
-done
+# while true
+#     do
+#     dwm 2> /dev/null
+# done
+
+# openbox
+dwm
 
 # session=${1:-i3}
 # case $session in
