@@ -43,6 +43,7 @@ do
 		"Discharging") status="" ;;
 		"Charging") status="" ;;
 		"Not charging") status="" ;;
+		# "Not charging") status="" ;;
 		"Unknown") status="" ;;
 	esac
 	capacity=$(cat "$battery/capacity")
