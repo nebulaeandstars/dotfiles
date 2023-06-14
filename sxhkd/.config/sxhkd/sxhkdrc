@@ -76,5 +76,5 @@ XF86MonBrightnessDown
 # notifications
 control + shift + space
 	dunstctl close-all
-super + shift + space
+alt + shift + space
 	dunstctl history-pop

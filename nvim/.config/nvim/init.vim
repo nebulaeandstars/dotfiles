@@ -65,9 +65,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set listchars=tab:\|\ ,precedes:\<,extends:\>
-set list
-
+" column / screen size / wrapping weirdness (might break stuff)
 set autoindent
 set textwidth=80
 set colorcolumn=+1
@@ -76,6 +74,9 @@ set wrap
 set linebreak
 set breakindent
 set showbreak=>\  " do not remove this comment
+
+set listchars=tab:\|\ ,precedes:\<,extends:\>
+set list
 
 " set autoformat options
 augroup format_options
@@ -291,6 +292,16 @@ let g:UltiSnipsJumpForwardTrigger='<A-Space>'
 let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 
 " --- coc.nvim config --- "
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+" inoremap <silent><expr> <TAB>
+"             \ pumvisible() ? "\<C-n>" :
+"             \ <SID>check_back_space() ? "\<TAB>" :
+"             \ coc#refresh()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! CheckBackspace() abort
     let col = col('.') - 1
