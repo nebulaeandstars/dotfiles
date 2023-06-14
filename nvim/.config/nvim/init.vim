@@ -65,9 +65,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set listchars=tab:\|\ ,precedes:\<,extends:\>
-set list
-
+" column / screen size / wrapping weirdness (might break stuff)
 set autoindent
 set textwidth=80
 set colorcolumn=+1
@@ -76,6 +74,9 @@ set wrap
 set linebreak
 set breakindent
 set showbreak=>\  " do not remove this comment
+
+set listchars=tab:\|\ ,precedes:\<,extends:\>
+set list
 
 " set autoformat options
 augroup format_options
