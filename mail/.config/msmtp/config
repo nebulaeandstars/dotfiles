@@ -39,11 +39,11 @@ from thomas@musicforcanberra.org.au
 user thomas@musicforcanberra.org.au
 passwordeval "pass app-passwords/mfc-mutt"
 
-account thomas@clearboxsystems.com.au
-host smtp.gmail.com
+account thomas.powles@clearboxsystems.com.au
+host smtp-mail.outlook.com
 port 587
-from thomas@clearboxsystems.com.au
-user thomas@clearboxsystems.com.au
+from thomas.powles@clearboxsystems.com.au
+user thomas.powles@clearboxsystems.com.au
 passwordeval "pass google.com/clearbox"
 
 account u6379186@anu.edu.au
