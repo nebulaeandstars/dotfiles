@@ -370,7 +370,7 @@ let g:autoformat_remove_trailing_spaces = 0
 " use markdown syntax
 " let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{
-            \'path': '~/docs/notes/zettelkasten',
+            \'path': '~/Documents/notes/zettelkasten',
             \'path_html': '~/docs/notes/html',
             \'syntax': 'markdown',
             \'ext': '.md',

@@ -1,37 +1,3 @@
-################################################################################
-
-# remote settings (where to get to the stuffs)
-IMAPStore laura-remote
-Host imap.porkbun.com
-Port 993
-User laura@laurapowles.com
-PassCmd "pass mydomains/email/laura"
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-# local settings (where to store the stuffs)
-MaildirStore laura-local
-Path /home/laura/.local/share/mail/laura/
-Inbox /home/laura/.local/share/mail/laura/INBOX/
-# create subfolders as they appear on the server
-Subfolders Verbatim
-
-
-# channel settings (how to transfer the stuffs)
-Channel laura
-Master :laura-remote:
-Slave :laura-local:
-# make sure that folders get synced properly
-Create Both
-Expunge Both
-# sync all of the mailboxes, but not "[Gmail]/Chats"
-Patterns *
-# can make user errors a bit less catastrophic.
-SyncState *
-
-################################################################################
-
 # remote settings (where to get to the stuffs)
 IMAPStore thomas-remote
 Host imap.porkbun.com
@@ -44,8 +10,8 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 # local settings (where to store the stuffs)
 MaildirStore thomas-local
-Path /home/laura/.local/share/mail/thomas/
-Inbox /home/laura/.local/share/mail/thomas/INBOX/
+Path ~/.local/share/mail/thomas/
+Inbox ~/.local/share/mail/thomas/INBOX/
 # create subfolders as they appear on the server
 Subfolders Verbatim
 
@@ -76,8 +42,8 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 # local settings (where to store the stuffs)
 MaildirStore nebulaeandstars-local
-Path /home/laura/.local/share/mail/nebulaeandstars/
-Inbox /home/laura/.local/share/mail/nebulaeandstars/INBOX/
+Path ~/.local/share/mail/nebulaeandstars/
+Inbox ~/.local/share/mail/nebulaeandstars/INBOX/
 # create subfolders as they appear on the server
 Subfolders Verbatim
 
@@ -108,8 +74,8 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 # local settings (where to store the stuffs)
 MaildirStore thomaspowles-local
-Path /home/laura/.local/share/mail/thomaspowles/
-Inbox /home/laura/.local/share/mail/thomaspowles/INBOX/
+Path ~/.local/share/mail/thomaspowles/
+Inbox ~/.local/share/mail/thomaspowles/INBOX/
 # create subfolders as they appear on the server
 Subfolders Verbatim
 
@@ -124,5 +90,3 @@ Expunge Both
 Patterns * !"[Gmail]/Chats"
 # can make user errors a bit less catastrophic.
 SyncState *
-
-################################################################################

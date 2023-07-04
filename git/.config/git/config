@@ -14,10 +14,6 @@
 [user]
 	useConfigOnly = true
 [include]
-    path = ~/.config/git/personal.conf
-[includeIf "gitdir:~/docs/school/"]
-    path = ~/.config/git/school.conf
-[includeIf "gitdir:~/docs/work/"]
     path = ~/.config/git/work.conf
 [fetch]
 	prune = true
