@@ -1,5 +1,5 @@
-set columns=86
-autocmd VimResized * if (&columns > 86) | set columns=86 | endif
+" set columns=86
+" autocmd VimResized * if (&columns > 86) | set columns=86 | endif
 
 set wrap
 set linebreak

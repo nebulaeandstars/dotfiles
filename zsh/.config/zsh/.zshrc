@@ -54,6 +54,8 @@ eval $(dircolors "$XDG_CONFIG_HOME/shell/dircolors")
 # source aliases
 source "$XDG_CONFIG_HOME/shell/aliasrc"
 
+[ -f "/home/thomas/.ghcup/env" ] && source "/home/thomas/.ghcup/env"
+
 # gpg fig
 export GPG_TTY=$(tty)
 

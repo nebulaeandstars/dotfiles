@@ -239,18 +239,19 @@ Plug 'justinmk/vim-sneak'
 
 " --- language support --- "
 Plug 'ARM9/arm-syntax-vim'
+Plug 'KSP-KOS/EditorTools', {'rtp': 'VIM/vim-kerboscript'}
+Plug 'cespare/vim-toml'
+Plug 'chr4/nginx.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'gentoo/gentoo-syntax'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'cespare/vim-toml'
 Plug 'nebulaeandstars/vim-chapel'
-Plug 'chr4/nginx.vim'
-Plug 'gentoo/gentoo-syntax'
+Plug 'pangloss/vim-javascript'
 Plug 'sevko/vim-nand2tetris-syntax'
-Plug 'elixir-editors/vim-elixir'
-Plug 'justinmk/vim-syntax-extra'
-Plug 'KSP-KOS/EditorTools', {'rtp': 'VIM/vim-kerboscript'}
+Plug 'zah/nim.vim'
 
 " --- other --- "
 Plug 'vimwiki/vimwiki'
