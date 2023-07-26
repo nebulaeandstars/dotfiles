@@ -1,3 +1,4 @@
 export ZDOTDIR="$HOME/.config/zsh"
 [ -f "$HOME/.config/shell/env" ] && source "$HOME/.config/shell/env"
-. "/home/thomas/.local/share/cargo/env"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+. "$HOME/.local/share/cargo/env"

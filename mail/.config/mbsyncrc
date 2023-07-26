@@ -35,7 +35,7 @@ IMAPStore nebulaeandstars-remote
 Host imap.gmail.com
 Port 993
 User nebulaeandstars@gmail.com
-PassCmd "pass google.com/nebulaeandstars"
+PassCmd "pass app-passwords/mutt-nebulaeandstars"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -67,7 +67,7 @@ IMAPStore thomaspowles-remote
 Host imap.gmail.com
 Port 993
 User thomas.powles@gmail.com
-PassCmd "pass google.com/thomaspowles"
+PassCmd "pass app-passwords/mutt-thomaspowles"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -90,36 +90,3 @@ Expunge Both
 Patterns * !"[Gmail]/Chats"
 # can make user errors a bit less catastrophic.
 SyncState *
-
-################################################################################
-
-# remote settings (where to get to the stuffs)
-IMAPStore clearbox-remote
-Host outlook.office365.com
-Port 993
-User thomas.powles@clearboxsystems.com.au
-PassCmd "pass google.com/clearbox"
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-# local settings (where to store the stuffs)
-MaildirStore clearbox-local
-Path ~/.local/share/mail/clearbox/
-Inbox ~/.local/share/mail/clearbox/INBOX/
-# create subfolders as they appear on the server
-Subfolders Verbatim
-
-# channel settings (how to transfer the stuffs)
-Channel clearbox
-Master :clearbox-remote:
-Slave :clearbox-local:
-# make sure that folders get synced properly
-Create Both
-Expunge Both
-# sync all of the mailboxes, but not "[Gmail]/Chats"
-Patterns * !"[Gmail]/Chats"
-# can make user errors a bit less catastrophic.
-SyncState *
-
-################################################################################

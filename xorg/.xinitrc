@@ -7,14 +7,14 @@ xrdb ~/.Xresources &
 sxhkd &
 setxkbmap -option caps:escape &
 setkeycodes e038 125 &
-xset r rate 300 50 &
+xset r rate 200 30 &
 
 # daemons
 picom -b &
 # nm-applet &
 # blueman-applet &
 timidity -iA &
-unclutter --timeout 2 --jitter 50 --ignore-scrolling &
+# unclutter --timeout 2 --jitter 50 --ignore-scrolling &
 dunst &
 
 eval $(gnome-keyring-daemon --start)

@@ -210,6 +210,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vifm/vifm.vim'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf'
+Plug 'christoomey/vim-tmux-navigator'
 
 if has('nvim')
     Plug 'ap/vim-css-color'
@@ -409,6 +410,20 @@ let g:limelight_paragraph_span = 0
 " Highlighting priority (default: 10)
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
+
+
+" --- vim-tmux-navigator config --- "
+
+let g:tmux_navigator_no_mappings = 1
+
+noremap <silent> <A-S-h> :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <A-S-j> :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <A-S-k> :<C-U>TmuxNavigateUp<cr>
+noremap <silent> <A-S-l> :<C-U>TmuxNavigateRight<cr>
+noremap <silent> <A-S-p> :<C-U>TmuxNavigatePrevious<cr>
+
+
+
 
 " ############################################################################ "
 " # FUNCTIONS # FUNCTIONS # FUNCTIONS # FUNCTIONS # FUNCTIONS # FUNCTIONS #### "
@@ -620,10 +635,11 @@ nnoremap <leader>gsh <C-w>t<C-w>K
 nnoremap <leader>gsv <C-w>t<C-w>H
 
 " split navigation
-nnoremap <A-S-h> <C-w>h
-nnoremap <A-S-j> <C-w>j
-nnoremap <A-S-k> <C-w>k
-nnoremap <A-S-l> <C-w>l
+" commented as we're using vim-tmux-navigator
+" nnoremap <A-S-h> <C-w>h
+" nnoremap <A-S-j> <C-w>j
+" nnoremap <A-S-k> <C-w>k
+" nnoremap <A-S-l> <C-w>l
 
 " split resizing
 nnoremap <silent> <A-C-h> :vertical resize +1<CR>
