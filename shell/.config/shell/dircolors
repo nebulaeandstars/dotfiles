@@ -60,12 +60,12 @@ CHR 40;33;01 # character device driver
 DOOR 01;35 # door
 FIFO 40;33 # pipe
 MISSING 00 # ... and the files they point to
-OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
+OTHER_WRITABLE 01;34;04 # dir that is other-writable (o+w) and not sticky
 SETGID 30;43 # file that is setgid (g+s)
 SETUID 37;41 # file that is setuid (u+s)
 SOCK 01;35 # socket
 STICKY 37;44 # dir with the sticky bit set (+t) and not other-writable
-STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (+t,o+w)
+STICKY_OTHER_WRITABLE 01;34;04 # dir that is sticky and other-writable (+t,o+w)
 
 EXEC 01;32 # files with execute permission
 
