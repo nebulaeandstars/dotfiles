@@ -26,6 +26,7 @@ mkdir "/tmp/$base"
 
 textype() { \
 	command="pdflatex"
+	# ( head -n5 "$file" | grep -qi 'xelatex' ) && command="xelatex"
 	( head -n5 "$file" | grep -qi 'xelatex' ) && command="xelatex"
 	$command --output-directory="$dir" "$base"
 	grep -qi addbibresource "$file" &&

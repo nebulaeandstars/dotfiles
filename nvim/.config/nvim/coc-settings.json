@@ -112,5 +112,6 @@
       "event": "",
       "typeParameter": "\uf728",
       "default": "?"
-    }
+    },
+    "snippets.ultisnips.pythonPrompt": false
 }

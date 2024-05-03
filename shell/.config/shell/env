@@ -10,6 +10,8 @@ export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export TERMINAL="st"
 type -p nvim >/dev/null 2>&1 \
     && export EDITOR="nvim" || export EDITOR="vim"
+type -p paru >/dev/null 2>&1 \
+    && export AUR="paru" || export AUR="yay"
 # type -p nvim >/dev/null 2>&1 \
     # && export MANPAGER="nvim +Man!" || export EDITOR="vim -M +MANPAGER -"
 type -p qutebrowser >/dev/null 2>&1 && export BROWSER="qutebrowser"
@@ -52,9 +54,18 @@ export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim"
 
+export MOZ_USE_XINPUT2=1
+
 # export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/passwords/"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go/"
 export GOBIN="$XDG_DATA_HOME/go/bin"
+
+# include rust ESP32 stuff
+export PATH="$HOME/.local/share/rustup/toolchains/esp/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin:$PATH"
+export PATH="$HOME/.local/share/rustup/toolchains/esp/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:$PATH"
+export LIBCLANG_PATH="$HOME/.local/share/rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
+export PATH="$HOME/.local/share/rustup/toolchains/esp/xtensa-esp32s2-elf/esp-12.2.0_20230208/xtensa-esp32s2-elf/bin:$PATH"
+export PATH="$HOME/.local/share/rustup/toolchains/esp/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin:$PATH"

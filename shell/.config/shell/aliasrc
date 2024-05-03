@@ -81,5 +81,5 @@ type -p pacman >/dev/null 2>&1 && {
     alias S="sudo pacman -S"
     alias p="sudo pacman"
     alias paru="paru --bottomup --skipreview"
-    alias syu="paru -Syu --skipreview --noconfirm"
+    alias syu="$AUR -Syu --noconfirm"
 }

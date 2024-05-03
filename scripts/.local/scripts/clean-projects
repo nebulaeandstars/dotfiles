@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+then
+    echo "no target directory supplied!"
+    exit 1
+fi
+
+CWD="$(pwd)"
+
+RUST_PROJECTS="$(find $1 -name 'Cargo.toml')"
+MAKE_PROJECTS="$(find $1 -name 'Makefile')"
+
+echo "Cleaning Rust projects:"
+echo "------------------------------"
+for CARGO_FILE in $RUST_PROJECTS
+do
+    RUST_PROJECT="$(dirname $CARGO_FILE)"
+    cd $RUST_PROJECT \
+      && echo "cleaning $RUST_PROJECT..." \
+      && cargo clean
+    cd $CWD
+done
+
+# echo
+# echo "Cleaning Makefile projects:"
+# echo "------------------------------"
+# for MAKE_FILE in $MAKE_PROJECTS
+# do
+#     MAKE_PROJECT="$(dirname $MAKE_FILE)"
+#     cd $MAKE_PROJECT \
+#       && echo "cleaning $MAKE_PROJECT..." \
+#       && make -s clean
+#     cd $CWD
+# done
