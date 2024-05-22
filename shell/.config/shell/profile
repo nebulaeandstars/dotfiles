@@ -1,8 +1,13 @@
 #!/bin/sh
 
+[ -s "$HOME/.profile" ] && source "$HOME/profile"
+
 # [[ -f ~/.config/zsh/.zshrc ]] && . ~/.config/zsh/.zshrc || . ~/.bashrc
 
 # automatically startx at login iff on tty1
 # if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
 #     then exec startx >/dev/null 2>&1
 # fi
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
