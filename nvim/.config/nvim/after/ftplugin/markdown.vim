@@ -15,3 +15,15 @@ vmap k gk
 
 inoremap ** **<Left>
 inoremap __ __<Left>
+
+hi link VimwikiLink Url
+hi link VimwikiPre SpecialComment
+
+hi link yamlComment SpecialComment
+
+hi link yamlKeyValueDelimiter Delimiter
+hi link yamlFlowIndicator Delimiter
+hi link yamlFlowCollection Delimiter
+
+hi link yamlBlockCollectionItemStart Operator
+hi link yamlBlockMappingKey Type

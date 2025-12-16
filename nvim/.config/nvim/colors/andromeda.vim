@@ -71,6 +71,8 @@ let s:underline = "gui=underline cterm=underline"
 let s:boldunderline = "gui=bold,italic cterm=bold,underline"
 let s:inverse = "gui=inverse cterm=inverse"
 let s:none = "gui=none cterm=none"
+let s:nofg = "guifg=none ctermfg=none"
+let s:nobg = "guibg=none ctermbg=none"
 
 
 " ############################################################################ "
@@ -106,9 +108,11 @@ call s:hi('Search', s:fg0, s:bg12, s:none)
 call s:hi('IncSearch', s:fg0, s:bg12, s:none)
 call s:hi('Sneak', s:fg0, s:bg12, s:none)
 
+call s:hi('Visual', s:nofg, s:bg8, s:none)
+
 " pmenu (for autocomplete, etc)
 call s:hi('Pmenu', s:fg0, s:bg6, s:none)
-call s:hi('PmenuSel', s:fg6, s:bg8, s:none)
+call s:hi('PmenuSel', s:fg6, s:bg7, s:none)
 call s:hi('PmenuSbar', s:fg7, s:bg8, s:none)
 call s:hi('PmenuThumb', s:fg7, s:bg8, s:none)
 
@@ -217,3 +221,5 @@ call s:hi('Error', s:fg1, s:none, s:none)
 
 " other
 call s:hi('Directory', s:fg6, s:none, s:none)
+
+call s:hi('Url', s:fg14, s:none, s:underline)

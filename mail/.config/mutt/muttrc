@@ -57,18 +57,7 @@ bind index,pager L sidebar-open
 macro index,pager \Cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \Cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
-folder-hook ~/.local/share/mail/laura/* 'source ~/.config/mutt/accounts/laura'
-folder-hook ~/.local/share/mail/thomas/* 'source ~/.config/mutt/accounts/thomas'
-folder-hook ~/.local/share/mail/nebulaeandstars/* 'source ~/.config/mutt/accounts/nebulaeandstars'
-folder-hook ~/.local/share/mail/thomaspowles/* 'source ~/.config/mutt/accounts/thomaspowles'
-folder-hook ~/.local/share/mail/clearbox/* 'source ~/.config/mutt/accounts/clearbox'
-folder-hook ~/.local/share/mail/mfc/* 'source ~/.config/mutt/accounts/mfc'
-folder-hook imaps://u6379186@anu.edu.au@outlook.office365.com:993 'source ~/.config/mutt/accounts/u6379186'
-
-macro index <F2> '<change-folder>~/.local/share/mail/laura/INBOX<enter>'
-macro index <F3> '<change-folder>~/.local/share/mail/thomas/INBOX<enter>'
-macro index <F4> '<change-folder>~/.local/share/mail/nebulaeandstars/INBOX<enter>'
-macro index <F5> '<change-folder>~/.local/share/mail/thomaspowles/INBOX<enter>'
-macro index <F6> '<change-folder>imaps://u6379186@anu.edu.au@outlook.office365.com:993<enter>'
+# folder-hook ~/.local/share/mail/laura/* 'source ~/.config/mutt/accounts/laura'
+# macro index <F4> '<change-folder>~/.local/share/mail/nebulaeandstars/INBOX<enter>'
 
 source ~/.config/mutt/accounts/laura

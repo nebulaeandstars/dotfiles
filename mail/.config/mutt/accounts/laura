@@ -4,22 +4,22 @@ set folder = "~/.local/share/mail/laura"
 set sendmail="/usr/bin/msmtp -a laura@laurapowles.com"
 
 set from = "laura@laurapowles.com"
-set realname = "Laura Powles"
+set real_name = "Laura Powles"
 
 set signature="~/.config/mutt/signatures/laura"
 
-color index_number blue default
-color index_author blue default '.*'
+color index_number magenta default
+color index_author magenta default '.*'
 color index_author brightblue default '~N'
 color indicator blue black
 color sidebar_indicator brightblue black
 
 macro index,pager A "<save-message>=Archive<enter>"  "mark message as Archived"
 
-set spoolfile= "+INBOX"
+set spool_file= "+Inbox"
 set postponed = "+Drafts"
 set record = "+Sent"
 set trash = "+Trash"
 
 unmailboxes *
-mailboxes =INBOX =Drafts =Sent =Archive =Trash =Junk
+mailboxes =Inbox =Inbox/Waiting =Inbox/Action "=Inbox/Read Later" =Inbox/Filtered =Inbox/Waiting =Snoozed =Archive =Archive/Reference =Archive/Legal =Archive/Payslips =Archive/Receipts =Sent =Drafts =Trash =Spam

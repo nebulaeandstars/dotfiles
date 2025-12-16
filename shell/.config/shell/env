@@ -53,6 +53,7 @@ export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completi
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim"
+export ZK_NOTEBOOK_DIR="$HOME/docs/notes/"
 
 export MOZ_USE_XINPUT2=1
 

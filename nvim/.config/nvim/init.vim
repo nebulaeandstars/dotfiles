@@ -228,6 +228,7 @@ Plug 'honza/vim-snippets'
 " other
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-rooter'
+Plug 'nvim-telescope/telescope.nvim'
 
 " --- operators --- "
 Plug 'tpope/vim-repeat'
@@ -251,10 +252,12 @@ Plug 'gentoo/gentoo-syntax'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'elixir-editors/vim-elixir'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'KSP-KOS/EditorTools', {'rtp': 'VIM/vim-kerboscript'}
 Plug 'sirtaj/vim-openscad'
 
 " --- other --- "
+Plug 'zk-org/zk-nvim'
 Plug 'vimwiki/vimwiki'
 Plug 'LukeSmithxyz/vimling'
 Plug 'vim-autoformat/vim-autoformat'
@@ -301,9 +304,9 @@ let g:UltiSnipsJumpBackwardTrigger='<C-Space>'
 "             \ pumvisible() ? "\<C-n>" :
 "             \ <SID>check_back_space() ? "\<TAB>" :
 "             \ coc#refresh()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr><A-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! CheckBackspace() abort
     let col = col('.') - 1
@@ -318,6 +321,14 @@ endfunction
 
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+" inoremap <expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "\<Esc>"
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+    inoremap <silent><expr> <C-Space> coc#pum#visible() ? coc#_select_confirm() . coc#refresh() : coc#refresh()
+else
+    inoremap <silent><expr> <C-@> coc#pum#visible() ? coc#_select_confirm() . coc#refresh() : coc#refresh()
+endif
 
 function! CocToggle()
     if g:coc_enabled
@@ -330,13 +341,6 @@ command! CocToggle :call CocToggle()
 
 let g:coc_snippet_next = '<a-space>'
 let g:coc_snippet_prev = '<c-space>'
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
-else
-    inoremap <silent><expr> <c-@> coc#refresh()
-endif
 
 " scroll inline floating documentation
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -394,7 +398,34 @@ let g:vimwiki_list = [{
 let g:vimwiki_global_ext = 0
 
 " don't hide stuff like links and markdown syntax
-let g:vimwiki_conceallevel = 0
+" let g:vimwiki_conceallevel = 0
+
+" --- zk-nvim config --- "
+
+" lua << EOF
+" require("zk").setup({
+"   -- Can be "telescope", "fzf", "fzf_lua", "minipick", "snacks_picker",
+"   -- or select" (`vim.ui.select`). It's recommended to use "telescope",
+"   -- "fzf", "fzf_lua", "minipick", or "snacks_picker".
+"   picker = "telescope",
+
+"   lsp = {
+"     -- `config` is passed to `vim.lsp.start_client(config)`
+"     config = {
+"       cmd = { "zk" },
+"       name = "zk",
+"       -- on_attach = ...
+"       -- etc, see `:h vim.lsp.start_client()`
+"     },
+
+"     -- automatically attach buffers in a zk notebook that match the given filetypes
+"     auto_attach = {
+"       enabled = true,
+"       filetypes = { "markdown" },
+"     },
+"   },
+" })
+" EOF
 
 " --- goyo & limelight config --- "
 
